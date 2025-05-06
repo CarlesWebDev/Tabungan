@@ -1,0 +1,231 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Guru;
+use App\Models\Tabungan;
+use Illuminate\Support\Facades\Hash;
+
+class GuruController extends Controller
+{
+    /**
+     * Display the login form for Guru.
+     */
+    public function showLoginFormGuru()
+    {
+        if (Auth::guard('guru')->check()) {
+            return redirect()->route('Teacher.dashboard');
+        }
+        return view('auth.gurulogin');
+    }
+
+    /**
+     * Login the guru.
+     */
+    public function loginGuru(Request $request)
+    {
+        $credentials = $request->validate([
+            'nip' => 'required|min:18',
+            'password' => 'required|min:8',
+        ]);
+
+        // Ambil data guru berdasarkan NIP
+        $guru = Guru::where('nip', $request->nip)->first();
+
+        // Cek apakah guru ditemukan
+        if (!$guru) {
+            return back()->withErrors([
+                'nip' => 'NIP tidak ditemukan.',
+            ])->onlyInput('nip', 'password');
+        }
+
+        if ($guru->status == 'pending') {
+            return back()->withErrors(['email' => 'Akun Anda sedang dalam tahap pengajuan.'])->onlyInput('email');
+        }
+        if ($guru->status == 'rejected') {
+            return back()->withErrors(['email' => 'Akun Anda telah ditolak oleh admin.'])->onlyInput('email');
+        }
+        // Cek apakah password sesuai
+        if (!Hash::check($request->password, $guru->password)) {
+            return back()->withErrors([
+                'nip' => 'Kredensial tidak sesuai.',
+            ])->onlyInput('nip', 'password');
+        }
+        // Cek apakah akun sudah aktif
+        // if ($guru->is_active) {
+        //     return back()->withErrors([
+        //         'nip' => 'Akun Anda sudah aktif.',
+        //     ])->onlyInput('nip');
+        // }
+
+
+        // Cek status guru
+        if ($guru->status !== 'active') {
+            return back()->withErrors([
+                'nip' => 'Akun Anda telah ditolak oleh admin.',
+            ])->onlyInput('nip');
+        }
+
+
+        // Coba login
+        if (Auth::guard('guru')->attempt($credentials)) {
+            $request->session()->regenerate();
+
+            // Update status aktif
+            $guru->is_active = true;
+            $guru->save();
+
+            return redirect()->route('Teacher.dashboard');
+        }
+
+        return back()->withErrors([
+            'nip' => 'Kredensial tidak sesuai.',
+        ])->onlyInput('nip');
+    }
+
+
+
+    public function showregisterformGuru()
+    {
+        if (Auth::guard('guru')->check()) {
+            return redirect()->route('Teacher.dashboard');
+        }
+        return view('auth.registerguru');
+    }
+
+    /**
+     * Register the guru.
+     */
+    public function registerGuru(Request $request)
+    {
+        $request->validate([
+            'nip' => 'required|min:18',
+            'name' => 'required|string|max:255',
+            'email' => 'required',
+            'password' => 'required|min:8',
+            'verification_file' => 'required|mimes:pdf,jpg,jpeg,png|max:10240',
+        ]);
+
+        // Simpan file verifikasi
+        $filepath = $request->file('verification_file')->store('verification_files', 'public');
+
+        //Simpan Ke Database
+        Guru::create([
+            'nip' => $request->nip,
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'verification_file' => $filepath,
+            'status' => 'pending',
+        ]);
+
+        session()->flash('success', 'Guru baru telah mendaftar dan menunggu verifikasi.');
+
+        return redirect()->route('login.guru.form')->with('success', 'Akun guru berhasil dibuat. Silakan tunggu verifikasi dari admin.');
+    }
+
+
+
+    // transaksi
+    public function tabungan()
+    {
+
+        $tabungan = Tabungan::all();
+        return view('Teacher.transaksi', compact('tabungan'));
+    }
+
+    public function createtabungan()
+    {
+        return view('Teacher.tambahtabungan');
+    }
+
+    public function storetabungan(Request $request)
+    {
+        $request->validate([
+            'nama_siswa' => 'required|string|max:255',
+            'nama_guru' => 'required|string|max:255',
+            'tanggal' => 'required|date',
+            'jenis_penarikan' => 'required|in:setoran,penarikan',
+            'jumlah' => 'required|numeric',
+            'keterangan' => 'required|string|max:255',
+        ]);
+
+        Tabungan::create([
+            'nama_siswa' => $request->nama_siswa,
+            'nama_guru' => $request->nama_guru,
+            'tanggal' => $request->tanggal,
+            'jenis_penarikan' => $request->jenis_penarikan,
+            'jumlah' => $request->jumlah,
+            'keterangan' => $request->keterangan,
+        ]);
+
+        return redirect()->route('Teacher.transaksi')->with('success', 'Transaksi berhasil dibuat.');
+    }
+
+
+
+    public function edittabungan($id)
+    {
+        $tabungan = Tabungan::findOrFail($id);
+        return view('teacher.edittabungan', compact('tabungan'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'nama_siswa' => 'required|string|max:255',
+            'nama_guru' => 'required|string|max:255',
+            'tanggal' => 'required|date',
+            'jenis_penarikan' => 'required|in:setoran,penarikan',
+            'jumlah' => 'required|numeric',
+            'keterangan' => 'required|string|max:255',
+        ]);
+
+        $tabungan = Tabungan::findOrFail($id);
+
+        $tabungan->update([
+            'nama_siswa' => $request->nama_siswa,
+            'nama_guru' => $request->nama_guru,
+            'tanggal' => $request->tanggal,
+            'jenis_penarikan' => $request->jenis_penarikan,
+            'jumlah' => $request->jumlah,
+            'keterangan' => $request->keterangan,
+        ]);
+
+        return redirect()->route('Teacher.transaksi')->with('success', 'Transaksi berhasil diperbarui.');
+    }
+
+    public function destroy($id)
+    {
+        $tabungan = Tabungan::findOrFail($id);
+        $tabungan->delete();
+
+        return redirect()->route('Teacher.transaksi')->with('success', 'Transaksi berhasil dihapus.');
+    }
+
+
+
+    /**
+     * Logout the guru.
+     */
+    public function logoutGuru(Request $request)
+    {
+        // Ambil data guru yang sedang login
+        $guru = Auth::guard('guru')->user();
+
+        // Update status guru menjadi nonaktif dan simpan ke database
+        if ($guru) {
+            $guru->is_active = false;
+            $guru->last_active_at = now();
+            $guru->save();
+        }
+
+
+        Auth::guard('guru')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('login.guru.form'); // Redirect ke halaman login guru
+    }
+}
