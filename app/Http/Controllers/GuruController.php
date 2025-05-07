@@ -129,12 +129,32 @@ class GuruController extends Controller
 
 
     // transaksi
-    public function tabungan()
-    {
+    // public function tabungan()
+    // {
 
-        $tabungan = Tabungan::all();
+    //     $tabungan = Tabungan::all();
+    //     return view('Teacher.transaksi', compact('tabungan'));
+    // }
+
+    public function tabungan(Request $request)
+    {
+        $query = Tabungan::query();
+
+        // Filter nama
+        if ($request->has('search') && $request->search !== null) {
+            $query->where('nama_siswa', 'like', '%' . $request->search . '%');
+        }
+
+        // Filter Tanggal
+        if ($request->has('tanggal') && $request->tanggal !== null) {
+        $query->whereDate('tanggal', $request->tanggal);
+    }
+
+        $tabungan = $query->orderBy('tanggal', 'desc')->get();
+
         return view('Teacher.transaksi', compact('tabungan'));
     }
+
 
     public function createtabungan()
     {
