@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Guru;
+use App\Models\Kelas;
 use App\Models\Tabungan;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Siswa;
@@ -178,12 +179,20 @@ class GuruController extends Controller
     }
 
 
-    public function createtabungan()
-    {
-        $siswas = Siswa::all();
+  public function createtabungan()
+{
+    // Dapatkan ID guru yang sedang login
+    $guruId = auth('guru')->user()->id;
 
-        return view('Teacher.tambahtabungan', compact('siswas'));
-    }
+    // Dapatkan kelas yang diajar oleh guru ini menggunakan guru_id
+    $kelas = Kelas::where('guru_id', $guruId)->get();
+
+    // Dapatkan siswa hanya dari kelas tersebut
+    $siswas = Siswa::whereIn('kelas_id', $kelas->pluck('id'))->get();
+
+    return view('Teacher.tambahtabungan', compact('siswas'));
+}
+
 
     // public function storetabungan(Request $request)
     // {
@@ -239,13 +248,24 @@ class GuruController extends Controller
 
 
 
-    public function edittabungan($id)
-    {
+   public function edittabungan($id)
+{
+    // Dapatkan ID guru yang sedang login
+    $guruId = auth('guru')->user()->id;
 
-        $siswas = Siswa::all();
-        $tabungan = Tabungan::findOrFail($id);
-        return view('teacher.edittabungan', compact('tabungan', 'siswas'));
-    }
+    // Dapatkan kelas yang diajar oleh guru ini menggunakan guru_id
+    $kelas = Kelas::where('guru_id', $guruId)->get();
+
+    // Dapatkan siswa hanya dari kelas tersebut
+    $siswas = Siswa::whereIn('kelas_id', $kelas->pluck('id'))->get();
+
+    // Ambil data tabungan berdasarkan id
+    $tabungan = Tabungan::findOrFail($id);
+
+    // Kirim data tabungan dan siswa yang ada
+    return view('teacher.edittabungan', compact('tabungan', 'siswas'));
+}
+
 
     public function update(Request $request, $id)
     {

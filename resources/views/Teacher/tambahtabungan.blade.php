@@ -13,7 +13,9 @@
                 <select name="siswa_id" class="w-full border rounded-lg p-2" required>
                     <option value="">Pilih Siswa</option>
                     @foreach($siswas as $siswa)
-                        <option value="{{ $siswa->id }}">{{ $siswa->name }}</option>
+                        <option value="{{ $siswa->id }}" {{ old('siswa_id') == $siswa->id ? 'selected' : '' }}>
+                            {{ $siswa->name }}
+                        </option>
                     @endforeach
                 </select>
             </div>
