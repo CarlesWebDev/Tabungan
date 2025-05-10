@@ -161,7 +161,9 @@ class GuruController extends Controller
 
     public function tabungan(Request $request)
     {
-        $query = Tabungan::query();
+        $guru = auth('guru')->user();
+
+       $query = Tabungan::where('nama_guru', $guru->name);
 
         // Filter nama
         if ($request->has('search') && $request->search !== null) {

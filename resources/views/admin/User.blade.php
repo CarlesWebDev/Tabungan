@@ -107,7 +107,11 @@
                         <tbody>
                             @forelse($gurus as $guru)
                                 <tr class="hover:bg-gray-50 border-b border-gray-100">
-                                    <td class="px-2 py-2 sm:px-3 sm:py-2">{{ $guru->nip }}</td>
+                                    <td class="px-2 py-2 sm:px-3 sm:py-2">
+                                        {{ substr($guru->nip, 0, 4) }} {{ substr($guru->nip, 4, 4) }} {{ substr($guru->nip, 8, 2) }}
+                                        {{ substr($guru->nip, 10) }}
+                                    </td>
+                                    {{-- <td class="px-2 py-2 sm:px-3 sm:py-2">{{ $guru->nip }}</td> --}}
                                     <td class="px-2 py-2 sm:px-3 sm:py-2">{{ $guru->name }}</td>
                                     <td class="px-2 py-2 sm:px-3 sm:py-2 hidden sm:table-cell">{{ $guru->email }}</td>
                                     <td class="px-2 py-2 sm:px-3 sm:py-2">
@@ -157,8 +161,8 @@
                             <tr>
                                 <th class="px-2 py-2 sm:px-3 sm:py-3">NIS</th>
                                 <th class="px-2 py-2 sm:px-3 sm:py-3">Nama</th>
-                                <th class="px-2 py-2 sm:px-3 sm:py-3 hidden sm:table-cell">Email</th>
-                                <th class="px-2 py-2 sm:px-3 sm:py-3 hidden md:table-cell">Kelas</th>
+                                <th class="px-2 py-2 sm:px-3 sm:py-3">Email</th>
+                                <th class="px-2 py-2 sm:px-3 sm:py-3">Kelas</th>
                                 <th class="px-2 py-2 sm:px-3 sm:py-3">Status</th>
                                 <th class="px-2 py-2 sm:px-3 sm:py-3">Aksi</th>
                             </tr>
@@ -166,10 +170,13 @@
                         <tbody>
                             @forelse($siswas as $siswa)
                                 <tr class="hover:bg-gray-50 border-b border-gray-100">
-                                    <td class="px-2 py-2 sm:px-3 sm:py-2">{{ $siswa->nis }}</td>
+                                    <td class="px-2 py-2 sm:px-3 sm:py-2">
+                                        {{ substr($siswa->nis, 0, 2) }}.{{ substr($siswa->nis, 2, 2) }}.{{ substr($siswa->nis, 4) }}
+                                    </td>
+                                    {{-- <td class="px-2 py-2 sm:px-3 sm:py-2">{{ $siswa->nis }}</td> --}}
                                     <td class="px-2 py-2 sm:px-3 sm:py-2">{{ $siswa->name }}</td>
-                                    <td class="px-2 py-2 sm:px-3 sm:py-2 hidden sm:table-cell">{{ $siswa->email }}</td>
-                                    <td class="px-2 py-2 sm:px-3 sm:py-2 hidden md:table-cell">
+                                    <td class="px-2 py-2 sm:px-3 sm:py-2 ">{{ $siswa->email }}</td>
+                                    <td class="px-2 py-2 sm:px-3 sm:py-2">
                                         {{ ($siswa->kelas) ? $siswa->kelas->tingkat . ' ' . $siswa->kelas->nama_kelas : '-' }}
                                     </td>
                                     <td class="px-2 py-2 sm:px-3 sm:py-2">
