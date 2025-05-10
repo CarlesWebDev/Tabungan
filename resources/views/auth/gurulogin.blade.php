@@ -13,7 +13,7 @@
             <!-- Kolom Form -->
             <div class="flex flex-col justify-center p-8">
                 @if ($errors->any())
-                    <div class="mb-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative">
+                    <div class="mb-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
                         <strong class="font-bold">Error!</strong>
                         <span class="block sm:inline">{{ $errors->first() }}</span>
                     </div>

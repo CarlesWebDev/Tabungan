@@ -232,14 +232,16 @@ class AdminController extends Controller
     {
         // Ambil data kelas dan hitung jumlah siswa untuk setiap kelas
         $kelas = Kelas::all();
+         $kelas = Kelas::withCount('siswas')->get();
         return view('admin.managementkelas', compact('kelas'));
     }
 
     public function createkelas()
     {
+        $gurus = Guru::whereDoesntHave('kelas')->get();
         $gurus = Guru::all();
         $kelas = Kelas::all();
-        $siswas = Siswa::all();
+        $siswas = Siswa::whereNull('kelas_id')->get();
         // Mengambil jumlah siswa dari setiap kelas
         return view('admin.tambahkelas', compact('gurus', 'kelas', 'siswas'));
     }
@@ -250,8 +252,8 @@ class AdminController extends Controller
             'nama_kelas' => 'required|unique:kelas,nama_kelas',
             'jurusan' => 'required',
             'tingkat' => 'required',
-            // 'jumlah_siswa' => 'required',
-            'guru_id' => 'required',
+            // 'jumlah_siswa' => 'required',\
+            'guru_id' => 'required|unique:kelas,guru_id',
         ]);
 
         Kelas::create([

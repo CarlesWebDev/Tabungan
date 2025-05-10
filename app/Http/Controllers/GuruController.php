@@ -155,6 +155,9 @@ class GuruController extends Controller
     //     return view('Teacher.transaksi', compact('tabungan'));
     // }
 
+
+
+
     public function tabungan(Request $request)
     {
         $query = Tabungan::query();
@@ -178,6 +181,7 @@ class GuruController extends Controller
     public function createtabungan()
     {
         $siswas = Siswa::all();
+
         return view('Teacher.tambahtabungan', compact('siswas'));
     }
 
@@ -237,14 +241,16 @@ class GuruController extends Controller
 
     public function edittabungan($id)
     {
+
+        $siswas = Siswa::all();
         $tabungan = Tabungan::findOrFail($id);
-        return view('teacher.edittabungan', compact('tabungan'));
+        return view('teacher.edittabungan', compact('tabungan', 'siswas'));
     }
 
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nama_siswa' => 'required|string|max:255',
+            'siswa_id' => 'required|exists:siswas,id',
             'nama_guru' => 'required|string|max:255',
             'tanggal' => 'required|date',
             'jenis_penarikan' => 'required|in:setoran,penarikan',
@@ -252,10 +258,14 @@ class GuruController extends Controller
             'keterangan' => 'required|string|max:255',
         ]);
 
-        $tabungan = Tabungan::findOrFail($id);
+        // Ambil nama_siswa berdasarkan siswa_id
+        $siswa = Siswa::findOrFail($request->siswa_id);
+        $nama_siswa = $siswa->name;
 
+        $tabungan = Tabungan::findOrFail($id);
         $tabungan->update([
-            'nama_siswa' => $request->nama_siswa,
+            'siswa_id' => $request->siswa_id,
+            'nama_siswa' => $nama_siswa, // Tambahkan ini
             'nama_guru' => $request->nama_guru,
             'tanggal' => $request->tanggal,
             'jenis_penarikan' => $request->jenis_penarikan,

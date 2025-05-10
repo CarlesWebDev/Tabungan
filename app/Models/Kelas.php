@@ -13,6 +13,7 @@ class Kelas extends Model
         'jurusan',
         'tingkat',
         'guru_id',
+        'jumlah_siswa',
     ];
 
     public function guru()
@@ -20,7 +21,7 @@ class Kelas extends Model
         return $this->belongsTo(Guru::class, 'guru_id');
     }
 
-    public function siswa()
+    public function siswas()
     {
         return $this->hasMany(Siswa::class);
     }
