@@ -9,7 +9,7 @@ class tabungan extends Model
     //
     protected $table = 'tabungans';
 
-     protected $fillable = [
+    protected $fillable = [
         'nama_siswa',
         'nama_guru',
         'id_siswa',
@@ -19,4 +19,17 @@ class tabungan extends Model
         'jumlah',
         'keterangan'
     ];
+
+    // Relasi Ke siswa
+    public function siswa()
+    {
+        return $this->belongsTo(Siswa::class, 'siswa_id');
+    }
+
+    // App\Models\Tabungan.php
+
+    public function guru()
+    {
+        return $this->belongsTo(Guru::class, 'guru_id');
+    }
 }

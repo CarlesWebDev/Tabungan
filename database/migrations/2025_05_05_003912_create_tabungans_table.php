@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('tabungans', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('siswa_id')->nullable();
+            $table->unsignedBigInteger('guru_id')->nullable();
+            $table->foreign('siswa_id')->references('id')->on('siswas')->onDelete('cascade');
+            $table->foreign('guru_id')->references('id')->on('gurus')->onDelete('cascade');
             $table->string('nama_siswa');
             $table->string('nama_guru');
             $table->date('tanggal');

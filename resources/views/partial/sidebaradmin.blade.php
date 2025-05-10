@@ -125,17 +125,6 @@
                 </a>
             </li>
             <li>
-                <a href=""
-                    class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
-                    <svg class="w-5 h-5 text-gray-500 group-hover:text-gray-900" fill="currentColor"
-                        viewBox="0 0 20 20">
-                        <path
-                            d="M11.3 1.046a1 1 0 011.4.914V4.16a5.978 5.978 0 012.11.985l2.23-1.29a1 1 0 011.292 1.536l-2.23 1.29c.251.635.398 1.324.423 2.05l2.528.584a1 1 0 01-.23 1.967l-2.528-.584c-.071.646-.247 1.263-.52 1.837l1.843 1.842a1 1 0 01-1.414 1.415l-1.842-1.843a5.96 5.96 0 01-1.837.52l.584 2.528a1 1 0 01-1.967.23l-.584-2.528a6.048 6.048 0 01-2.05-.423l-1.29 2.23a1 1 0 01-1.536-1.292l1.29-2.23a5.978 5.978 0 01-.985-2.11H4.16a1 1 0 01-.914-1.4l.916-2a1 1 0 01.998-.6h1.21a5.977 5.977 0 01.986-2.11L4.2 2.338A1 1 0 015.491.802l2.23 1.29a5.96 5.96 0 012.05-.423V1.96a1 1 0 01.53-.914z" />
-                    </svg>
-                    <span class="ms-3">Pengaturan</span>
-                </a>
-            </li>
-            <li>
                 <a href="{{ route('admin.verifikasiakun') }}"
                     class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
                 <svg class="w-5 h-5 text-gray-500 group-hover:text-gray-900" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"

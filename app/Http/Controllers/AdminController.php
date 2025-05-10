@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Guru;
+use App\Models\tabungan;
 use App\Models\Kelas;
 use App\Models\Siswa;
 
@@ -29,14 +30,19 @@ class AdminController extends Controller
 
 
     // ManagemenT kelas
+   public function adminDashboard()
+{
+    $siswas = Siswa::with('tabungan')->get();
+    $gurus = Guru::all();
 
+    // Hitung total tabungan 
+    $totalSetoran = Tabungan::where('jenis_penarikan', 'setoran')->sum('jumlah');
+    $totalPenarikan = Tabungan::where('jenis_penarikan', 'penarikan')->sum('jumlah');
+    $totalTabungan = $totalSetoran - $totalPenarikan;
 
-    public function adminDashboard()
-    {
-        $siswas = Siswa::all();
-        $gurus = Guru::all();
-        return view('admin.dashboard', compact('siswas', 'gurus'));
-    }
+    return view('admin.dashboard', compact('siswas', 'gurus', 'totalTabungan'));
+}
+
     /**
      * Show the login form.
      */
@@ -152,12 +158,12 @@ class AdminController extends Controller
 
 
     // Tambah Murid
-   public function createsiswa()
-{
-    $kelas = Kelas::all();
-    $siswas = Siswa::all();
-    return view('admin.tambahsiswa', compact('kelas', 'siswas'));
-}
+    public function createsiswa()
+    {
+        $kelas = Kelas::all();
+        $siswas = Siswa::all();
+        return view('admin.tambahsiswa', compact('kelas', 'siswas'));
+    }
 
     public function storesiswa(Request $request)
     {
@@ -187,7 +193,7 @@ class AdminController extends Controller
     {
         $siswa = Siswa::findOrFail($id);
         $kelas = Kelas::all();
-        return view('admin.editsiswa', compact('siswa','kelas'));
+        return view('admin.editsiswa', compact('siswa', 'kelas'));
     }
 
     public function updatesiswa(Request $request, $id)
@@ -232,7 +238,7 @@ class AdminController extends Controller
     {
         // Ambil data kelas dan hitung jumlah siswa untuk setiap kelas
         $kelas = Kelas::all();
-         $kelas = Kelas::withCount('siswas')->get();
+        $kelas = Kelas::withCount('siswas')->get();
         return view('admin.managementkelas', compact('kelas'));
     }
 
@@ -304,7 +310,8 @@ class AdminController extends Controller
         return redirect()->route('admin.Kelas')->with('success', 'Kelas berhasil dihapus.');
     }
 
-    public function LaporanTabungan() {
+    public function LaporanTabungan()
+    {
         return view('admin.laporanTabungan');
     }
 
