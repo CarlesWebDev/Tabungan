@@ -57,7 +57,7 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
     Route::post('/logout', [AdminController::class, 'logoutAdmin'])->name('logout');
 
 
-    //  Guru
+    //  Crud Guru
     Route::get('/tambahguru', [AdminController::class, 'createguru'])->name('tambahguru');
     Route::post('/storeguru', [AdminController::class, 'storeguru'])->name('storeguru');
     Route::get('/guru/{id}/edit', [AdminController::class, 'editguru'])->name('editguru');
@@ -88,7 +88,7 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
 
 
 
-    // Tambah Kelas
+    // Crud Kelas
     Route::get('/tambahkelas', [AdminController::class, 'createKelas'])->name('tambahkelas');
     Route::post('/storekelas', [AdminController::class, 'storeKelas'])->name('storekelas');
     Route::get('/kelas/{id}/edit', [AdminController::class, 'editKelas'])->name('editKelas');
@@ -111,7 +111,8 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
 // Guru Routes (Protected by Middleware)
 // ==============================
 Route::middleware('auth:guru')->prefix('Teacher')->name('Teacher.')->group(function () {
-    Route::view('/dashboard', 'Teacher.dashboard')->name('dashboard');
+     Route::get('/dashboard', [GuruController::class, 'dashboardGuru'])->name('dashboard');
+    // Route::view('/dashboard', 'Teacher.dashboard')->name('dashboard');
     Route::post('/logout', [GuruController::class, 'logoutGuru'])->name('logout');
 
     // halamn transaksi

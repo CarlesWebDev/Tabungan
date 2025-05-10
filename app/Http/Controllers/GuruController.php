@@ -158,12 +158,47 @@ class GuruController extends Controller
 
 
 
+    // public function dashboardGuru()
+    // {
+    //     $guru = auth('guru')->user();
+
+    //     $totalPemasukan = Tabungan::where('nama_guru', $guru->name)
+    //         ->where('jenis_penarikan', 'setoran')
+    //         ->sum('jumlah');
+
+    //     $totalPenarikan = Tabungan::where('nama_guru', $guru->name)
+    //         ->where('jenis_penarikan', 'penarikan')
+    //         ->sum('jumlah');
+
+    //     return view('Teacher.dashboard', compact('totalPemasukan', 'totalPenarikan'));
+    // }
+
+    public function dashboardGuru()
+{
+    $guru = auth('guru')->user();
+
+    // Calculate total pemasukan (setoran)
+    $totalPemasukan = Tabungan::where('nama_guru', $guru->name)
+        ->where('jenis_penarikan', 'setoran')
+        ->sum('jumlah');
+
+    // Calculate total penarikan
+    $totalPenarikan = Tabungan::where('nama_guru', $guru->name)
+        ->where('jenis_penarikan', 'penarikan')
+        ->sum('jumlah');
+
+    // Pass the variables to the view
+    return view('Teacher.dashboard', compact('totalPemasukan', 'totalPenarikan'));
+}
+
+
+
 
     public function tabungan(Request $request)
     {
         $guru = auth('guru')->user();
 
-       $query = Tabungan::where('nama_guru', $guru->name);
+        $query = Tabungan::where('nama_guru', $guru->name);
 
         // Filter nama
         if ($request->has('search') && $request->search !== null) {
@@ -172,8 +207,8 @@ class GuruController extends Controller
 
         // Filter Tanggal
         if ($request->has('tanggal') && $request->tanggal !== null) {
-        $query->whereDate('tanggal', $request->tanggal);
-    }
+            $query->whereDate('tanggal', $request->tanggal);
+        }
 
         $tabungan = $query->orderBy('tanggal', 'desc')->get();
 
@@ -181,19 +216,19 @@ class GuruController extends Controller
     }
 
 
-  public function createtabungan()
-{
-    // Dapatkan ID guru yang sedang login
-    $guruId = auth('guru')->user()->id;
+    public function createtabungan()
+    {
+        // Dapatkan ID guru yang sedang login
+        $guruId = auth('guru')->user()->id;
 
-    // Dapatkan kelas yang diajar oleh guru ini menggunakan guru_id
-    $kelas = Kelas::where('guru_id', $guruId)->get();
+        // Dapatkan kelas yang diajar oleh guru ini menggunakan guru_id
+        $kelas = Kelas::where('guru_id', $guruId)->get();
 
-    // Dapatkan siswa hanya dari kelas tersebut
-    $siswas = Siswa::whereIn('kelas_id', $kelas->pluck('id'))->get();
+        // Dapatkan siswa hanya dari kelas tersebut
+        $siswas = Siswa::whereIn('kelas_id', $kelas->pluck('id'))->get();
 
-    return view('Teacher.tambahtabungan', compact('siswas'));
-}
+        return view('Teacher.tambahtabungan', compact('siswas'));
+    }
 
 
     // public function storetabungan(Request $request)
@@ -221,52 +256,52 @@ class GuruController extends Controller
 
 
     public function storetabungan(Request $request)
-{
-    $request->validate([
-        'siswa_id' => 'required|exists:siswas,id',
-        'nama_guru' => 'required|string|max:255',
-        'tanggal' => 'required|date',
-        'jenis_penarikan' => 'required|in:setoran,penarikan',
-        'jumlah' => 'required|numeric',
-        'keterangan' => 'required|string|max:255',
-    ]);
+    {
+        $request->validate([
+            'siswa_id' => 'required|exists:siswas,id',
+            'nama_guru' => 'required|string|max:255',
+            'tanggal' => 'required|date',
+            'jenis_penarikan' => 'required|in:setoran,penarikan',
+            'jumlah' => 'required|numeric',
+            'keterangan' => 'required|string|max:255',
+        ]);
 
-    // Ambil nama_siswa berdasarkan siswa_id
-    $siswa = Siswa::findOrFail($request->siswa_id);
-    $nama_siswa = $siswa->name; // Asumsi kolom 'name' adalah nama siswa
+        // Ambil nama_siswa berdasarkan siswa_id
+        $siswa = Siswa::findOrFail($request->siswa_id);
+        $nama_siswa = $siswa->name; // Asumsi kolom 'name' adalah nama siswa
 
-    Tabungan::create([
-        'siswa_id' => $request->siswa_id,
-        'nama_siswa' => $nama_siswa,  // Simpan nama siswa
-        'nama_guru' => $request->nama_guru,
-        'tanggal' => $request->tanggal,
-        'jenis_penarikan' => $request->jenis_penarikan,
-        'jumlah' => $request->jumlah,
-        'keterangan' => $request->keterangan,
-    ]);
+        Tabungan::create([
+            'siswa_id' => $request->siswa_id,
+            'nama_siswa' => $nama_siswa,  // Simpan nama siswa
+            'nama_guru' => $request->nama_guru,
+            'tanggal' => $request->tanggal,
+            'jenis_penarikan' => $request->jenis_penarikan,
+            'jumlah' => $request->jumlah,
+            'keterangan' => $request->keterangan,
+        ]);
 
-    return redirect()->route('Teacher.transaksi')->with('success', 'Transaksi berhasil dibuat.');
-}
+        return redirect()->route('Teacher.transaksi')->with('success', 'Transaksi berhasil dibuat.');
+    }
 
 
 
-   public function edittabungan($id)
-{
-    // Dapatkan ID guru yang sedang login
-    $guruId = auth('guru')->user()->id;
+    public function edittabungan($id)
+    {
+        // Dapatkan ID guru yang sedang login
+        $guruId = auth('guru')->user()->id;
 
-    // Dapatkan kelas yang diajar oleh guru ini menggunakan guru_id
-    $kelas = Kelas::where('guru_id', $guruId)->get();
+        // Dapatkan kelas yang diajar oleh guru ini menggunakan guru_id
+        $kelas = Kelas::where('guru_id', $guruId)->get();
 
-    // Dapatkan siswa hanya dari kelas tersebut
-    $siswas = Siswa::whereIn('kelas_id', $kelas->pluck('id'))->get();
+        // Dapatkan siswa hanya dari kelas tersebut
+        $siswas = Siswa::whereIn('kelas_id', $kelas->pluck('id'))->get();
 
-    // Ambil data tabungan berdasarkan id
-    $tabungan = Tabungan::findOrFail($id);
+        // Ambil data tabungan berdasarkan id
+        $tabungan = Tabungan::findOrFail($id);
 
-    // Kirim data tabungan dan siswa yang ada
-    return view('teacher.edittabungan', compact('tabungan', 'siswas'));
-}
+        // Kirim data tabungan dan siswa yang ada
+        return view('teacher.edittabungan', compact('tabungan', 'siswas'));
+    }
 
 
     public function update(Request $request, $id)
