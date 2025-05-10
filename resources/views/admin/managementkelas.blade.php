@@ -39,29 +39,29 @@
                         </thead>
                         <tbody>
                             @forelse($kelas as $kelass)
-                            <tr class="hover:bg-gray-50">
-                                <td class="px-3 py-2">{{ $kelass->nama_kelas }}</td>
-                                <td class="px-3 py-2">{{ $kelass->jurusan }}</td>
-                                <td class="px-3 py-2">{{ $kelass->jumlah_siswa }}</td>
-                                <td class="px-3 py-2">{{ $kelass->guru->name }}</td>
-                                <td class="px-3 py-2">
-                                    <div class="flex flex-col sm:flex-row gap-2">
-                                        <a href="{{ route('admin.editKelas', $kelass->id) }}"
-                                            class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded text-center">
-                                            Edit
-                                        </a>
-                                        <form action="{{ route('admin.hapusKelas', $kelass->id) }}" method="POST"
-                                            onsubmit="return confirm('Yakin ingin menghapus Kelas ini?');">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit"
-                                                class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded w-full text-center">
-                                                Hapus
-                                            </button>
-                                        </form>
-                                    </div>
-                                </td>
-                            </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-3 py-2">{{ $kelass->nama_kelas }}</td>
+                                    <td class="px-3 py-2">{{ $kelass->jurusan }}</td>
+                                    <td class="px-3 py-2">{{ $kelass->siswas_count }}</td>
+                                    <td class="px-3 py-2">{{ $kelass->guru->name }}</td>
+                                    <td class="px-3 py-2">
+                                        <div class="flex flex-col sm:flex-row gap-2">
+                                            <a href="{{ route('admin.editKelas', $kelass->id) }}"
+                                                class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded text-center">
+                                                Edit
+                                            </a>
+                                            <form action="{{ route('admin.hapusKelas', $kelass->id) }}" method="POST"
+                                                onsubmit="return confirm('Yakin ingin menghapus Kelas ini?');">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit"
+                                                    class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded w-full text-center">
+                                                    Hapus
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
                             @empty
                             <tr>
                                 <td colspan="5" class="text-center py-4 text-gray-500">Belum ada data Kelas.</td>

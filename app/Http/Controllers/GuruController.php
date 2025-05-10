@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Guru;
 use App\Models\Tabungan;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Siswa;
 
 class GuruController extends Controller
 {
@@ -127,6 +128,24 @@ class GuruController extends Controller
     }
 
 
+    public function logoutGuru(Request $request)
+    {
+        // Ambil data guru yang sedang login
+        $guru = Auth::guard('guru')->user();
+
+        // Update status guru menjadi nonaktif dan simpan ke database
+        if ($guru) {
+            $guru->is_active = false;
+            $guru->last_active_at = now();
+            $guru->save();
+        }
+
+
+        Auth::guard('guru')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('login.guru.form'); // Redirect ke halaman login guru
+    }
 
     // transaksi
     // public function tabungan()
@@ -158,31 +177,61 @@ class GuruController extends Controller
 
     public function createtabungan()
     {
-        return view('Teacher.tambahtabungan');
+        $siswas = Siswa::all();
+        return view('Teacher.tambahtabungan', compact('siswas'));
     }
+
+    // public function storetabungan(Request $request)
+    // {
+    //     $request->validate([
+    //         'siswa_id' => 'required|exists:siswas,id',
+    //         'nama_guru' => 'required|string|max:255',
+    //         'tanggal' => 'required|date',
+    //         'jenis_penarikan' => 'required|in:setoran,penarikan',
+    //         'jumlah' => 'required|numeric',
+    //         'keterangan' => 'required|string|max:255',
+    //     ]);
+
+    //     Tabungan::create([
+    //         'siswa_id' => $request->siswa_id,
+    //         'nama_guru' => $request->nama_guru,
+    //         'tanggal' => $request->tanggal,
+    //         'jenis_penarikan' => $request->jenis_penarikan,
+    //         'jumlah' => $request->jumlah,
+    //         'keterangan' => $request->keterangan,
+    //     ]);
+
+    //     return redirect()->route('Teacher.transaksi')->with('success', 'Transaksi berhasil dibuat.');
+    // }
+
 
     public function storetabungan(Request $request)
-    {
-        $request->validate([
-            'nama_siswa' => 'required|string|max:255',
-            'nama_guru' => 'required|string|max:255',
-            'tanggal' => 'required|date',
-            'jenis_penarikan' => 'required|in:setoran,penarikan',
-            'jumlah' => 'required|numeric',
-            'keterangan' => 'required|string|max:255',
-        ]);
+{
+    $request->validate([
+        'siswa_id' => 'required|exists:siswas,id',
+        'nama_guru' => 'required|string|max:255',
+        'tanggal' => 'required|date',
+        'jenis_penarikan' => 'required|in:setoran,penarikan',
+        'jumlah' => 'required|numeric',
+        'keterangan' => 'required|string|max:255',
+    ]);
 
-        Tabungan::create([
-            'nama_siswa' => $request->nama_siswa,
-            'nama_guru' => $request->nama_guru,
-            'tanggal' => $request->tanggal,
-            'jenis_penarikan' => $request->jenis_penarikan,
-            'jumlah' => $request->jumlah,
-            'keterangan' => $request->keterangan,
-        ]);
+    // Ambil nama_siswa berdasarkan siswa_id
+    $siswa = Siswa::findOrFail($request->siswa_id);
+    $nama_siswa = $siswa->name; // Asumsi kolom 'name' adalah nama siswa
 
-        return redirect()->route('Teacher.transaksi')->with('success', 'Transaksi berhasil dibuat.');
-    }
+    Tabungan::create([
+        'siswa_id' => $request->siswa_id,
+        'nama_siswa' => $nama_siswa,  // Simpan nama siswa
+        'nama_guru' => $request->nama_guru,
+        'tanggal' => $request->tanggal,
+        'jenis_penarikan' => $request->jenis_penarikan,
+        'jumlah' => $request->jumlah,
+        'keterangan' => $request->keterangan,
+    ]);
+
+    return redirect()->route('Teacher.transaksi')->with('success', 'Transaksi berhasil dibuat.');
+}
 
 
 
@@ -223,29 +272,5 @@ class GuruController extends Controller
         $tabungan->delete();
 
         return redirect()->route('Teacher.transaksi')->with('success', 'Transaksi berhasil dihapus.');
-    }
-
-
-
-    /**
-     * Logout the guru.
-     */
-    public function logoutGuru(Request $request)
-    {
-        // Ambil data guru yang sedang login
-        $guru = Auth::guard('guru')->user();
-
-        // Update status guru menjadi nonaktif dan simpan ke database
-        if ($guru) {
-            $guru->is_active = false;
-            $guru->last_active_at = now();
-            $guru->save();
-        }
-
-
-        Auth::guard('guru')->logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-        return redirect()->route('login.guru.form'); // Redirect ke halaman login guru
     }
 }

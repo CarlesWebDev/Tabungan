@@ -22,7 +22,6 @@ class Guru extends Authenticatable
         'last_active_at',
         'status',
         'verification_file',
-        // 'last_active_at',
     ];
 
     protected $hidden = [

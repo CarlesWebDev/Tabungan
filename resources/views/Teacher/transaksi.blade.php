@@ -69,7 +69,7 @@
                             </td>
                             <td
                                 class="px-6 py-4 text-sm font-semibold whitespace-nowrap
-                                                {{ $item->jenis_penarikan == 'penarikan' ? 'text-red-700' : 'text-green-700' }}">
+                                                        {{ $item->jenis_penarikan == 'penarikan' ? 'text-red-700' : 'text-green-700' }}">
                                 Rp{{ number_format($item->jumlah, 0, ',', '.') }}
                             </td>
                             <td class="px-6 py-4 text-sm text-gray-700 whitespace-nowrap">{{ $item->keterangan }}</td>

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('tabungans', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_siswa');column:
+            $table->string('nama_siswa');
             $table->string('nama_guru');
             $table->date('tanggal');
             $table->enum('jenis_penarikan', ['setoran', 'penarikan']);

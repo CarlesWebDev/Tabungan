@@ -20,7 +20,7 @@ class Siswa extends Authenticatable
         'password',
         'role',
         'is_active',
-        // 'kelas_id',
+        'kelas_id',
         'last_active_at',
     ];
 
@@ -37,6 +37,6 @@ class Siswa extends Authenticatable
     // Relasiin siswa dengan kelas
     public function kelas()
     {
-        return $this->belongsTo(Kelas::class, 'kelas_id');
+        return $this->belongsTo(Kelas::class,);
     }
 }

@@ -17,7 +17,9 @@ class AdminController extends Controller
     {
         // misalnya menampilkan view
         $gurus = Guru::all();
-        $siswas = Siswa::all();
+        $kelas = Kelas::first();
+        // $siswas = Siswa::all();
+        $siswas = Siswa::with('kelas')->get();
         $guruTidakAktif = Guru::where('is_active', false)->count();
         $siswaTidakAktif = Siswa::where('is_active', false)->count();
         $guruAktif = Guru::where('is_active', true)->count();
@@ -80,11 +82,6 @@ class AdminController extends Controller
 
 
 
-
-
-
-
-
     // tambah Akun Guru
     public function createguru()
     {
@@ -93,8 +90,6 @@ class AdminController extends Controller
 
     public function storeguru(Request $request)
     {
-
-
         $request->validate([
             'nip' => 'required|min:18',
             'name' => 'required',
@@ -156,22 +151,23 @@ class AdminController extends Controller
 
 
 
-
-
     // Tambah Murid
-    public function createsiswa()
-    {
-        return view('admin.tambahsiswa');
-    }
+   public function createsiswa()
+{
+    $kelas = Kelas::all();
+    $siswas = Siswa::all();
+    return view('admin.tambahsiswa', compact('kelas', 'siswas'));
+}
 
     public function storesiswa(Request $request)
     {
+        // dd($request->all());
         $request->validate([
             'nis' => 'required|min:10',
             'name' => 'required',
             'email' => 'required|email|unique:siswas,email',
             'password' => 'required|min:8',
-            'kelas' => 'required',
+            'kelas_id' => 'required|exists:kelas,id',
         ]);
 
         Siswa::create([
@@ -179,7 +175,7 @@ class AdminController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'kelas' => $request->kelas,
+            'kelas_id' => $request->kelas_id,
             'role' => 'student',
         ]);
 
@@ -190,7 +186,8 @@ class AdminController extends Controller
     public function editsiswa($id)
     {
         $siswa = Siswa::findOrFail($id);
-        return view('admin.editsiswa', compact('siswa'));
+        $kelas = Kelas::all();
+        return view('admin.editsiswa', compact('siswa','kelas'));
     }
 
     public function updatesiswa(Request $request, $id)
@@ -202,7 +199,7 @@ class AdminController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:siswas,email,' . $siswa->id,
             'password' => 'nullable|min:8',
-            'kelas' => 'required',
+            'kelas_id' => 'required|exists:kelas,id',
         ]);
 
         // Update password jika diisi jika tidak password akan sama
@@ -213,7 +210,7 @@ class AdminController extends Controller
         $siswa->nis = $request->nis;
         $siswa->name = $request->name;
         $siswa->email = $request->email;
-        $siswa->kelas = $request->kelas;
+        $siswa->kelas_id = $request->kelas_id;
 
         $siswa->save();
 
@@ -305,6 +302,11 @@ class AdminController extends Controller
         return redirect()->route('admin.Kelas')->with('success', 'Kelas berhasil dihapus.');
     }
 
+    public function LaporanTabungan() {
+        return view('admin.laporanTabungan');
+    }
+
+
     public function verifikasiakun()
     {
         $gurus = Guru::where('status', 'pending')->get();
@@ -337,10 +339,6 @@ class AdminController extends Controller
     // }
 
 
-
-    public function LaporanTabungan() {
-        return view('admin.laporanTabungan');
-    }
 
     public function approveGuru($id)
     {

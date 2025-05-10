@@ -39,6 +39,7 @@ class SiswaController extends Controller
             $siswa = Auth::guard('siswa')->user();
             $siswa->is_active = true;
             $siswa->save();
+            
 
             return redirect()->route('Student.dashboard');
         }
@@ -56,6 +57,7 @@ class SiswaController extends Controller
         // Pastikan siswa yang logout adalah siswa yang sedang login
         if ($siswa) {
             $siswa->is_active = false; // Set is_active ke false
+            $siswa->last_active_atctive_at = now(); // Set last_active_at ke waktu sekarang
             $siswa->save(); // Simpan perubahan
         }
 

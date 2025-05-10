@@ -47,13 +47,13 @@
                     @enderror
                 </div>
 
-        <!-- Jumlah Siswa (Informasi saja, tidak bisa diedit) -->
-        <div class="mb-6">
-            <label class="block text-sm font-medium text-gray-700">Jumlah Siswa</label>
-            <input type="text"
-                class="mt-2 block w-full px-4 py-2 bg-gray-100 border border-gray-300 rounded-md shadow-sm focus:outline-none cursor-not-allowed"
-                value="{{ $siswas->where('kelas', old('nama_kelas'))->count() }}" readonly>
-        </div>
+                <!-- Jumlah Siswa (Informasi saja, tidak bisa diedit) -->
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-gray-700">Jumlah Siswa</label>
+                    <input type="text"
+                        class="mt-2 block w-full px-4 py-2 bg-gray-100 border border-gray-300 rounded-md shadow-sm focus:outline-none cursor-not-allowed"
+                        value="{{ $siswas->where('kelas', old('nama_kelas'))->count() }}" readonly>
+                </div>
 
                 <!-- Guru -->
                 <div class="mb-6">
@@ -63,7 +63,8 @@
                         required>
                         <option value="">-- Pilih Guru --</option>
                         @foreach($gurus as $guru)
-                            <option value="{{ $guru->id }}" {{ old('guru_id') == $guru->id ? 'selected' : '' }}>{{ $guru->name }}</option>
+                            <option value="{{ $guru->id }}" {{ old('guru_id') == $guru->id ? 'selected' : '' }}>{{ $guru->name }}
+                            </option>
                         @endforeach
                     </select>
                     @error('guru_id')
