@@ -177,18 +177,17 @@ class GuruController extends Controller
 {
     $guru = auth('guru')->user();
 
-    // Calculate total pemasukan (setoran)
     $totalPemasukan = Tabungan::where('nama_guru', $guru->name)
         ->where('jenis_penarikan', 'setoran')
         ->sum('jumlah');
 
-    // Calculate total penarikan
     $totalPenarikan = Tabungan::where('nama_guru', $guru->name)
         ->where('jenis_penarikan', 'penarikan')
         ->sum('jumlah');
 
-    // Pass the variables to the view
-    return view('Teacher.dashboard', compact('totalPemasukan', 'totalPenarikan'));
+    $transaksis = Tabungan::where('nama_guru', $guru->name)->latest()->get();
+
+    return view('Teacher.dashboard', compact('totalPemasukan', 'totalPenarikan', 'transaksis'));
 }
 
 
@@ -253,6 +252,9 @@ class GuruController extends Controller
 
     //     return redirect()->route('Teacher.transaksi')->with('success', 'Transaksi berhasil dibuat.');
     // }
+
+
+
 
 
     public function storetabungan(Request $request)

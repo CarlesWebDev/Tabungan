@@ -34,6 +34,9 @@ Route::get('/register/guru', [GuruController::class, 'showregisterformGuru'])->n
 Route::post('/register/guru', [GuruController::class, 'registerGuru'])->name('register.guru');
 
 
+
+
+
 // ==============================
 // Login Routes
 // ==============================
@@ -133,6 +136,9 @@ Route::middleware('auth:guru')->prefix('Teacher')->name('Teacher.')->group(funct
 Route::middleware('auth:siswa')->prefix('Student')->name('Student.')->group(function () {
     Route::view('/dashboard', 'Student.dashboard')->name('dashboard');
     Route::post('/logout', [SiswaController::class, 'logoutSiswa'])->name('logout');
+
+    // Riwayat tabungan
+    Route::get('/siswa/riwayat-tabungan', [SiswaController::class, 'riwayatTabungan'])->name('riwayat');
 });
 
 

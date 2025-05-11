@@ -26,7 +26,7 @@ class tabungan extends Model
         return $this->belongsTo(Siswa::class, 'siswa_id');
     }
 
-    // App\Models\Tabungan.php
+
 
     public function guru()
     {

@@ -19,7 +19,7 @@ return new class extends Migration
             // $table->string('kelas');
             $table->foreignId('kelas_id')->constrained('kelas')->onDelete('cascade')->nulllable();
             $table->boolean('is_active')->default(true);
-            $table->timestamp('last_active_at')->nullable();
+              $table->timestamp('last_active_at')->nullable();
             $table->string('password');
             $table->string('role');
             $table->timestamps();
