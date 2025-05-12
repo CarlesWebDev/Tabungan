@@ -12,7 +12,8 @@ class tabungan extends Model
     protected $fillable = [
         'nama_siswa',
         'nama_guru',
-        'id_siswa',
+        'siswa_id',
+        // 'id_siswa',
         'guru_id',
         'tanggal',
         'jenis_penarikan',

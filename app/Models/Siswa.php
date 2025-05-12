@@ -47,3 +47,4 @@ class Siswa extends Authenticatable
 }
 
 }
+

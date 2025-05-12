@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\tabungan;
 
 
 class SiswaController extends Controller
@@ -12,27 +13,37 @@ class SiswaController extends Controller
 
 
     // Untuk siswa melihat riwayat tabungannya sendiri
-  public function riwayatTabungan()
+    // app/Http/Controllers/SiswaController.php
+
+public function riwayatTabungan()
 {
-    // Mengambil data siswa yang sedang login
+    // Ambil siswa yang sedang login
     $siswa = Auth::guard('siswa')->user();
+    dd($siswa); // Periksa informasi siswa yang login, terutama 'id' nya
 
-    // Debugging - Periksa siapa siswa yang sedang login
-    dd($siswa); // Menampilkan data siswa yang sedang login
+    // Ambil SEMUA data tabungan (untuk debugging, lihat apakah ada data)
+    $tabungan = Tabungan::all();
+    dd($tabungan); // Periksa semua data tabungan
 
-    // Mengambil riwayat tabungan siswa yang sedang login
-    $riwayat = $siswa->tabungan()->latest()->get();
+    // Hitung saldo total untuk siswa yang sedang login
+    $saldo = Tabungan::where('siswa_id', $siswa->id)
+        ->selectRaw('SUM(CASE WHEN jenis_penarikan = "setoran" THEN jumlah ELSE -jumlah END) as saldo')
+        ->value('saldo') ?? 0;
+    dd($saldo); // Periksa saldo
 
-    // Jika data riwayat tabungan kosong
-    if ($riwayat->isEmpty()) {
-        return view('Student.riwayat', ['message' => 'Tidak ada riwayat tabungan']);
-    }
+    // Simpan data riwayat tabungan siswa yang sedang login
+    $riwayat = $siswa->tabungan()
+        ->orderBy('tanggal', 'desc')
+        ->get();
+    dd($riwayat); // Periksa data riwayat tabungan spesifik untuk siswa
 
-    // Menampilkan view dengan data riwayat
-    return view('Student.riwayat', compact('riwayat'));
+    return view('Student.riwayat', [
+        'riwayat' => $riwayat,
+        'saldo' => $saldo,
+        'siswa' => $siswa,
+        'semuaTabungan' => $tabungan,
+    ]);
 }
-
-
 
 
 

@@ -21,6 +21,35 @@
             </div>
         </div>
 
+        {{-- Form Filter Pencarian --}}
+        <form method="GET" action="{{ route('Teacher.dashboard') }}" class="mb-6">
+            <div class="flex flex-col sm:flex-row sm:flex-wrap gap-3 items-stretch">
+                <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari nama siswa..."
+                    class="flex-1 min-w-[180px] px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+                <input type="date" name="tanggal" value="{{ request('tanggal') }}"
+                    class="flex-1 min-w-[180px] px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+                <select name="jenis"
+                    class="flex-1 min-w-[180px] px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">Semua Jenis</option>
+                    <option value="setoran" {{ request('jenis') == 'setoran' ? 'selected' : '' }}>Setoran</option>
+                    <option value="penarikan" {{ request('jenis') == 'penarikan' ? 'selected' : '' }}>Penarikan</option>
+                </select>
+
+                <button type="submit"
+                    class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition w-full sm:w-auto">
+                    Cari
+                </button>
+
+                <a href="{{ route('Teacher.dashboard') }}"
+                    class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition w-full sm:w-auto text-center">
+                    Reset
+                </a>
+            </div>
+        </form>
+
+
         {{-- Tabel Transaksi --}}
         <div class="bg-white rounded-xl shadow overflow-x-auto p-4">
             <h3 class="text-xl font-semibold text-gray-700 mb-4">Riwayat Transaksi</h3>
