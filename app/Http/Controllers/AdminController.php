@@ -44,14 +44,14 @@ class AdminController extends Controller
     // }
 
 
-    public function adminDashboard()
+public function adminDashboard()
 {
     // Ambil data siswa, guru, dan kelas
     $siswas = Siswa::with('tabungan')->get();
     $gurus = Guru::all();
     $kelas = Kelas::all();
 
-    // Hitung total tabungan
+    // Hitung total tabungan keseluruhan
     $totalSetoran = Tabungan::where('jenis_penarikan', 'setoran')->sum('jumlah');
     $totalPenarikan = Tabungan::where('jenis_penarikan', 'penarikan')->sum('jumlah');
     $totalTabungan = $totalSetoran - $totalPenarikan;
@@ -61,34 +61,44 @@ class AdminController extends Controller
     $rataRataPerKelas = [];
 
     foreach ($kelas as $itemKelas) {
-        // Hitung total tabungan per kelas
-        $totalTabunganKelas = Tabungan::whereHas('siswa', function ($query) use ($itemKelas) {
-            $query->where('kelas_id', $itemKelas->id);
-        })->sum('jumlah');
+        // Total setoran per kelas
+        $totalSetoranKelas = Tabungan::where('jenis_penarikan', 'setoran')
+            ->whereHas('siswa', function ($query) use ($itemKelas) {
+                $query->where('kelas_id', $itemKelas->id);
+            })->sum('jumlah');
 
-        // Hitung jumlah siswa unik yang memiliki tabungan di kelas tersebut
+        // Total penarikan per kelas
+        $totalPenarikanKelas = Tabungan::where('jenis_penarikan', 'penarikan')
+            ->whereHas('siswa', function ($query) use ($itemKelas) {
+                $query->where('kelas_id', $itemKelas->id);
+            })->sum('jumlah');
+
+        // Total tabungan bersih per kelas
+        $totalTabunganKelas = $totalSetoranKelas - $totalPenarikanKelas;
+
+        // Hitung jumlah siswa unik yang memiliki tabungan
         $jumlahSiswa = Tabungan::whereHas('siswa', function ($query) use ($itemKelas) {
             $query->where('kelas_id', $itemKelas->id);
-        })->distinct('siswa_id') // Menghitung siswa unik yang memiliki transaksi
-          ->count('siswa_id');
+        })->distinct('siswa_id')->count('siswa_id');
 
-        // Cek jika ada siswa di kelas tersebut
-        if ($jumlahSiswa > 0) {
-            // Hitung rata-rata tabungan per siswa di kelas tersebut
-            $rataRataKelas = $totalTabunganKelas / $jumlahSiswa;
-        } else {
-            // Jika tidak ada siswa di kelas tersebut
-            $rataRataKelas = 0;
-        }
+        // Hitung rata-rata
+        $rataRataKelas = $jumlahSiswa > 0 ? $totalTabunganKelas / $jumlahSiswa : 0;
 
-        // Simpan total dan rata-rata tabungan per kelas
+        // Simpan ke array
         $totalTabunganPerKelas[$itemKelas->nama_kelas] = $totalTabunganKelas;
         $rataRataPerKelas[$itemKelas->nama_kelas] = $rataRataKelas;
     }
 
-    // Return ke view
-    return view('admin.dashboard', compact('siswas', 'gurus', 'totalTabungan', 'totalTabunganPerKelas', 'rataRataPerKelas'));
+    // Return ke view admin.dashboard
+    return view('admin.dashboard', compact(
+        'siswas',
+        'gurus',
+        'totalTabungan',
+        'totalTabunganPerKelas',
+        'rataRataPerKelas'
+    ));
 }
+
 
 
 

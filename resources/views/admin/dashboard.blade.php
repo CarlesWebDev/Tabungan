@@ -76,7 +76,6 @@
     </div>
 
     {{-- Rata-rata Tabungan per Kelas --}}
-
     <div class="mt-8">
         <h2 class="text-xl font-bold text-gray-800 mb-4">Total Tabungan per Kelas</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -90,10 +89,4 @@
             @endforeach
         </div>
     </div>
-
-
-
-
-
-
 @endsection
