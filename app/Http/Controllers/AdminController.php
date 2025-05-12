@@ -30,74 +30,211 @@ class AdminController extends Controller
 
 
     // ManagemenT kelas
-    //    public function adminDashboard()
-    // {
-    //     $siswas = Siswa::with('tabungan')->get();
-    //     $gurus = Guru::all();
+    // //    public function adminDashboard()
+    // // {
+    // //     $siswas = Siswa::with('tabungan')->get();
+    // //     $gurus = Guru::all();
 
-    //     // Hitung total tabungan
-    //     $totalSetoran = Tabungan::where('jenis_penarikan', 'setoran')->sum('jumlah');
-    //     $totalPenarikan = Tabungan::where('jenis_penarikan', 'penarikan')->sum('jumlah');
-    //     $totalTabungan = $totalSetoran - $totalPenarikan;
+    // //     // Hitung total tabungan
+    // //     $totalSetoran = Tabungan::where('jenis_penarikan', 'setoran')->sum('jumlah');
+    // //     $totalPenarikan = Tabungan::where('jenis_penarikan', 'penarikan')->sum('jumlah');
+    // //     $totalTabungan = $totalSetoran - $totalPenarikan;
 
-    //     return view('admin.dashboard', compct('siswas', 'gurus', 'totalTabungan'));
-    // }
+    // //     return view('admin.dashboard', compct('siswas', 'gurus', 'totalTabungan'));
+    // // }
 
 
-public function adminDashboard()
+    public function adminDashboard()
 {
-    // Ambil data siswa, guru, dan kelas
     $siswas = Siswa::with('tabungan')->get();
     $gurus = Guru::all();
     $kelas = Kelas::all();
 
-    // Hitung total tabungan keseluruhan
     $totalSetoran = Tabungan::where('jenis_penarikan', 'setoran')->sum('jumlah');
     $totalPenarikan = Tabungan::where('jenis_penarikan', 'penarikan')->sum('jumlah');
     $totalTabungan = $totalSetoran - $totalPenarikan;
 
-    // Hitung total dan rata-rata tabungan per kelas
+    // Inisialisasi array per kelas
     $totalTabunganPerKelas = [];
     $rataRataPerKelas = [];
+    $totalSetoranPerKelas = [];
+    $totalPenarikanPerKelas = [];
+    $jumlahSiswaPerKelas = [];
 
     foreach ($kelas as $itemKelas) {
-        // Total setoran per kelas
-        $totalSetoranKelas = Tabungan::where('jenis_penarikan', 'setoran')
-            ->whereHas('siswa', function ($query) use ($itemKelas) {
-                $query->where('kelas_id', $itemKelas->id);
-            })->sum('jumlah');
+        $namaKelas = $itemKelas->nama_kelas;
 
-        // Total penarikan per kelas
-        $totalPenarikanKelas = Tabungan::where('jenis_penarikan', 'penarikan')
-            ->whereHas('siswa', function ($query) use ($itemKelas) {
-                $query->where('kelas_id', $itemKelas->id);
-            })->sum('jumlah');
+        $setoran = Tabungan::where('jenis_penarikan', 'setoran')
+            ->whereHas('siswa', fn($q) => $q->where('kelas_id', $itemKelas->id))
+            ->sum('jumlah');
 
-        // Total tabungan bersih per kelas
-        $totalTabunganKelas = $totalSetoranKelas - $totalPenarikanKelas;
+        $penarikan = Tabungan::where('jenis_penarikan', 'penarikan')
+            ->whereHas('siswa', fn($q) => $q->where('kelas_id', $itemKelas->id))
+            ->sum('jumlah');
 
-        // Hitung jumlah siswa unik yang memiliki tabungan
-        $jumlahSiswa = Tabungan::whereHas('siswa', function ($query) use ($itemKelas) {
-            $query->where('kelas_id', $itemKelas->id);
-        })->distinct('siswa_id')->count('siswa_id');
+        $saldo = $setoran - $penarikan;
 
-        // Hitung rata-rata
-        $rataRataKelas = $jumlahSiswa > 0 ? $totalTabunganKelas / $jumlahSiswa : 0;
+        $jumlahSiswa = Siswa::where('kelas_id', $itemKelas->id)
+            ->whereHas('tabungan')
+            ->count();
 
-        // Simpan ke array
-        $totalTabunganPerKelas[$itemKelas->nama_kelas] = $totalTabunganKelas;
-        $rataRataPerKelas[$itemKelas->nama_kelas] = $rataRataKelas;
+        $rataRata = $jumlahSiswa > 0 ? $saldo / $jumlahSiswa : 0;
+
+
+        // isi dari inisialisasi array
+        $totalTabunganPerKelas[$namaKelas] = $saldo;
+        $rataRataPerKelas[$namaKelas] = $rataRata;
+        $totalSetoranPerKelas[$namaKelas] = $setoran;
+        $totalPenarikanPerKelas[$namaKelas] = $penarikan;
+        $jumlahSiswaPerKelas[$namaKelas] = $jumlahSiswa;
     }
 
-    // Return ke view admin.dashboard
     return view('admin.dashboard', compact(
         'siswas',
         'gurus',
         'totalTabungan',
         'totalTabunganPerKelas',
-        'rataRataPerKelas'
+        'rataRataPerKelas',
+        'totalSetoranPerKelas',
+        'totalPenarikanPerKelas',
+        'jumlahSiswaPerKelas'
     ));
 }
+
+
+
+
+    // // Ini  total tabungan setoran- penarikan
+    // public function adminDashboard()
+    // {
+    //     // Ambil semua data siswa, guru, dan kelas
+    //     $siswas = Siswa::with('tabungan')->get();
+    //     $gurus = Guru::all();
+    //     $kelas = Kelas::all();
+
+    //     // Total setoran & penarikan seluruh siswa
+    //     $totalSetoran = Tabungan::where('jenis_penarikan', 'setoran')->sum('jumlah');
+    //     $totalPenarikan = Tabungan::where('jenis_penarikan', 'penarikan')->sum('jumlah');
+
+    //     // Total saldo tabungan = setoran - penarikan
+    //     $totalTabungan = $totalSetoran - $totalPenarikan;
+
+    //     // Inisialisasi array untuk menampung data per kelas
+    //     $totalTabunganPerKelas = [];
+    //     $rataRataPerKelas = [];
+
+    //     foreach ($kelas as $itemKelas) {
+    //         $namaKelas = $itemKelas->nama_kelas;
+
+    //         // Setoran per kelas
+    //         $setoran = Tabungan::where('jenis_penarikan', 'setoran')
+    //             ->whereHas('siswa', fn($q) => $q->where('kelas_id', $itemKelas->id))
+    //             ->sum('jumlah');
+
+    //         // Penarikan per kelas
+    //         $penarikan = Tabungan::where('jenis_penarikan', 'penarikan')
+    //             ->whereHas('siswa', fn($q) => $q->where('kelas_id', $itemKelas->id))
+    //             ->sum('jumlah');
+
+    //         // Saldo tabungan per kelas = setoran - penarikan
+    //         $saldo = $setoran - $penarikan;
+
+    //         // Jumlah siswa aktif (yang pernah transaksi)
+    //         $jumlahSiswa = Siswa::where('kelas_id', $itemKelas->id)
+    //             ->whereHas('tabungan')
+    //             ->count();
+
+    //         // Rata-rata saldo per siswa
+    //         $rataRata = $jumlahSiswa > 0 ? $saldo / $jumlahSiswa : 0;
+
+    //         // Simpan ke array
+    //         $totalTabunganPerKelas[$namaKelas] = $saldo;
+    //         $rataRataPerKelas[$namaKelas] = $rataRata;
+    //     }
+
+    //     // Kirim data ke view dashboard
+    //     return view('admin.dashboard', compact(
+    //         'siswas',
+    //         'gurus',
+    //         'totalTabungan',
+    //         'totalTabunganPerKelas',
+    //         'rataRataPerKelas'
+    //     ));
+    // }
+
+
+
+    // Klo in cuman total setoran nya aj tpi pas rrata rata tetep di bagi sama penarikan
+    //     public function adminDashboard()
+    // {
+    //     // Ambil data siswa, guru, dan kelas
+    //     $siswas = Siswa::with('tabungan')->get();
+    //     $gurus = Guru::all();
+    //     $kelas = Kelas::all();
+
+    //     // Total saldo dari semua setoran
+    //     $totalTabungan = Tabungan::where('jenis_penarikan', 'setoran')->sum('jumlah');
+
+    //     // Inisialisasi array statistik per kelas
+    //     $totalTabunganPerKelas = [];
+    //     $rataRataPerKelas = [];
+    //     $totalSetoranPerKelas = [];
+    //     $totalPenarikanPerKelas = [];
+    //     $jumlahSiswaPerKelas = [];
+
+    //     foreach ($kelas as $itemKelas) {
+    //         $namaKelas = $itemKelas->nama_kelas;
+
+    //         // Total setoran
+    //         $totalSetoran = Tabungan::where('jenis_penarikan', 'setoran')
+    //             ->whereHas('siswa', function ($query) use ($itemKelas) {
+    //                 $query->where('kelas_id', $itemKelas->id);
+    //             })->sum('jumlah');
+
+    //         // Total penarikan
+    //         $totalPenarikan = Tabungan::where('jenis_penarikan', 'penarikan')
+    //             ->whereHas('siswa', function ($query) use ($itemKelas) {
+    //                 $query->where('kelas_id', $itemKelas->id);
+    //             })->sum('jumlah');
+
+    //         // Jumlah semua transaksi & total nominal (setoran + penarikan)
+    //         $jumlahTransaksi = Tabungan::whereHas('siswa', function ($query) use ($itemKelas) {
+    //             $query->where('kelas_id', $itemKelas->id);
+    //         })->count();
+
+    //         $jumlahSemuaTabungan = Tabungan::whereHas('siswa', function ($query) use ($itemKelas) {
+    //             $query->where('kelas_id', $itemKelas->id);
+    //         })->sum('jumlah');
+
+    //         // Hitung rata-rata
+    //         $rataRataKelas = $jumlahTransaksi > 0 ? $jumlahSemuaTabungan / $jumlahTransaksi : 0;
+
+    //         // Hitung jumlah siswa yang punya transaksi
+    //         $siswaDenganTransaksi = Siswa::where('kelas_id', $itemKelas->id)
+    //             ->whereHas('tabungan') // hanya yang pernah transaksi
+    //             ->count();
+
+    //         // Simpan ke array
+    //         $totalTabunganPerKelas[$namaKelas] = $totalSetoran;
+    //         $rataRataPerKelas[$namaKelas] = $rataRataKelas;
+    //         $totalSetoranPerKelas[$namaKelas] = $totalSetoran;
+    //         $totalPenarikanPerKelas[$namaKelas] = $totalPenarikan;
+    //         $jumlahSiswaPerKelas[$namaKelas] = $siswaDenganTransaksi;
+    //     }
+
+    //     return view('admin.dashboard', compact(
+    //         'siswas',
+    //         'gurus',
+    //         'totalTabungan',
+    //         'totalTabunganPerKelas',
+    //         'rataRataPerKelas',
+    //         'totalSetoranPerKelas',
+    //         'totalPenarikanPerKelas',
+    //         'jumlahSiswaPerKelas'
+    //     ));
+    // }
+
+
 
 
 
