@@ -11,31 +11,25 @@ class SiswaController extends Controller
 {
 
 
-
     // Untuk siswa melihat riwayat tabungannya sendiri
-    // app/Http/Controllers/SiswaController.php
-
 public function riwayatTabungan()
 {
     // Ambil siswa yang sedang login
     $siswa = Auth::guard('siswa')->user();
-    // dd($siswa); // Periksa informasi siswa yang login, terutama 'id' nya
 
-    // Ambil SEMUA data tabungan (untuk debugging, lihat apakah ada data)
+    // Ambil SEMUA data tabungan
     $tabungan = Tabungan::all();
-    // dd($tabungan); // Periksa semua data tabungan
 
     // Hitung saldo total untuk siswa yang sedang login
     $saldo = Tabungan::where('siswa_id', $siswa->id)
         ->selectRaw('SUM(CASE WHEN jenis_penarikan = "setoran" THEN jumlah ELSE -jumlah END) as saldo')
         ->value('saldo') ?? 0;
-    // dd($saldo); // Periksa saldo
 
     // Simpan data riwayat tabungan siswa yang sedang login
     $riwayat = $siswa->tabungan()
         ->orderBy('tanggal', 'desc')
         ->get();
-    // dd($riwayat); // Periksa data riwayat tabungan spesifik untuk siswa
+
 
     return view('Student.riwayat', [
         'riwayat' => $riwayat,

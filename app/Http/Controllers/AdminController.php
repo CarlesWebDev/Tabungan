@@ -44,66 +44,85 @@ class AdminController extends Controller
     // // }
 
 
+
 public function adminDashboard()
 {
-    // Ambil semua data siswa, guru, dan kelas
     $siswas = Siswa::with('tabungan')->get();
     $gurus = Guru::all();
     $kelas = Kelas::all();
 
-    // Total setoran & penarikan seluruh siswa
     $totalSetoran = Tabungan::where('jenis_penarikan', 'setoran')->sum('jumlah');
     $totalPenarikan = Tabungan::where('jenis_penarikan', 'penarikan')->sum('jumlah');
     $totalTabungan = $totalSetoran - $totalPenarikan;
 
-    // Inisialisasi array per kelas
+    $setoransByKelas = [];
+    $penarikansByKelas = [];
     $totalTabunganPerKelas = [];
     $rataRataPerKelas = [];
     $totalSetoranPerKelas = [];
     $totalPenarikanPerKelas = [];
     $jumlahTransaksiPerKelas = [];
     $jumlahSiswaPerKelas = [];
+    $namaKelasById = [];
 
-    // Statistik untuk keseluruhan
-    $jumlahSiswaAktif = Siswa::whereHas('tabungan')->count();
+    // Hitung semua siswa yang aktif DAN punya transaksi tabungan
+    $jumlahSiswaAktif = Siswa::where('is_active', 1)
+        ->whereHas('tabungan')
+        ->count();
 
     foreach ($kelas as $itemKelas) {
-        $namaKelas = $itemKelas->nama_kelas;
+        $kelasId = $itemKelas->id;
+        $namaLengkapKelas = $itemKelas->tingkat . ' ' . $itemKelas->nama_kelas;
+        $namaKelasById[$kelasId] = $namaLengkapKelas;
 
-        // Setoran per kelas
         $setoran = Tabungan::where('jenis_penarikan', 'setoran')
-            ->whereHas('siswa', fn($q) => $q->where('kelas_id', $itemKelas->id))
+            ->whereHas('siswa', fn($q) => $q->where('kelas_id', $kelasId)->where('is_active', 1))
             ->sum('jumlah');
 
-        // Penarikan per kelas
         $penarikan = Tabungan::where('jenis_penarikan', 'penarikan')
-            ->whereHas('siswa', fn($q) => $q->where('kelas_id', $itemKelas->id))
+            ->whereHas('siswa', fn($q) => $q->where('kelas_id', $kelasId)->where('is_active', 1))
             ->sum('jumlah');
 
-        // Saldo tabungan per kelas = setoran - penarikan
         $saldo = $setoran - $penarikan;
 
-        // Jumlah transaksi per kelas
-        $jumlahTransaksi = Tabungan::whereHas('siswa', fn($q) => $q->where('kelas_id', $itemKelas->id))->count();
+        $jumlahTransaksi = Tabungan::whereHas('siswa', fn($q) => $q->where('kelas_id', $kelasId)->where('is_active', 1))
+            ->count();
 
-        // Rata-rata saldo per transaksi
         $rataRataPerTransaksi = $jumlahTransaksi > 0 ? $saldo / $jumlahTransaksi : 0;
 
-        // Jumlah siswa aktif di kelas tersebut
-        $jumlahSiswa = Siswa::where('kelas_id', $itemKelas->id)
+        $jumlahSiswa = Siswa::where('kelas_id', $kelasId)
+            ->where('is_active', 1)
             ->whereHas('tabungan')
             ->count();
 
-        // Simpan data ke array
-        $totalTabunganPerKelas[$namaKelas] = $saldo;
-        $rataRataPerKelas[$namaKelas] = $rataRataPerTransaksi; // Simpan rata-rata berdasarkan transaksi
-        $totalSetoranPerKelas[$namaKelas] = $setoran;
-        $totalPenarikanPerKelas[$namaKelas] = $penarikan;
-        $jumlahTransaksiPerKelas[$namaKelas] = $jumlahTransaksi;
-        $jumlahSiswaPerKelas[$namaKelas] = $jumlahSiswa;
+        $setoranSiswa = Tabungan::where('jenis_penarikan', 'setoran')
+            ->whereHas('siswa', fn($q) => $q->where('kelas_id', $kelasId)->where('is_active', 1))
+            ->with('siswa')
+            ->get()
+            ->pluck('siswa.nama')
+            ->unique()
+            ->values()
+            ->toArray();
+
+        $penarikanSiswa = Tabungan::where('jenis_penarikan', 'penarikan')
+            ->whereHas('siswa', fn($q) => $q->where('kelas_id', $kelasId)->where('is_active', 1))
+            ->with('siswa')
+            ->get()
+            ->pluck('siswa.nama')
+            ->unique()
+            ->values()
+            ->toArray();
+
+        $setoransByKelas[$kelasId] = $setoranSiswa;
+        $penarikansByKelas[$kelasId] = $penarikanSiswa;
+        $totalTabunganPerKelas[$kelasId] = $saldo;
+        $rataRataPerKelas[$kelasId] = $rataRataPerTransaksi;
+        $totalSetoranPerKelas[$kelasId] = $setoran;
+        $totalPenarikanPerKelas[$kelasId] = $penarikan;
+        $jumlahTransaksiPerKelas[$kelasId] = $jumlahTransaksi;
+        $jumlahSiswaPerKelas[$kelasId] = $jumlahSiswa;
     }
 
-    // Kirim data ke view dashboard
     return view('admin.dashboard', compact(
         'siswas',
         'gurus',
@@ -113,9 +132,17 @@ public function adminDashboard()
         'totalSetoranPerKelas',
         'totalPenarikanPerKelas',
         'jumlahTransaksiPerKelas',
-        'jumlahSiswaAktif'
+        'jumlahSiswaAktif',
+        'jumlahSiswaPerKelas',
+        'setoransByKelas',
+        'penarikansByKelas',
+        'namaKelasById'
     ));
 }
+
+
+
+
 
 
 
