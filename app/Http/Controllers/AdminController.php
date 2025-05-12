@@ -44,12 +44,14 @@ class AdminController extends Controller
     // // }
 
 
-    public function adminDashboard()
+public function adminDashboard()
 {
+    // Ambil semua data siswa, guru, dan kelas
     $siswas = Siswa::with('tabungan')->get();
     $gurus = Guru::all();
     $kelas = Kelas::all();
 
+    // Total setoran & penarikan seluruh siswa
     $totalSetoran = Tabungan::where('jenis_penarikan', 'setoran')->sum('jumlah');
     $totalPenarikan = Tabungan::where('jenis_penarikan', 'penarikan')->sum('jumlah');
     $totalTabungan = $totalSetoran - $totalPenarikan;
@@ -59,36 +61,49 @@ class AdminController extends Controller
     $rataRataPerKelas = [];
     $totalSetoranPerKelas = [];
     $totalPenarikanPerKelas = [];
+    $jumlahTransaksiPerKelas = [];
     $jumlahSiswaPerKelas = [];
+
+    // Statistik untuk keseluruhan
+    $jumlahSiswaAktif = Siswa::whereHas('tabungan')->count();
 
     foreach ($kelas as $itemKelas) {
         $namaKelas = $itemKelas->nama_kelas;
 
+        // Setoran per kelas
         $setoran = Tabungan::where('jenis_penarikan', 'setoran')
             ->whereHas('siswa', fn($q) => $q->where('kelas_id', $itemKelas->id))
             ->sum('jumlah');
 
+        // Penarikan per kelas
         $penarikan = Tabungan::where('jenis_penarikan', 'penarikan')
             ->whereHas('siswa', fn($q) => $q->where('kelas_id', $itemKelas->id))
             ->sum('jumlah');
 
+        // Saldo tabungan per kelas = setoran - penarikan
         $saldo = $setoran - $penarikan;
 
+        // Jumlah transaksi per kelas
+        $jumlahTransaksi = Tabungan::whereHas('siswa', fn($q) => $q->where('kelas_id', $itemKelas->id))->count();
+
+        // Rata-rata saldo per transaksi
+        $rataRataPerTransaksi = $jumlahTransaksi > 0 ? $saldo / $jumlahTransaksi : 0;
+
+        // Jumlah siswa aktif di kelas tersebut
         $jumlahSiswa = Siswa::where('kelas_id', $itemKelas->id)
             ->whereHas('tabungan')
             ->count();
 
-        $rataRata = $jumlahSiswa > 0 ? $saldo / $jumlahSiswa : 0;
-
-
-        // isi dari inisialisasi array
+        // Simpan data ke array
         $totalTabunganPerKelas[$namaKelas] = $saldo;
-        $rataRataPerKelas[$namaKelas] = $rataRata;
+        $rataRataPerKelas[$namaKelas] = $rataRataPerTransaksi; // Simpan rata-rata berdasarkan transaksi
         $totalSetoranPerKelas[$namaKelas] = $setoran;
         $totalPenarikanPerKelas[$namaKelas] = $penarikan;
+        $jumlahTransaksiPerKelas[$namaKelas] = $jumlahTransaksi;
         $jumlahSiswaPerKelas[$namaKelas] = $jumlahSiswa;
     }
 
+    // Kirim data ke view dashboard
     return view('admin.dashboard', compact(
         'siswas',
         'gurus',
@@ -97,9 +112,11 @@ class AdminController extends Controller
         'rataRataPerKelas',
         'totalSetoranPerKelas',
         'totalPenarikanPerKelas',
-        'jumlahSiswaPerKelas'
+        'jumlahTransaksiPerKelas',
+        'jumlahSiswaAktif'
     ));
 }
+
 
 
 

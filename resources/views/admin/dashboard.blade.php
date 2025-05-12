@@ -77,52 +77,33 @@
 
 
 
-    {{-- Rata-rata Tabungan per Kelas --}}
-    {{-- <div class="mt-8">
-        <h2 class="text-xl font-bold text-gray-800 mb-4">Total Tabungan per Kelas</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            @foreach ($totalTabunganPerKelas as $kelas => $total)
-                <div class="bg-white shadow p-6 rounded-lg border border-gray-200">
-                    <h3 class="text-lg font-semibold text-gray-700">Kelas {{ $kelas }}</h3>
-                    <p class="text-2xl font-bold text-green-600">Rp{{ number_format($total, 0, ',', '.') }}</p>
-                    <p class="text-lg font-semibold text-gray-500">Rata-rata Tabungan:
-                        Rp{{ number_format($rataRataPerKelas[$kelas], 0, ',', '.') }}</p>
-                </div>
-            @endforeach
-        </div>
-    </div> --}}
 
+
+    {{-- Rata rata tabungan perkelas(info) --}}
     <div class="mt-8">
         <h2 class="text-xl font-bold text-gray-800 mb-4">Statistik Tabungan per Kelas</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             @foreach ($totalTabunganPerKelas as $kelas => $total)
                 <div class="bg-white shadow p-6 rounded-lg border border-gray-200">
-                    <h3 class="text-lg font-semibold text-gray-700 mb-2">Kelas {{ $kelas }}</h3>
-
-                    <p class="text-sm text-gray-500">Jumlah Siswa Aktif:
-                        <span class="font-semibold">{{ $jumlahSiswaPerKelas[$kelas] }}</span>
+                    <h3 class="text-lg font-semibold text-gray-700 mb-1">Kelas {{ $kelas }}</h3>
+                    <p class="text-sm text-gray-500 mb-1">Jumlah siswa aktif:
+                        <span class="font-medium text-gray-800">{{ $jumlahSiswaPerKelas[$kelas] ?? 0 }}</span>
                     </p>
-
-                    <p class="text-sm text-gray-500">Total Setoran:
-                        <span
-                            class="text-blue-600 font-semibold">Rp{{ number_format($totalSetoranPerKelas[$kelas], 0, ',', '.') }}</span>
+                    <p class="text-sm text-gray-500 mb-1">Jumlah transaksi:
+                        <span class="font-medium text-gray-800">{{ $jumlahTransaksiPerKelas[$kelas] ?? 0 }}</span>
                     </p>
-
-                    <p class="text-sm text-gray-500">Total Penarikan:
-                        <span
-                            class="text-red-600 font-semibold">Rp{{ number_format($totalPenarikanPerKelas[$kelas], 0, ',', '.') }}</span>
-                    </p>
-
-                    <p class="text-sm text-gray-500">Saldo Tabungan:
-                        <span class="text-green-600 font-bold">Rp{{ number_format($total, 0, ',', '.') }}</span>
-                    </p>
-
-                    <p class="text-sm text-gray-500">Rata-rata Tabungan:
-                        <span class="font-semibold">Rp{{ number_format($rataRataPerKelas[$kelas], 0, ',', '.') }}</span>
-                    </p>
+                    <p class="text-base font-bold text-green-600">Total Tabungan: Rp{{ number_format($total, 0, ',', '.') }}</p>
+                    <p class="text-base text-blue-600 font-semibold">Total Setoran:
+                        Rp{{ number_format($totalSetoranPerKelas[$kelas] ?? 0, 0, ',', '.') }}</p>
+                    <p class="text-base text-red-600 font-semibold">Total Penarikan:
+                        Rp{{ number_format($totalPenarikanPerKelas[$kelas] ?? 0, 0, ',', '.') }}</p>
+                    <p class="text-base font-semibold text-gray-700">Rata-rata Tabungan (per transaksi):
+                        Rp{{ number_format($rataRataPerKelas[$kelas] ?? 0, 0, ',', '.') }}</p>
                 </div>
             @endforeach
         </div>
     </div>
+
+
 
 @endsection
