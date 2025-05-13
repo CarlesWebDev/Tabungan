@@ -80,13 +80,13 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
     // User
     Route::get('/Users', [AdminController::class, 'Users'])->name('Users');
 
-   // Management Kelas
-   Route::get('/ManagementKelas', [AdminController::class, 'Kelas'])->name('admin.managementkelas');
+    // Management Kelas
+    Route::get('/ManagementKelas', [AdminController::class, 'Kelas'])->name('admin.managementkelas');
 
-   // Laporan Tabungan
+    // Laporan Tabungan
     Route::get('/LaporanTabungan', [AdminController::class, 'LaporanTabungan'])->name('laporantabungan');
 
-   // Verivikasi Akun
+    // Verivikasi Akun
     Route::get('/verifikasiakun', [AdminController::class, 'verifikasiakun'])->name('verifikasiakun');
     Route::post('/verifikasiakun', [AdminController::class, 'verifikasiakun'])->name('admin.verifikasiakun');
 
@@ -113,35 +113,33 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
     Route::get('/siswa/{id}/edit', [AdminController::class, 'editsiswa'])->name('editsiswa');
     Route::put('/siswa/{id}/update', [AdminController::class, 'updatesiswa'])->name('updatesiswa');
     Route::delete('/siswa/{id}/hapus', [AdminController::class, 'hapusSiswa'])->name('hapussiswa');
-
-
 });
 
 // ==============================
 // Guru Routes (Protected by Middleware)
 // ==============================
 Route::middleware('auth:guru')->prefix('Teacher')->name('Teacher.')->group(function () {
-     Route::get('/dashboard', [GuruController::class, 'dashboardGuru'])->name('dashboard');
+    Route::get('/dashboard', [GuruController::class, 'dashboardGuru'])->name('dashboard');
     // Route::view('/dashboard', 'Teacher.dashboard')->name('dashboard');
     Route::post('/logout', [GuruController::class, 'logoutGuru'])->name('logout');
 
     // halamn transaksi
-   Route::get('/transaksi', action: [GuruController::class, 'tabungan'])->name('transaksi');
-   Route::post('/transaksi/store', [GuruController::class, 'storetabungan'])->name('storetabungan');
-   Route::get('/transaksi/{id}/edit', [GuruController::class, 'edittabungan'])->name('edittabungan');
-   Route::get('/transaksi/create', [GuruController::class, 'createtabungan'])->name('tambahtabungan');
-   Route::put('/transaksi/{id}/update', [GuruController::class, 'update'])->name('updatetabungan');
-   Route::delete('/transaksi/{id}/hapus', [GuruController::class, 'destroy'])->name('hapustabungan');
+    Route::get('/transaksi', action: [GuruController::class, 'tabungan'])->name('transaksi');
+    Route::post('/transaksi/store', [GuruController::class, 'storetabungan'])->name('storetabungan');
+    Route::get('/transaksi/{id}/edit', [GuruController::class, 'edittabungan'])->name('edittabungan');
+    Route::get('/transaksi/create', [GuruController::class, 'createtabungan'])->name('tambahtabungan');
+    Route::put('/transaksi/{id}/update', [GuruController::class, 'update'])->name('updatetabungan');
+    Route::delete('/transaksi/{id}/hapus', [GuruController::class, 'destroy'])->name('hapustabungan');
+
+
 
     //   Create Notifikasi
-    Route::get('/notifikasi/create', [NotikasiController::class, 'notifikasi'])->name('createNotifikasi');
+    Route::get('/notifikasi', [NotikasiController::class, 'notifikasi'])->name('createNotifikasi');
+    Route::get('/notifikasi/create', [NotikasiController::class, 'create'])->name('tambahNotifikasi');
     Route::post('/notifikasi/store', [NotikasiController::class, 'store'])->name('storeNotifikasi');
-    Route::get('/notifikasi', [NotikasiController::class, 'notifikasi'])->name('notifikasi');
     Route::get('/notifikasi/{id}/edit', [NotikasiController::class, 'editNotifikasi'])->name('edit');
     Route::put('/notifikasi/{id}/update', [NotikasiController::class, 'updateNotifikasi'])->name('update');
     Route::delete('/notifikasi/{id}/hapus', [NotikasiController::class, 'destroyNotifikasi'])->name('notifikasi.hapus');
-
-
 });
 
 // ==============================
@@ -259,4 +257,3 @@ Route::middleware('auth:siswa')->prefix('Student')->name('Student.')->group(func
 //     Route::get('/LoginGuru', [GuruController::class, 'showLoginFormGuru'])->name('login.guru');
 //     Route::post('/LoginGuru', [GuruController::class, 'loginGuru'])->name('login.guru');
 // });
-

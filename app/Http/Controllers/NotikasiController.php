@@ -16,10 +16,10 @@ class NotikasiController extends Controller
         // Ambil siswa yang sedang login
 
          $siswas = Siswa::with('kelas')->get();
-
         $notifikasis = notikasi::with(['guru', 'siswa', 'kelas'])->get();
         return view('Teacher.notifikasi', compact('notifikasis', 'siswas'));
     }
+    
 
     /**
      * Display a listing of the resource.
@@ -35,6 +35,8 @@ class NotikasiController extends Controller
     public function create()
     {
         //
+        $siswas = Siswa::all();
+        return view('Teacher.tambahnotifikasi', compact('siswas'));
     }
 
     /**
