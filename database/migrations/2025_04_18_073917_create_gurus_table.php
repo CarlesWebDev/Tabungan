@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->string('email')->unique();
             $table->string('password');
-            $table->boolean('is_active')->default(true);
+            $table->boolean('is_active')->default(false);
             $table->string('verification_file')->nullable();
             $table->timestamp('last_active_at')->nullable();
             $table->enum('status',['pending', 'active', 'rejected'])->default('pending');

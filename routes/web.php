@@ -37,6 +37,7 @@ Route::post('/register/guru', [GuruController::class, 'registerGuru'])->name('re
 
 
 
+
 // ==============================
 // Login Routes
 // ==============================
@@ -67,6 +68,9 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
     Route::put('/guru/{id}/update', [AdminController::class, 'updateguru'])->name('updateguru');
     Route::delete('/guru/{id}/hapus', [AdminController::class, 'hapusguru'])->name('hapusguru');
 
+
+    // Cari Kelas DI management
+    Route::get('/admin/cariKelas', [AdminController::class, 'Kelas'])->name('cariKelas');
 
 
     Route::get('/Kelas', [AdminController::class, 'Kelas'])->name('Kelas');
