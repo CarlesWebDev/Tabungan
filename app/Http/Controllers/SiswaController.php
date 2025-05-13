@@ -11,6 +11,46 @@ class SiswaController extends Controller
 {
 
 
+    public function dashboard()
+{
+    $siswa = Auth::guard('siswa')->user();
+
+    $totalSetoran = Tabungan::where('siswa_id', $siswa->id)
+        ->where('jenis_penarikan', 'setoran')
+        ->sum('jumlah');
+
+    $totalPenarikan = Tabungan::where('siswa_id', $siswa->id)
+        ->where('jenis_penarikan', 'penarikan')
+        ->sum('jumlah');
+
+    $totalTabungan = $totalSetoran - $totalPenarikan;
+
+    $transaksiTerakhir = Tabungan::where('siswa_id', $siswa->id)
+        ->orderBy('tanggal', 'desc')
+        ->take(5)
+        ->get();
+
+    // Contoh chart bulanan
+    $dataPerBulan = Tabungan::selectRaw('MONTH(tanggal) as bulan, SUM(CASE WHEN jenis_penarikan = "setoran" THEN jumlah ELSE -jumlah END) as saldo')
+        ->where('siswa_id', $siswa->id)
+        ->groupBy('bulan')
+        ->orderBy('bulan')
+        ->get();
+
+    $chartLabels = $dataPerBulan->map(fn ($d) => \Carbon\Carbon::create()->month($d->bulan)->format('F'))->toArray();
+    $chartData = $dataPerBulan->pluck('saldo')->toArray();
+
+    return view('Student.dashboard', compact(
+        'totalTabungan',
+        'totalSetoran',
+        'totalPenarikan',
+        'transaksiTerakhir',
+        'chartLabels',
+        'chartData'
+    ));
+}
+
+
     // Untuk siswa melihat riwayat tabungannya sendiri
 public function riwayatTabungan()
 {
@@ -63,6 +103,10 @@ public function riwayatTabungan()
 
 //     return view('Student.riwayat', compact('riwayat'));
 // }
+
+
+
+
 
 
     /**

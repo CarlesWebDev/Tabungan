@@ -1,217 +1,308 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="bg-white rounded-2xl p-4 sm:p-6 space-y-8 sm:space-y-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <!-- Header Section -->
+        <div class="mb-8">
+            <h1 class="text-2xl font-bold text-gray-800">Admin Dashboard</h1>
+            <p class="text-gray-600 mt-1">Manajemen data guru dan siswa</p>
+        </div>
 
-            {{-- Kartu Aksi --}}
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                {{-- Tambah Guru --}}
-                <div class="bg-gray-50 border border-gray-200 p-4 sm:p-6 rounded-xl shadow-sm hover:shadow-md transition">
-                    <h2 class="text-lg font-extrabold">Tambah Guru</h2>
-                    <p class="text-gray-600 mt-2 text-sm">Tambahkan akun guru baru ke dalam sistem.</p>
+        <!-- Card guru -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            <div
+                class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition duration-300">
+                <div class="p-6">
+                    <div class="flex items-center">
+                        <div class="bg-green-100 p-3 rounded-full mr-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-600" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800">Tambah Guru</h3>
+                            <p class="text-sm text-gray-500 mt-1">Tambahkan akun guru baru</p>
+                        </div>
+                    </div>
                     <a href="{{ route('admin.tambahguru') }}"
-                        class="mt-4 inline-block bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-4 rounded-lg transition w-full text-center text-sm sm:text-base">
+                        class="mt-4 inline-block w-full bg-green-600 hover:bg-green-700 text-white text-center py-2 px-4 rounded-md transition duration-300">
                         Tambah Guru
                     </a>
                 </div>
+            </div>
 
-                {{-- Tambah Siswa --}}
-                <div class="bg-gray-50 border border-gray-200 p-4 sm:p-6 rounded-xl shadow-sm hover:shadow-md transition">
-                    <h2 class="text-lg font-extrabold">Tambah Siswa</h2>
-                    <p class="text-gray-600 mt-2 text-sm">Tambahkan akun siswa baru ke dalam sistem.</p>
+            <!--  Siswa Card -->
+            <div
+                class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition duration-300">
+                <div class="p-6">
+                    <div class="flex items-center">
+                        <div class="bg-blue-100 p-3 rounded-full mr-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800">Tambah Siswa</h3>
+                            <p class="text-sm text-gray-500 mt-1">Tambahkan akun siswa baru</p>
+                        </div>
+                    </div>
                     <a href="{{ route('admin.tambahsiswa') }}"
-                        class="mt-4 inline-block bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-lg transition w-full text-center text-sm sm:text-base">
+                        class="mt-4 inline-block w-full bg-blue-600 hover:bg-blue-700 text-white text-center py-2 px-4 rounded-md transition duration-300">
                         Tambah Siswa
                     </a>
                 </div>
+            </div>
 
-                {{-- Guru tidak Aktif --}}
-                <div class="flex items-center p-3 sm:p-4 bg-red-50 rounded-xl shadow-md">
-                    <div class="p-2 sm:p-3 bg-red-100 rounded-full">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                            class="size-5 sm:size-6">
-                            <path fill-rule="evenodd"
-                                d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z"
-                                clip-rule="evenodd" />
-                        </svg>
+            <!-- Stats Cards -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="grid grid-cols-2 gap-4 p-4">
+                    <!-- Active Teachers -->
+                    <div class="bg-green-50 p-4 rounded-lg">
+                        <div class="flex items-center">
+                            <div class="bg-green-100 p-2 rounded-full mr-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-600" viewBox="0 0 20 20"
+                                    fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-500">Guru Aktif</p>
+                                <p class="text-xl font-bold text-green-600">{{ $guruAktif }}</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="ml-3 sm:ml-4">
-                        <h3 class="text-sm sm:text-lg font-semibold text-gray-700">Guru Tidak Aktif</h3>
-                        <p class="text-xl sm:text-2xl font-bold text-red-400">{{ $guruTidakAktif }}</p>
-                    </div>
-                </div>
 
-                {{-- Guru Aktif --}}
-                <div class="flex items-center p-3 sm:p-4 bg-green-50 rounded-xl shadow-md">
-                    <div class="p-2 sm:p-3 bg-green-100 rounded-full">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                            class="size-5 sm:size-6">
-                            <path fill-rule="evenodd"
-                                d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z"
-                                clip-rule="evenodd" />
-                        </svg>
+                    <!-- Inactive Teachers -->
+                    <div class="bg-red-50 p-4 rounded-lg">
+                        <div class="flex items-center">
+                            <div class="bg-red-100 p-2 rounded-full mr-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-600" viewBox="0 0 20 20"
+                                    fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-500">Guru Tidak Aktif</p>
+                                <p class="text-xl font-bold text-red-600">{{ $guruTidakAktif }}</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="ml-3 sm:ml-4">
-                        <h3 class="text-sm sm:text-lg font-semibold text-gray-700">Guru Aktif</h3>
-                        <p class="text-xl sm:text-2xl font-bold text-green-400">{{ $guruAktif }}</p>
-                    </div>
-                </div>
 
-                {{-- Siswa tidak Aktif --}}
-                <div class="flex items-center p-3 sm:p-4 bg-red-50 rounded-xl shadow-md">
-                    <div class="p-2 sm:p-3 bg-red-100 rounded-full">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="size-5 sm:size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
-                        </svg>
+                    <!-- Active Students -->
+                    <div class="bg-green-50 p-4 rounded-lg">
+                        <div class="flex items-center">
+                            <div class="bg-green-100 p-2 rounded-full mr-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-600" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-500">Siswa Aktif</p>
+                                <p class="text-xl font-bold text-green-600">{{ $siswaAktif }}</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="ml-3 sm:ml-4">
-                        <h3 class="text-sm sm:text-lg font-semibold text-gray-700">Siswa Tidak Aktif</h3>
-                        <p class="text-xl sm:text-2xl font-bold text-red-400">{{ $siswaTidakAktif }}</p>
-                    </div>
-                </div>
 
-                {{-- Siswa Aktif --}}
-                <div class="flex items-center p-3 sm:p-4 bg-green-50 rounded-xl shadow-md">
-                    <div class="p-2 sm:p-3 bg-green-100 rounded-full">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="size-5 sm:size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
-                        </svg>
-                    </div>
-                    <div class="ml-3 sm:ml-4">
-                        <h3 class="text-sm sm:text-lg font-semibold text-gray-700">Siswa Aktif</h3>
-                        <p class="text-xl sm:text-2xl font-bold text-green-400">{{ $siswaAktif }}</p>
+                    <!-- Inactive Students -->
+                    <div class="bg-red-50 p-4 rounded-lg">
+                        <div class="flex items-center">
+                            <div class="bg-red-100 p-2 rounded-full mr-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-600" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-500">Siswa Tidak Aktif</p>
+                                <p class="text-xl font-bold text-red-600">{{ $siswaTidakAktif }}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            {{-- Daftar Guru --}}
-            <div class="mt-8 sm:mt-10">
-                <h3 class="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Data Guru</h3>
-                <div class="overflow-x-auto">
-                    <table class="min-w-full text-xs sm:text-sm text-left text-gray-700">
-                        <thead class="bg-gray-100 text-gray-700 font-semibold">
-                            <tr>
-                                <th class="px-2 py-2 sm:px-3 sm:py-3">NIP</th>
-                                <th class="px-2 py-2 sm:px-3 sm:py-3">Nama</th>
-                                <th class="px-2 py-2 sm:px-3 sm:py-3 hidden sm:table-cell">Email</th>
-                                <th class="px-2 py-2 sm:px-3 sm:py-3">Status</th>
-                                <th class="px-2 py-2 sm:px-3 sm:py-3 hidden md:table-cell">Last active</th>
-                                <th class="px-2 py-2 sm:px-3 sm:py-3">Aksi</th>
+        <!-- Teachers Table -->
+        <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8">
+            <div class="px-6 py-4 border-b border-gray-200">
+                <h3 class="text-lg font-semibold text-gray-800">Data Guru</h3>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">NIP
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden md:table-cell">
+                                Email</th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Status</th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden lg:table-cell">
+                                Terakhir Aktif</th>
+                            <th scope="col"
+                                class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Aksi
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        @forelse($gurus as $guru)
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-mono text-gray-500">
+                                    {{ chunk_split($guru->nip, 4, ' ') }}
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm font-medium text-gray-900">{{ $guru->name }}</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 hidden md:table-cell">
+                                    {{ $guru->email }}
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span
+                                        class="px-2 py-1 text-xs font-semibold rounded-full {{ $guru->is_active ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }}">
+                                        {{ $guru->is_active ? 'Aktif' : 'Nonaktif' }}
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 hidden lg:table-cell">
+                                    {{ $guru->last_active_at ? $guru->last_active_at->diffForHumans() : 'Belum pernah' }}
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                    <div class="flex justify-end space-x-2">
+                                        <a href="{{ route('admin.editguru', $guru->id) }}"
+                                            class="text-blue-600 hover:text-blue-900 mr-2" title="Edit">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                                                viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                            </svg>
+                                        </a>
+                                        <form action="{{ route('admin.hapusguru', $guru->id) }}" method="POST"
+                                            onsubmit="return confirm('Yakin ingin menghapus guru ini?');">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="text-red-600 hover:text-red-900" title="Hapus">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                                                    viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                </svg>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            @forelse($gurus as $guru)
-                                <tr class="hover:bg-gray-50 border-b border-gray-100">
-                                    <td class="px-2 py-2 sm:px-3 sm:py-2">
-                                        {{ substr($guru->nip, 0, 4) }} {{ substr($guru->nip, 4, 4) }} {{ substr($guru->nip, 8, 2) }}
-                                        {{ substr($guru->nip, 10) }}
-                                    </td>
-                                    {{-- <td class="px-2 py-2 sm:px-3 sm:py-2">{{ $guru->nip }}</td> --}}
-                                    <td class="px-2 py-2 sm:px-3 sm:py-2">{{ $guru->name }}</td>
-                                    <td class="px-2 py-2 sm:px-3 sm:py-2 hidden sm:table-cell">{{ $guru->email }}</td>
-                                    <td class="px-2 py-2 sm:px-3 sm:py-2">
-                                        <span class="{{ $guru->is_active ? 'text-green-600' : 'text-red-600' }}">
-                                            {{ $guru->is_active ? 'Aktif' : 'Nonaktif' }}
-                                        </span>
-                                    </td>
-                                    <td class="px-2 py-2 sm:px-3 sm:py-2 hidden md:table-cell">
-                                        <p>Terakhir aktif:
-                                            {{ $guru->last_active_at ? $guru->last_active_at->diffForHumans() : '' }}
-                                        </p>
-                                    </td>
-                                    <td class="px-2 py-2 sm:px-3 sm:py-2">
-                                        <div class="flex flex-col sm:flex-row gap-1 sm:gap-2">
-                                            <a href="{{ route('admin.editguru', $guru->id) }}"
-                                                class="bg-blue-500 hover:bg-blue-600 text-white px-2 py-1 sm:px-3 sm:py-1 rounded text-center text-xs sm:text-sm">
-                                                Edit
-                                            </a>
-                                            <form action="{{ route('admin.hapusguru', $guru->id) }}" method="POST"
-                                                onsubmit="return confirm('Yakin ingin menghapus guru ini?');">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit"
-                                                    class="bg-red-500 hover:bg-red-600 text-white px-2 py-1 sm:px-3 sm:py-1 rounded w-full text-center text-xs sm:text-sm">
-                                                    Hapus
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </td>
-                                </tr>
-                            @empty
-                                <tr>
-                                    <td colspan="6" class="text-center py-4 text-gray-500">Belum ada data guru.</td>
-                                </tr>
-                            @endforelse
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            {{-- Daftar Siswa --}}
-            <div class="mt-8 sm:mt-10">
-                <h3 class="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Data Siswa</h3>
-                <div class="overflow-x-auto">
-                    <table class="min-w-full text-xs sm:text-sm text-left text-gray-700">
-                        <thead class="bg-gray-100 text-gray-700 font-semibold">
+                        @empty
                             <tr>
-                                <th class="px-2 py-2 sm:px-3 sm:py-3">NIS</th>
-                                <th class="px-2 py-2 sm:px-3 sm:py-3">Nama</th>
-                                <th class="px-2 py-2 sm:px-3 sm:py-3">Email</th>
-                                <th class="px-2 py-2 sm:px-3 sm:py-3">Kelas</th>
-                                <th class="px-2 py-2 sm:px-3 sm:py-3">Status</th>
-                                <th class="px-2 py-2 sm:px-3 sm:py-3">Aksi</th>
+                                <td colspan="6" class="px-6 py-4 text-center text-sm text-gray-500">
+                                    Tidak ada data guru
+                                </td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            @forelse($siswas as $siswa)
-                                <tr class="hover:bg-gray-50 border-b border-gray-100">
-                                    <td class="px-2 py-2 sm:px-3 sm:py-2">
-                                        {{ substr($siswa->nis, 0, 2) }}.{{ substr($siswa->nis, 2, 2) }}.{{ substr($siswa->nis, 4) }}
-                                    </td>
-                                    {{-- <td class="px-2 py-2 sm:px-3 sm:py-2">{{ $siswa->nis }}</td> --}}
-                                    <td class="px-2 py-2 sm:px-3 sm:py-2">{{ $siswa->name }}</td>
-                                    <td class="px-2 py-2 sm:px-3 sm:py-2 ">{{ $siswa->email }}</td>
-                                    <td class="px-2 py-2 sm:px-3 sm:py-2">
-                                        {{ ($siswa->kelas) ? $siswa->kelas->tingkat . ' ' . $siswa->kelas->nama_kelas : '-' }}
-                                    </td>
-                                    <td class="px-2 py-2 sm:px-3 sm:py-2">
-                                        <span class="{{ $siswa->is_active ? 'text-green-600' : 'text-red-600' }}">
-                                            {{ $siswa->is_active ? 'Aktif' : 'Nonaktif' }}
-                                        </span>
-                                    </td>
-                                    <td class="px-2 py-2 sm:px-3 sm:py-2">
-                                        <div class="flex flex-col sm:flex-row gap-1 sm:gap-2">
-                                            <a href="{{ route('admin.editsiswa', $siswa->id) }}"
-                                                class="bg-blue-500 hover:bg-blue-600 text-white px-2 py-1 sm:px-3 sm:py-1 rounded text-center text-xs sm:text-sm">
-                                                Edit
-                                            </a>
-                                            <form action="{{ route('admin.hapussiswa', $siswa->id) }}" method="POST"
-                                                onsubmit="return confirm('Yakin ingin menghapus siswa ini?');">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit"
-                                                    class="bg-red-500 hover:bg-red-600 text-white px-2 py-1 sm:px-3 sm:py-1 rounded w-full text-center text-xs sm:text-sm">
-                                                    Hapus
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </td>
-                                </tr>
-                            @empty
-                                <tr>
-                                    <td colspan="6" class="text-center py-4 text-gray-500">Belum ada data siswa.</td>
-                                </tr>
-                            @endforelse
-                        </tbody>
-                    </table>
-                </div>
+                        @endforelse
+                    </tbody>
+                </table>
             </div>
+        </div>
 
+        <!-- Students Table -->
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="px-6 py-4 border-b border-gray-200">
+                <h3 class="text-lg font-semibold text-gray-800">Data Siswa</h3>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">NIS
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden md:table-cell">
+                                Email</th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kelas
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Status</th>
+                            <th scope="col"
+                                class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Aksi
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        @forelse($siswas as $siswa)
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-mono text-gray-500">
+                                    {{ chunk_split($siswa->nis, 2, '.') }}
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm font-medium text-gray-900">{{ $siswa->name }}</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 hidden md:table-cell">
+                                    {{ $siswa->email }}
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    {{ $siswa->kelas ? $siswa->kelas->tingkat . ' ' . $siswa->kelas->nama_kelas : '-' }}
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span
+                                        class="px-2 py-1 text-xs font-semibold rounded-full {{ $siswa->is_active ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }}">
+                                        {{ $siswa->is_active ? 'Aktif' : 'Nonaktif' }}
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                    <div class="flex justify-end space-x-2">
+                                        <a href="{{ route('admin.editsiswa', $siswa->id) }}"
+                                            class="text-blue-600 hover:text-blue-900 mr-2" title="Edit">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                                                viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                            </svg>
+                                        </a>
+                                        <form action="{{ route('admin.hapussiswa', $siswa->id) }}" method="POST"
+                                            onsubmit="return confirm('Yakin ingin menghapus siswa ini?');">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="text-red-600 hover:text-red-900" title="Hapus">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                                                    viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                </svg>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="6" class="px-6 py-4 text-center text-sm text-gray-500">
+                                    Tidak ada data siswa
+                                </td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 @endsection

@@ -173,11 +173,11 @@ class GuruController extends Controller
     //     return view('Teacher.dashboard', compact('totalPemasukan', 'totalPenarikan'));
     // }
 
-   public function dashboardGuru(Request $request)
+  public function dashboardGuru(Request $request)
 {
     $guru = auth('guru')->user();
 
-    // Hitung total pemasukan dan penarikan (tidak perlu di-filter per nama siswa/tanggal)
+    // Hitung total pemasukan dan penarikan
     $totalPemasukan = Tabungan::where('nama_guru', $guru->name)
         ->where('jenis_penarikan', 'setoran')
         ->sum('jumlah');
@@ -209,6 +209,7 @@ class GuruController extends Controller
 
 
 
+
     public function tabungan(Request $request)
     {
         $guru = auth('guru')->user();
@@ -225,7 +226,8 @@ class GuruController extends Controller
             $query->whereDate('tanggal', $request->tanggal);
         }
 
-        $tabungan = $query->orderBy('tanggal', 'desc')->get();
+        // $tabungan = $query->orderBy('tanggal', 'desc')->get();
+        $tabungan = $query->orderBy('tanggal', 'desc')->paginate(10);
 
         return view('Teacher.transaksi', compact('tabungan'));
     }

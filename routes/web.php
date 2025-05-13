@@ -134,12 +134,14 @@ Route::middleware('auth:guru')->prefix('Teacher')->name('Teacher.')->group(funct
 // Siswa Routes (Protected by Middleware)
 // ==============================
 Route::middleware('auth:siswa')->prefix('Student')->name('Student.')->group(function () {
-    Route::view('/dashboard', 'Student.dashboard')->name('dashboard');
+    Route::get('/dashboard', [SiswaController::class, 'dashboard'])->name('dashboard');
     Route::post('/logout', [SiswaController::class, 'logoutSiswa'])->name('logout');
-
-    // Riwayat tabungan
     Route::get('/siswa/riwayat-tabungan', [SiswaController::class, 'riwayatTabungan'])->name('riwayat');
 });
+
+
+    // Riwayat tabungan
+
 
 
 

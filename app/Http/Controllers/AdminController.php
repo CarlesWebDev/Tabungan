@@ -102,22 +102,22 @@ class AdminController extends Controller
 
             // DETAIL SETORAN PER SISWA
             // DETAIL SETORAN PER SISWA
-$setoranDetailsByKelas[$keyKelas] = Tabungan::where('jenis_penarikan', 'setoran')
-    ->whereHas('siswa', fn($q) => $q->where('kelas_id', $itemKelas->id))
-    ->with('siswa')
-    ->get()
-    ->groupBy('siswa_id')
-    ->map(function ($transactions) {
-        return [
-            'nama' => $transactions->first()->siswa->name,
-            'total' => $transactions->sum('jumlah'),
-            'count' => $transactions->count(),
-            // Cek jika rincian transaksi setoran terdeteksi dengan benar
-            'rincian' => $transactions->map(fn($t) => 'nabung(' . number_format($t->jumlah, 0, ',', '.') . ')')->implode(', ')
-        ];
-    })
-    ->values()
-    ->toArray();
+            $setoranDetailsByKelas[$keyKelas] = Tabungan::where('jenis_penarikan', 'setoran')
+                ->whereHas('siswa', fn($q) => $q->where('kelas_id', $itemKelas->id))
+                ->with('siswa')
+                ->get()
+                ->groupBy('siswa_id')
+                ->map(function ($transactions) {
+                    return [
+                        'nama' => $transactions->first()->siswa->name,
+                        'total' => $transactions->sum('jumlah'),
+                        'count' => $transactions->count(),
+                        // Cek jika rincian transaksi setoran terdeteksi dengan benar
+                        'rincian' => $transactions->map(fn($t) => 'nabung(' . number_format($t->jumlah, 0, ',', '.') . ')')->implode(', ')
+                    ];
+                })
+                ->values()
+                ->toArray();
 
 
 
