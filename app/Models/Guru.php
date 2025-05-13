@@ -41,8 +41,8 @@ class Guru extends Authenticatable
     }
 
     public function siswas()
-{
-    return $this->hasMany(Siswa::class);
-}
-
+    {
+        return $this->hasMany(Siswa::class);
+    }
+    
 }

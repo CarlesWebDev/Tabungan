@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('nis')->unique();
             // $table->string('kelas');
-            $table->foreignId('kelas_id')->constrained('kelas')->onDelete('cascade')->nulllable();
-            $table->boolean('is_active')->default(true);
+            $table->foreignId('kelas_id')->constrained('kelas')->onDelete('cascade')->nullable();
+            $table->boolean('is_active')->default(false);
               $table->timestamp('last_active_at')->nullable();
             $table->string('password');
             $table->string('role');

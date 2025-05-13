@@ -7,7 +7,7 @@
     </div>
 
     {{-- Summary Cards --}}
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {{-- Student Count --}}
         <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
             <div class="flex items-center p-6">
@@ -24,6 +24,8 @@
                 </div>
             </div>
         </div>
+
+        
 
         {{-- Jumlah Guru --}}
         <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">

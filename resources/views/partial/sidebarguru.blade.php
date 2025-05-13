@@ -48,7 +48,7 @@
                                 {{ Auth::user()->email }}
                             </p>
                         </div>
-                        <ul class="py-1" role="none">
+                        {{-- <ul class="py-1" role="none">
                             <li>
                                 <a href="{{ route('Teacher.dashboard') }}"
                                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
@@ -66,7 +66,7 @@
                                 <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                                     role="menuitem">Sign out</a>
                             </li>
-                        </ul>
+                        </ul> --}}
                     </div>
                 </div>
             </div>
@@ -118,7 +118,7 @@
                 </a>
             </li>
             <li>
-                <a href="" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
+                <a href="{{ route('Teacher.createNotifikasi') }}" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
                     <svg class="w-5 h-5 text-gray-500 group-hover:text-gray-900" fill="currentColor"
                         viewBox="0 0 20 20">
                         <path

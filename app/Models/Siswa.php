@@ -46,5 +46,7 @@ class Siswa extends Authenticatable
     return $this->hasMany(Tabungan::class, 'siswa_id');
 }
 
+
+
 }
 

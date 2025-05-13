@@ -3,9 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\GuruController;
+use App\Http\Controllers\NotikasiController;
 use App\Http\Controllers\SiswaController;
-// use App\Http\Middleware\CekAktivitas;
-use Illuminate\Support\Facades\Auth;
+
 
 
 
@@ -69,6 +69,9 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
     Route::delete('/guru/{id}/hapus', [AdminController::class, 'hapusguru'])->name('hapusguru');
 
 
+    // notifikasi
+    Route::get('/notifikasi', [AdminController::class, 'notifikasi'])->name('notifikasi');
+
     // Cari Kelas DI management
     Route::get('/admin/cariKelas', [AdminController::class, 'Kelas'])->name('cariKelas');
 
@@ -130,6 +133,13 @@ Route::middleware('auth:guru')->prefix('Teacher')->name('Teacher.')->group(funct
    Route::put('/transaksi/{id}/update', [GuruController::class, 'update'])->name('updatetabungan');
    Route::delete('/transaksi/{id}/hapus', [GuruController::class, 'destroy'])->name('hapustabungan');
 
+    //   Create Notifikasi
+    Route::get('/notifikasi/create', [NotikasiController::class, 'notifikasi'])->name('createNotifikasi');
+    Route::post('/notifikasi/store', [NotikasiController::class, 'store'])->name('storeNotifikasi');
+    Route::get('/notifikasi', [NotikasiController::class, 'notifikasi'])->name('notifikasi');
+    Route::get('/notifikasi/{id}/edit', [NotikasiController::class, 'editNotifikasi'])->name('edit');
+    Route::put('/notifikasi/{id}/update', [NotikasiController::class, 'updateNotifikasi'])->name('update');
+    Route::delete('/notifikasi/{id}/hapus', [NotikasiController::class, 'destroyNotifikasi'])->name('notifikasi.hapus');
 
 
 });
@@ -141,10 +151,11 @@ Route::middleware('auth:siswa')->prefix('Student')->name('Student.')->group(func
     Route::get('/dashboard', [SiswaController::class, 'dashboard'])->name('dashboard');
     Route::post('/logout', [SiswaController::class, 'logoutSiswa'])->name('logout');
     Route::get('/siswa/riwayat-tabungan', [SiswaController::class, 'riwayatTabungan'])->name('riwayat');
+
+    // Route untuk notifikasi
+    Route::get('/notifikasi', [SiswaController::class, 'notifikasi'])->name('notifikasi');
 });
 
-
-    // Riwayat tabungan
 
 
 

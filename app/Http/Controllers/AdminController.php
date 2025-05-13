@@ -47,7 +47,9 @@ class AdminController extends Controller
 
     public function adminDashboard()
     {
-        // Ambil semua data siswa, guru, dan kelas beserta relasi wali kelas
+
+        // Ambil semua data siswa, guru, admin dan kelas beserta relasi wali kelas
+
         $siswas = Siswa::with('tabungan')->get();
         $gurus = Guru::all();
         $kelas = Kelas::with('guru')->get();
@@ -210,6 +212,12 @@ class AdminController extends Controller
         return redirect()->route('login.admin.form'); // Redirect ke form login admin
     }
 
+
+    // Notifikasi
+    public function notifikasi()
+    {
+        return view('admin.notifikasi');
+    }
 
 
 

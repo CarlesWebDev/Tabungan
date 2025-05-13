@@ -218,7 +218,7 @@
             </div>
         </div>
 
-        <!-- Students Table -->
+        <!-- Siswa Table -->
         <div class="bg-white rounded-lg shadow-md overflow-hidden">
             <div class="px-6 py-4 border-b border-gray-200">
                 <h3 class="text-lg font-semibold text-gray-800">Data Siswa</h3>
@@ -235,13 +235,19 @@
                             </th>
                             <th scope="col"
                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden md:table-cell">
-                                Email</th>
+                                Email
+                            </th>
                             <th scope="col"
                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kelas
                             </th>
                             <th scope="col"
                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Status</th>
+                                Status
+                            </th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden lg:table-cell">
+                                    Terakhir Aktif
+                                </th>
                             <th scope="col"
                                 class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Aksi
                             </th>
@@ -267,6 +273,9 @@
                                         class="px-2 py-1 text-xs font-semibold rounded-full {{ $siswa->is_active ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }}">
                                         {{ $siswa->is_active ? 'Aktif' : 'Nonaktif' }}
                                     </span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 hidden lg:table-cell">
+                                    {{ $siswa->last_active_at ? $siswa->last_active_at->diffForHumans() : 'Belum pernah' }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                     <div class="flex justify-end space-x-2">

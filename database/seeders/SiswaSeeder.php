@@ -19,7 +19,7 @@ class SiswaSeeder extends Seeder
             'nis' => '12345678910',
             'name' => 'siswa',
             'email' => 'siswa@gmail.com',
-            'password' => Hash::make('siswaMurid123'),
+            'password' => Hash::make('  '),
             // 'password_plaintext' => 'siswaMurid123',
             // 'kelas' => 'XI RPL 1',
             'kelas_id' => 1,
