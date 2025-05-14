@@ -124,11 +124,11 @@
                                 bergabung</span>
                         </div>
                     </div>
+                    {{-- Img --}}
                     <div class="md:w-1/2">
                         <div class="relative">
                             <div class="relative z-10 bg-white p-1 rounded-xl shadow-lg">
-                                <img src="https://image.cermati.com/q_70/m1h89vsuibwgnrffregz"
-                                    alt="Students using E-Tabungan" class="w-full h-auto rounded-lg">
+                                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1471&amp;q=80" alt="Students using E-Tabungan" class="w-full h-auto rounded-lg object-cover">
                             </div>
 
                             <div

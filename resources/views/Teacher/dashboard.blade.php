@@ -121,7 +121,7 @@
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold {{ $item->jenis_penarikan == 'penarikan' ? 'text-red-700' : 'text-green-700' }}">
                                         Rp{{ number_format($item->jumlah, 0, ',', '.') }}
                                     </td>
-                                    <td class="px-6 py-4 text-sm text-gray-500 max-w-xs truncate hover:text-clip">{{ $item->keterangan }}</td>
+                                    <td class="px-6 py-4 text-sm text-gray-500 max-w-xs truncate">{{ucfirst($item->keterangan) }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

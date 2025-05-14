@@ -83,7 +83,14 @@ class SiswaController extends Controller
 
     public function notifikasi()
     {
+        // Ambil siswa yang sedang login
         $siswa = Auth::guard('siswa')->user();
+
+
+        // Hitung jumlah notifikasi yang belum dibaca berdasarakan siswa yang login
+        $unread = Notikasi::where('siswa_id', auth('siswa')->id())
+            ->where('status', 'unread')
+            ->count();
 
         // Ambil notifikasi khusus untuk siswa yang login
         $notifikasis = notikasi::with(['guru', 'kelas'])
@@ -91,7 +98,7 @@ class SiswaController extends Controller
             ->latest()
             ->get();
 
-        return view('Student.notifikasi', compact('notifikasis'));
+        return view('Student.notifikasi', compact('notifikasis', 'unread'));
     }
 
 

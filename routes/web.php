@@ -139,7 +139,7 @@ Route::middleware('auth:guru')->prefix('Teacher')->name('Teacher.')->group(funct
     Route::post('/notifikasi/store', [NotikasiController::class, 'store'])->name('storeNotifikasi');
     Route::get('/notifikasi/{id}/edit', [NotikasiController::class, 'editNotifikasi'])->name('edit');
     Route::put('/notifikasi/{id}/update', [NotikasiController::class, 'updateNotifikasi'])->name('update');
-    Route::delete('/notifikasi/{id}/hapus', [NotikasiController::class, 'destroyNotifikasi'])->name('notifikasi.hapus');
+    Route::delete('/notifikasi/{id}/hapus', [NotikasiController::class, 'destroy'])->name('notifikasi.hapus');
 });
 
 // ==============================
@@ -149,6 +149,9 @@ Route::middleware('auth:siswa')->prefix('Student')->name('Student.')->group(func
     Route::get('/dashboard', [SiswaController::class, 'dashboard'])->name('dashboard');
     Route::post('/logout', [SiswaController::class, 'logoutSiswa'])->name('logout');
     Route::get('/siswa/riwayat-tabungan', [SiswaController::class, 'riwayatTabungan'])->name('riwayat');
+
+    // Rute untuk menandai notifikasi sebagai dibaca
+    Route::patch('/notifikasi/{id}/read', [NotikasiController::class, 'markAsRead'])->name('markAsRead');
 
     // Route untuk notifikasi
     Route::get('/notifikasi', [SiswaController::class, 'notifikasi'])->name('notifikasi');

@@ -6,7 +6,7 @@
         <h1 class="text-2xl sm:text-3xl font-bold text-gray-800">Welcome {{ Auth::user()->name }}</h1>
     </div>
 
-    {{-- Summary Cards --}}
+
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {{-- Student Count --}}
         <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
@@ -25,7 +25,7 @@
             </div>
         </div>
 
-        
+
 
         {{-- Jumlah Guru --}}
         <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
@@ -85,7 +85,7 @@
     {{-- Class Savings Statistics --}}
     <div class="mt-10">
         <div class="flex justify-between items-center mb-6">
-            <h2 class="text-xl font-bold text-gray-800">statistik Tabungan Kelas</h2>
+            <h2 class="text-xl font-bold text-gray-800">Statistik Tabungan Kelas</h2>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">

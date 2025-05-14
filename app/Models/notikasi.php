@@ -14,6 +14,7 @@ class notikasi extends Model
         'guru_id',
         'kelas_id',
         'status',
+        'read_at',
     ];
     public function siswa()
     {

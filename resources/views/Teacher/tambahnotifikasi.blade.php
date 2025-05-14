@@ -13,20 +13,22 @@
         <form action="{{ route('Teacher.storeNotifikasi') }}" method="POST" class="space-y-4">
             @csrf
 
-            <div>
-                <label for="siswa_id" class="block text-sm font-medium text-gray-700">Pilih Siswa</label>
-                <select name="siswa_id" id="siswa_id" required
-                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
-                    <option value="">-- Pilih Siswa --</option>
-                    @forelse($siswas as $siswa)
-                        <option value="{{ $siswa->id }}">
-                            {{ $siswa->name }} ({{ $siswa->kelas->nama_kelas ?? '-' }})
-                        </option>
-                    @empty
-                        <option value="" disabled>Data siswa tidak tersedia</option>
-                    @endforelse
-                </select>
-            </div>
+        <div>
+            <label for="siswa_id" class="block text-sm font-medium text-gray-700 mb-1">
+                Pilih Siswa
+            </label>
+            <select name="siswa_id[]" id="siswa_id" multiple required
+                class="tom-select block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                @forelse($siswas as $siswa)
+                    <option value="{{ $siswa->id }}">
+                        {{ $siswa->name }} ({{ $siswa->kelas->tingkat ?? '-' }}{{ $siswa->kelas->nama_kelas ?? '-' }})
+                    </option>
+                @empty
+                    <option value="" disabled>Data siswa tidak tersedia</option>
+                @endforelse
+            </select>
+        </div>
+
 
             <div>
                 <label for="notikasi" class="block text-sm font-medium text-gray-700">Pesan Notifikasi</label>

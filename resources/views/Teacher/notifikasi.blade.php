@@ -3,6 +3,7 @@
 @section('content')
     <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
+
             <div class="mb-4 md:mb-0">
                 <h2 class="text-2xl font-bold text-gray-800">Manajemen Notifikasi Siswa</h2>
                 <p class="text-gray-600 mt-1">Daftar notifikasi yang telah dikirim kepada siswa</p>
@@ -44,21 +45,23 @@
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Pesan</th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Dikirim Pada</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Aksi</th>
+
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200">
                             @foreach($notifikasis as $i => $notif)
-                            <tr class="hover:bg-gray-50 transition-colors duration-150">
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $i + 1 }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="text-sm font-medium text-gray-900">{{ $notif->siswa->name ?? '-' }}</div>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="text-sm text-gray-900">{{ $notif->kelas->nama_kelas ?? '-' }}</div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="text-sm text-gray-900 max-w-xs truncate">{{ $notif->notikasi }}</div>
-                                </td>
+                                <tr class="hover:bg-gray-50 transition-colors duration-150">
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $i + 1 }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm font-medium text-gray-900">{{ $notif->siswa->name ?? '-' }}</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900">{{ $notif->kelas->tingkat ?? '-'}}&nbsp;{{ $notif->kelas->nama_kelas ?? '-' }}</div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="text-sm text-gray-900 max-w-xs truncate">{{ $notif->notikasi }}</div>
+                                    </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     @if($notif->status === 'unread')
                                         <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
@@ -66,14 +69,28 @@
                                         </span>
                                     @else
                                         <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                            Sudah Dibaca
+                                            Dibaca
                                         </span>
                                     @endif
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                    {{ $notif->created_at->format('d M Y, H:i') }}
+                                    {{ \Carbon\Carbon::parse($notif->created_at)->translatedFormat('d/m/Y, H:i') }}
                                 </td>
-                            </tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    <form action="{{ route('Teacher.notifikasi.hapus', $notif->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus notifikasi ini?')">
+                                        @csrf
+                                        @method('DELETE')
+                                        <input type="hidden" name="id" value="{{ $notif->id }}">
+                                        <button  type="submit" class="text-red-600 hover:text-red-900">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                                <path fill-rule="evenodd"
+                                                    d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                        </button>
+                                    </form>
+                                    </td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>

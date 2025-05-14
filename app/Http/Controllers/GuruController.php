@@ -357,7 +357,6 @@ class GuruController extends Controller
     {
         $tabungan = Tabungan::findOrFail($id);
         $tabungan->delete();
-
         return redirect()->route('Teacher.transaksi')->with('success', 'Transaksi berhasil dihapus.');
     }
 }
