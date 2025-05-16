@@ -7,7 +7,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>E-Tabungan</title>
+        <title>EduSavings</title>
         @vite('resources/css/app.css')
     </head>
 
@@ -25,7 +25,7 @@
                             <path d="M2 9v1c0 1.1.9 2 2 2h1" />
                             <path d="M16 11h0" />
                         </svg>
-                        <span class="ml-2 text-xl font-bold text-gray-900">E-Tabungan</span>
+                        <span class="ml-2 text-xl font-bold text-gray-900">EduSavings</span>
                     </div>
 
                     <!-- Desktop Nav -->
@@ -87,8 +87,10 @@
                     <div class="md:w-1/2 text-center md:text-left mb-12 md:mb-0">
                         <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-4">Tabungan
                             Cerdas <span class="text-blue-600">untuk Masa Depan Cerah</span></h1>
-                        <p class="text-lg md:text-xl text-gray-700 mb-8 max-w-lg mx-auto md:mx-0">Aplikasi tabungan siswa
-                            yang memudahkan pengelolaan keuangan pendidikan dengan aman, transparan, dan menyenangkan.</p>
+                        <p class="text-lg md:text-xl text-gray-700 mb-8 max-w-lg mx-auto md:mx-0">EduSavings adalah platform
+                            manajemen tabungan siswa yang modern dan efisien. Dengan antarmuka yang ramah pengguna dan
+                            sistem yang terintegrasi, EduSavings membantu sekolah mengedukasi siswa tentang pentingnya
+                            menabung sejak dini.</p>
                         <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
                             <a href="{{ route('login.siswa') }}"
                                 class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors shadow-md flex items-center justify-center">Mulai
@@ -128,7 +130,8 @@
                     <div class="md:w-1/2">
                         <div class="relative">
                             <div class="relative z-10 bg-white p-1 rounded-xl shadow-lg">
-                                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1471&amp;q=80" alt="Students using E-Tabungan" class="w-full h-auto rounded-lg object-cover">
+                                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1471&amp;q=80"
+                                    alt="Students using E-Tabungan" class="w-full h-auto rounded-lg object-cover">
                             </div>
 
                             <div
@@ -408,258 +411,174 @@
             </div>
         </section>
 
-        <section id="testimonial" class="py-16 md:py-24 bg-white">
-            <div class="container mx-auto px-4 md:px-6">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Apa Kata Mereka?</h2>
-                    <p class="text-lg text-gray-700 max-w-2xl mx-auto">Dengarkan pengalaman pengguna E-Tabungan
-                        dariberbagai kalangan.</p>
-                </div>
-                <div class="max-w-4xl mx-auto">
-                    <div class="relative">
-                        <div class="overflow-hidden">
-                            <div class="flex transition-transform duration-500 ease-in-out"
-                                style="transform: translateX(0%);">
-                                <div class="w-full flex-shrink-0 p-4">
-                                    <div class="bg-gray-50 p-8 rounded-2xl shadow-sm">
-                                        <div class="flex items-center mb-4"><svg xmlns="http://www.w3.org/2000/svg"
-                                                width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                class="lucide lucide-star w-5 h-5 text-yellow-500 fill-current">
-                                                <polygon
-                                                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                                                </polygon>
-                                            </svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                                stroke-linecap="round" stroke-linejoin="round"
-                                                class="lucide lucide-star w-5 h-5 text-yellow-500 fill-current">
-                                                <polygon
-                                                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                                                </polygon>
-                                            </svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                                stroke-linecap="round" stroke-linejoin="round"
-                                                class="lucide lucide-star w-5 h-5 text-yellow-500 fill-current">
-                                                <polygon
-                                                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                                                </polygon>
-                                            </svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                                stroke-linecap="round" stroke-linejoin="round"
-                                                class="lucide lucide-star w-5 h-5 text-yellow-500 fill-current">
-                                                <polygon
-                                                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                                                </polygon>
-                                            </svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                                stroke-linecap="round" stroke-linejoin="round"
-                                                class="lucide lucide-star w-5 h-5 text-yellow-500 fill-current">
-                                                <polygon
-                                                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                                                </polygon>
-                                            </svg></div>
-                                        <p class="text-gray-700 italic mb-6">"Berkat E-Tabungan, saya bisa memantau
-                                            perkembangan tabungan kuliah saya dengan mudah. Fitur visualisasinya sangat
-                                            membantu!"</p>
-                                        <div class="flex items-center">
-                                            <div class="w-12 h-12 rounded-full overflow-hidden mr-4"><img
-                                                    src="https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=80"
-                                                    alt="Dian Puspita" class="w-full h-full object-cover"></div>
-                                            <div>
-                                                <h4 class="font-semibold text-gray-900">Dian Puspita</h4>
-                                                <p class="text-sm text-gray-600">Siswa SMA Kelas 12</p>
-                                            </div>
-                                        </div>
-                                    </div>
+        <!-- Carousel Flowbite -->
+        <div id="testimonialCarousel" class="relative w-full max-w-4xl mx-auto" data-carousel="slide">
+            <!-- Carousel wrapper -->
+            <div class="relative h-96 overflow-hidden rounded-2xl">
+                <!-- Slide 1 -->
+                <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                    <div class="absolute inset-0 flex items-center justify-center p-8">
+                        <div class=" p-8 rounded-xl shadow-lg border border-gray-100 max-w-2xl w-full">
+                            <svg class="w-10 h-10 text-blue-500 mb-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                            </svg>
+                            <blockquote class="text-lg text-gray-700 mb-6">
+                                "Berkat E-Tabungan, saya bisa memantau perkembangan tabungan kuliah saya dengan mudah. Fitur
+                                visualisasinya sangat membantu!"
+                            </blockquote>
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 rounded-full overflow-hidden mr-4 border-2 border-blue-100">
+                                    <img src="https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=80"
+                                        alt="Dian Puspita" class="w-full h-full object-cover" />
                                 </div>
-                                <div class="w-full flex-shrink-0 p-4">
-                                    <div class="bg-gray-50 p-8 rounded-2xl shadow-sm">
-                                        <div class="flex items-center mb-4"><svg xmlns="http://www.w3.org/2000/svg"
-                                                width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                class="lucide lucide-star w-5 h-5 text-yellow-500 fill-current">
-                                                <polygon
-                                                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                                                </polygon>
-                                            </svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                                stroke-linecap="round" stroke-linejoin="round"
-                                                class="lucide lucide-star w-5 h-5 text-yellow-500 fill-current">
-                                                <polygon
-                                                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                                                </polygon>
-                                            </svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                                stroke-linecap="round" stroke-linejoin="round"
-                                                class="lucide lucide-star w-5 h-5 text-yellow-500 fill-current">
-                                                <polygon
-                                                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                                                </polygon>
-                                            </svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                                stroke-linecap="round" stroke-linejoin="round"
-                                                class="lucide lucide-star w-5 h-5 text-yellow-500 fill-current">
-                                                <polygon
-                                                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                                                </polygon>
-                                            </svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                                stroke-linecap="round" stroke-linejoin="round"
-                                                class="lucide lucide-star w-5 h-5 text-yellow-500 fill-current">
-                                                <polygon
-                                                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                                                </polygon>
-                                            </svg></div>
-                                        <p class="text-gray-700 italic mb-6">"Sebagai orang tua, saya merasa tenang karena
-                                            bisa
-                                            memantau tabungan anak saya secara real-time. Notifikasi dan laporannya sangat
-                                            informatif."</p>
-                                        <div class="flex items-center">
-                                            <div class="w-12 h-12 rounded-full overflow-hidden mr-4"><img
-                                                    src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=80"
-                                                    alt="Budi Santoso" class="w-full h-full object-cover"></div>
-                                            <div>
-                                                <h4 class="font-semibold text-gray-900">Budi Santoso</h4>
-                                                <p class="text-sm text-gray-600">Orang Tua Siswa</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="w-full flex-shrink-0 p-4">
-                                    <div class="bg-gray-50 p-8 rounded-2xl shadow-sm">
-                                        <div class="flex items-center mb-4"><svg xmlns="http://www.w3.org/2000/svg"
-                                                width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                class="lucide lucide-star w-5 h-5 text-yellow-500 fill-current">
-                                                <polygon
-                                                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                                                </polygon>
-                                            </svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                                stroke-linecap="round" stroke-linejoin="round"
-                                                class="lucide lucide-star w-5 h-5 text-yellow-500 fill-current">
-                                                <polygon
-                                                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                                                </polygon>
-                                            </svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                                stroke-linecap="round" stroke-linejoin="round"
-                                                class="lucide lucide-star w-5 h-5 text-yellow-500 fill-current">
-                                                <polygon
-                                                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                                                </polygon>
-                                            </svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                                stroke-linecap="round" stroke-linejoin="round"
-                                                class="lucide lucide-star w-5 h-5 text-yellow-500 fill-current">
-                                                <polygon
-                                                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                                                </polygon>
-                                            </svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                                stroke-linecap="round" stroke-linejoin="round"
-                                                class="lucide lucide-star w-5 h-5 text-yellow-500 fill-current">
-                                                <polygon
-                                                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                                                </polygon>
-                                            </svg></div>
-                                        <p class="text-gray-700 italic mb-6">"Aplikasi yang sangat membantu sekolah kami
-                                            dalam
-                                            mengelola tabungan siswa. Dashboard admin yang intuitif membuat pekerjaan jadi
-                                            lebih
-                                            efisien."</p>
-                                        <div class="flex items-center">
-                                            <div class="w-12 h-12 rounded-full overflow-hidden mr-4"><img
-                                                    src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=80"
-                                                    alt="Ratna Dewi" class="w-full h-full object-cover"></div>
-                                            <div>
-                                                <h4 class="font-semibold text-gray-900">Ratna Dewi</h4>
-                                                <p class="text-sm text-gray-600">Bendahara Sekolah</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="w-full flex-shrink-0 p-4">
-                                    <div class="bg-gray-50 p-8 rounded-2xl shadow-sm">
-                                        <div class="flex items-center mb-4"><svg xmlns="http://www.w3.org/2000/svg"
-                                                width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                class="lucide lucide-star w-5 h-5 text-yellow-500 fill-current">
-                                                <polygon
-                                                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                                                </polygon>
-                                            </svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                                stroke-linecap="round" stroke-linejoin="round"
-                                                class="lucide lucide-star w-5 h-5 text-yellow-500 fill-current">
-                                                <polygon
-                                                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                                                </polygon>
-                                            </svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                                stroke-linecap="round" stroke-linejoin="round"
-                                                class="lucide lucide-star w-5 h-5 text-yellow-500 fill-current">
-                                                <polygon
-                                                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                                                </polygon>
-                                            </svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                                stroke-linecap="round" stroke-linejoin="round"
-                                                class="lucide lucide-star w-5 h-5 text-yellow-500 fill-current">
-                                                <polygon
-                                                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                                                </polygon>
-                                            </svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                                stroke-linecap="round" stroke-linejoin="round"
-                                                class="lucide lucide-star w-5 h-5 text-yellow-500 fill-current">
-                                                <polygon
-                                                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                                                </polygon>
-                                            </svg></div>
-                                        <p class="text-gray-700 italic mb-6">"Sistem reward dan gamifikasi di E-Tabungan
-                                            membuat kegiatan menabung jadi lebih menyenangkan. Anak-anak jadi lebih
-                                            termotivasi
-                                            untuk menabung."</p>
-                                        <div class="flex items-center">
-                                            <div class="w-12 h-12 rounded-full overflow-hidden mr-4"><img
-                                                    src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=80"
-                                                    alt="Ahmad Fauzi" class="w-full h-full object-cover"></div>
-                                            <div>
-                                                <h4 class="font-semibold text-gray-900">Ahmad Fauzi</h4>
-                                                <p class="text-sm text-gray-600">Guru Ekonomi</p>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">Dian Puspita</h4>
+                                    <p class="text-sm text-gray-600">Siswa SMA Kelas 12</p>
                                 </div>
                             </div>
                         </div>
-                        <button
-                            class="absolute top-1/2 left-0 -translate-y-1/2 -translate-x-4 md:-translate-x-6 w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center hover:bg-gray-100 transition-colors focus:outline-none"><svg
-                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                class="lucide lucide-chevron-left w-6 h-6 text-gray-700">
-                                <path d="m15 18-6-6 6-6"></path>
-                            </svg>
-                        </button>
-                        <button
-                            class="absolute top-1/2 right-0 -translate-y-1/2 translate-x-4 md:translate-x-6 w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center hover:bg-gray-100 transition-colors focus:outline-none"><svg
-                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                class="lucide lucide-chevron-right w-6 h-6 text-gray-700">
-                                <path d="m9 18 6-6-6-6"></path>
-                            </svg>
-                        </button>
                     </div>
-                    <div class="flex justify-center mt-8"><button
-                            class="w-3 h-3 mx-1 rounded-full bg-blue-600"></button><button
-                            class="w-3 h-3 mx-1 rounded-full bg-gray-300"></button><button
-                            class="w-3 h-3 mx-1 rounded-full bg-gray-300"></button><button
-                            class="w-3 h-3 mx-1 rounded-full bg-gray-300"></button>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                    <div class="absolute inset-0 flex items-center justify-center p-8">
+                        <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-100 max-w-2xl w-full">
+                            <svg class="w-10 h-10 text-blue-500 mb-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                            </svg>
+                            <blockquote class="text-lg text-gray-700 mb-6">
+                                "Saya merasa tenang karena bisa memantau tabungan anak secara real-time. Notifikasi dan
+                                laporan
+                                sangat membantu!"
+                            </blockquote>
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 rounded-full overflow-hidden mr-4 border-2 border-blue-100">
+                                    <img src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=80"
+                                        alt="Budi Santoso" class="w-full h-full object-cover" />
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">Budi Santoso</h4>
+                                    <p class="text-sm text-gray-600">Orang Tua Siswa</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 3 (Tambahan contoh) -->
+                <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                    <div class="absolute inset-0 flex items-center justify-center p-8">
+                        <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-100 max-w-2xl w-full">
+                            <svg class="w-10 h-10 text-blue-500 mb-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                            </svg>
+                            <blockquote class="text-lg text-gray-700 mb-6">
+                                "Sebagai guru, saya sangat terbantu dengan fitur laporan otomatis yang memudahkan pemantauan
+                                tabungan siswa."
+                            </blockquote>
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 rounded-full overflow-hidden mr-4 border-2 border-blue-100">
+                                    <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=80"
+                                        alt="Siti Rahayu" class="w-full h-full object-cover" />
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">Siti Rahayu</h4>
+                                    <p class="text-sm text-gray-600">Guru BK</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
+
+            <!-- Slider indicators -->
+            <div class="flex justify-center mt-6 space-x-3">
+                <button type="button" class="w-3 h-3 rounded-full bg-gray-300 hover:bg-blue-600 transition-colors"
+                    aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
+                <button type="button" class="w-3 h-3 rounded-full bg-gray-300 hover:bg-blue-600 transition-colors"
+                    aria-label="Slide 2" data-carousel-slide-to="1"></button>
+                <button type="button" class="w-3 h-3 rounded-full bg-gray-300 hover:bg-blue-600 transition-colors"
+                    aria-label="Slide 3" data-carousel-slide-to="2"></button>
+            </div>
+
+            <!-- Slider controls -->
+            <button type="button"
+                class="absolute top-1/2 left-4 z-10 flex items-center justify-center w-10 h-10 bg-white/50 rounded-full shadow hover:bg-white/80 transition-colors group focus:outline-none"
+                data-carousel-prev>
+                <svg class="w-5 h-5 text-blue-600 group-hover:text-blue-800" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+            </button>
+            <button type="button"
+                class="absolute top-1/2 right-4 z-10 flex items-center justify-center w-10 h-10 bg-white/50 rounded-full shadow hover:bg-white/80 transition-colors group focus:outline-none"
+                data-carousel-next>
+                <svg class="w-5 h-5 text-blue-600 group-hover:text-blue-800" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- JavaScript untuk carousel -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const carousel = document.querySelector('[data-carousel="slide"]');
+                const items = carousel.querySelectorAll('[data-carousel-item]');
+                const indicators = carousel.querySelectorAll('[data-carousel-slide-to]');
+                const prevButton = carousel.querySelector('[data-carousel-prev]');
+                const nextButton = carousel.querySelector('[data-carousel-next]');
+
+                let currentIndex = 0;
+                const totalItems = items.length;
+
+                function showSlide(index) {
+                    items.forEach((item, i) => {
+                        item.classList.toggle('hidden', i !== index);
+                    });
+
+                    indicators.forEach((indicator, i) => {
+                        indicator.setAttribute('aria-current', i === index);
+                        indicator.classList.toggle('bg-blue-600', i === index);
+                        indicator.classList.toggle('bg-gray-300', i !== index);
+                    });
+                }
+
+                function nextSlide() {
+                    currentIndex = (currentIndex + 1) % totalItems;
+                    showSlide(currentIndex);
+                }
+
+                function prevSlide() {
+                    currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+                    showSlide(currentIndex);
+                }
+
+                // Event listeners
+                prevButton.addEventListener('click', prevSlide);
+                nextButton.addEventListener('click', nextSlide);
+
+                indicators.forEach((indicator, index) => {
+                    indicator.addEventListener('click', () => {
+                        currentIndex = index;
+                        showSlide(currentIndex);
+                    });
+                });
+
+                // Auto-rotate (optional)
+                let interval = setInterval(nextSlide, 5000);
+
+                carousel.addEventListener('mouseenter', () => clearInterval(interval));
+                carousel.addEventListener('mouseleave', () => interval = setInterval(nextSlide, 5000));
+
+                // Initialize
+                showSlide(0);
+            });
+        </script>
 
         <section class="py-16 md:py-24 bg-gray-50">
             <div class="container mx-auto px-4 md:px-6">
@@ -810,6 +729,13 @@
             </div>
         </footer>
     </body>
+    <script>
+        // Toggle mobile menu
+        document.getElementById('mobile-menu-button').addEventListener('click', function () {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+    </script>
 
     </html>
 @endsection

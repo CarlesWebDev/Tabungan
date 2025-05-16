@@ -83,7 +83,7 @@
     </div>
 
     {{-- Class Savings Statistics --}}
-    <div class="mt-10">
+    <div id="chart-total-tabungan" class="mt-10">
         <div class="flex justify-between items-center mb-6">
             <h2 class="text-xl font-bold text-gray-800">Statistik Tabungan Kelas</h2>
         </div>
@@ -180,3 +180,56 @@
         </div>
     </div>
 @endsection
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Data dari PHP ke JS
+        const kelasLabels = @json(array_keys($totalTabunganPerKelas));
+        const totalTabunganData = @json(array_values($totalTabunganPerKelas));
+
+        var options = {
+            chart: {
+                type: 'line',
+                height: 350
+            },
+            series: [{
+                name: 'Total Tabungan',
+                data: totalTabunganData
+            }],
+            xaxis: {
+                categories: kelasLabels,
+                title: {
+                    text: 'Kelas'
+                }
+            },
+            yaxis: {
+                title: {
+                    text: 'Jumlah Tabungan (Rp)'
+                },
+                labels: {
+                    formatter: function (val) {
+                        return 'Rp' + val.toLocaleString('id-ID');
+                    }
+                }
+            },
+            tooltip: {
+                y: {
+                    formatter: function (val) {
+                        return 'Rp' + val.toLocaleString('id-ID');
+                    }
+                }
+            },
+            title: {
+                text: 'Statistik Total Tabungan Per Kelas',
+                align: 'center',
+                margin: 20,
+                style: {
+                    fontSize: '18px',
+                }
+            }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart-total-tabungan"), options);
+        chart.render();
+    });
+</script>

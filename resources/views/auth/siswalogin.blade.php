@@ -1,74 +1,125 @@
 @extends('layouts.login_layout')
 
 @section('content')
-    <div class="min-h-screen flex flex-col items-center justify-center">
-        <div class="py-6 px-4">
-            <div class="grid md:grid-cols-2 items-center gap-6 max-w-6xl w-full">
-
-                <div class="max-md:mt-8">
-                    <img src="https://png.pngtree.com/png-clipart/20230930/original/pngtree-student-login-blue-concept-icon-login-resource-infographic-vector-png-image_12919839.png"
-                        class="w-full aspect-[71/50] max-md:w-4/5 mx-auto block object-cover" alt="login img" />
+    <div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+        <div class="w-full max-w-6xl  rounded-2xl  overflow-hidden">
+            <div class="grid md:grid-cols-2 gap-0">
+                <!-- Image Column -->
+                <div class="hidden md:flex items-center justify-center bg-gradient-to-br  p-10">
+                    <div class="text-center">
+                        <img src="https://siswa.erlanggaexam.com/assets/images/erlangga-exam-login-siswa-1.svg"
+                            class="w-full max-w-md mx-auto object-contain" alt="Student Login Illustration" />
+                        <div class="mt-8 text-white">
+                            <h3 class="text-2xl text-blue-500 font-bold mb-2">Sistem Monitoring Tabungan Siswa</h3>
+                            <p class="text-blue-500 text-lg">Pantau perkembangan tabungan Anda dengan mudah</p>
+                        </div>
+                    </div>
                 </div>
-                <!-- Kiri: Form -->
-                <div class="p-6 max-w-md  max-md:mx-auto">
 
-                    {{-- Error Message --}}
+                <!-- Form Column -->
+                <div class="flex flex-col justify-center p-10">
+                    <div class="text-center md:text-left mb-8">
+                        <div class="flex items-center justify-center md:justify-start mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-blue-600" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 19.477 5.754 19 7.5 19s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 19.477 18.247 19 16.5 19c-1.746 0-3.332.477-4.5 1.253" />
+                            </svg>
+                            <span class="ml-2 text-2xl font-bold text-gray-800">EduSavings</span>
+                        </div>
+                        <h1 class="text-3xl font-bold text-gray-900 mb-2">Masuk Sebagai Siswa</h1>
+                        <p class="text-gray-600">Gunakan kredensial Anda untuk mengakses dashboard siswa</p>
+                    </div>
+
                     @if ($errors->any())
-                        <div class="mb-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-                            <strong class="font-bold">Error!</strong>
-                            <span class="block sm:inline">{{ $errors->first() }}</span>
+                        <div class="mb-6 bg-red-50 border-l-4 border-red-500 p-4 rounded">
+                            <div class="flex items-center">
+                                <svg class="h-5 w-5 text-red-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                                <p class="ml-2 text-sm text-red-700">{{ $errors->first() }}</p>
+                            </div>
                         </div>
                     @endif
 
-                    <form method="POST" action="{{ route('login.siswa') }}" class="space-y-6 w-full max-w-md mx-auto mt-4">
+                    <form method="POST" action="{{ route('login.siswa') }}" class="space-y-6">
                         @csrf
-                        <div class="mb-6">
-                            <h3 class="text-3xl font-semibold text-slate-900">Sign in <span
-                                    class="text-blue-600">Siswa</span></h3>
-                            <p class="text-sm text-slate-500 mt-2">
-                                Masuk ke akun siswa Anda dan pantau tabungan siswa dengan mudah.
-                            </p>
-                        </div>
 
-                        <!-- NIS -->
                         <div>
-                            <label for="nis" class="block text-sm font-medium text-slate-800 mb-2">NIS</label>
-                            <input id="nis" name="nis" type="text" required
-                                class="w-full px-4 py-3 text-sm text-slate-800 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
-                                placeholder="Masukkan NIS" />
+                            <label for="nis" class="block text-sm font-medium text-gray-700 mb-2">Nomor Induk Siswa
+                                (NIS)</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <svg class="h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <input id="nis" name="nis" type="text" required
+                                    class="block w-full pl-10 pr-3 py-3 text-sm border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                    placeholder="Masukkan NIS Anda" />
+                            </div>
                         </div>
 
-                        <!-- Password -->
                         <div>
-                            <label for="password" class="block text-sm font-medium text-slate-800 mb-2">Password</label>
-                            <input id="password" name="password" type="password" required
-                                class="w-full px-4 py-3 text-sm text-slate-800 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
-                                placeholder="Masukkan password" />
+                            <label for="password" class="block text-sm font-medium text-gray-700 mb-2">Kata Sandi</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <svg class="h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <input id="password" name="password" type="password" required
+                                    class="block w-full pl-10 pr-3 py-3 text-sm border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                    placeholder="Masukkan kata sandi Anda" />
+                            </div>
                         </div>
 
-                        <!-- Sign in Button -->
-                        <div class="mt-8">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <input id="remember-me" name="remember-me" type="checkbox"
+                                    class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                                <label for="remember-me" class="ml-2 block text-sm text-gray-700">
+                                    Ingat saya
+                                </label>
+                            </div>
+
+                            <div class="text-sm">
+                                <a href="#" class="font-medium text-blue-600 hover:text-blue-500">
+                                    Lupa kata sandi?
+                                </a>
+                            </div>
+                        </div>
+
+                        <div>
                             <button type="submit"
-                                class="w-full py-3 text-white bg-blue-600 rounded-lg shadow-xl hover:bg-blue-700 focus:ring-2 focus:ring-blue-600 focus:outline-none">
-                                Login
+                                class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200">
+                                Masuk
                             </button>
                         </div>
                     </form>
 
-                    <div class="flex mt-5 justify-start space-x-1 text-sm">
-                        <span>Sebagai Guru?</span>
-                        <a href="{{ route('login.guru') }}" class="text-blue-600 hover:underline">Masuk disini</a>
+                    <div class="mt-8 border-t border-gray-200 pt-6">
+                        <div class="text-sm text-center text-gray-600">
+                            <p class="mb-2">Sebagai Guru?</p>
+                            <a href="{{ route('login.guru') }}" class="font-medium text-blue-600 hover:text-blue-500">
+                                Masuk sebagai guru
+                            </a>
+                        </div>
                     </div>
 
-
-                    <div class="flex justify-end mt-6">
+                    <div class="mt-6 text-center">
                         <a href="{{ route('landingpage') }}"
-                            class="text-sm text-blue-600 hover:underline flex items-center gap-1">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                            class="inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-500">
+                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                             </svg>
-                            Kembali ke Beranda
+                            Kembali ke beranda
                         </a>
                     </div>
                 </div>

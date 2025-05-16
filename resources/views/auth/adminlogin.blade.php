@@ -60,10 +60,6 @@
                     </div>
                 </form>
 
-                {{-- <div class="flex mt-5 justify-start space-x-1 text-sm">
-                    <span>Register Siswa?</span>
-                    <a href="" class="text-blue-600 hover:underline"> Regis disini</a>
-                </div> --}}
 
 
                  <div class="flex justify-end mt-4">

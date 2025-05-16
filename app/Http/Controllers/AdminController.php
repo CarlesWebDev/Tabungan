@@ -197,8 +197,9 @@ class AdminController extends Controller
         }
 
         return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
+            'email' => 'email atau password yang anda masukkan salah.',
         ])->onlyInput('email');
+
     }
 
     /**
@@ -511,7 +512,7 @@ class AdminController extends Controller
     {
         $guru = Guru::findOrFail($id);
         $guru->status = 'rejected';
-        $guru->delete();
+        $guru->save();
         return redirect()->route('admin.verifikasiakun')->with('error', 'Akun guru ditolak.');
     }
 
