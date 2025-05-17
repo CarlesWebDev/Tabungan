@@ -5,8 +5,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\NotikasiController;
 use App\Http\Controllers\SiswaController;
-
-
+use App\Exports\TabunganPerKelasExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 
 // ==============================
@@ -19,7 +19,6 @@ Route::view('/LandingPage', 'LandingPage')->name('landingpage');  // Nama route 
 // ==============================
 // Ngide
 // ==============================
-
 Route::get('/login', function () {
     return redirect('/LoginAdmin');
 })->name('login');
@@ -28,13 +27,17 @@ Route::get('/login', function () {
 // =============================
 // Register
 // =============================
-
-
 Route::get('/register/guru', [GuruController::class, 'showregisterformGuru'])->name('register.guru.form');
 Route::post('/register/guru', [GuruController::class, 'registerGuru'])->name('register.guru');
 
 
 
+// ==============================
+// Export Excel
+// ==============================
+Route::get('/admin/export-tabungan-kelas/{kelasId}', function ($kelasId) {
+    return Excel::download(new TabunganPerKelasExport($kelasId), 'tabungan_kelas_' . $kelasId . '.xlsx');
+})->name('export.tabungan.kelas');
 
 
 

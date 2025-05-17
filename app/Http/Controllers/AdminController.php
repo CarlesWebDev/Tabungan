@@ -45,6 +45,9 @@ class AdminController extends Controller
 
 
 
+
+
+
     public function adminDashboard()
     {
 
@@ -70,6 +73,8 @@ class AdminController extends Controller
         $jumlahTransaksiPerKelas = [];
         $jumlahSiswaPerKelas = [];
         $waliKelas = [];
+        $kelasIds = [];
+        $keyKelas = '';
 
         // Statistik untuk keseluruhan
         $jumlahSiswaAktif = Siswa::where('is_active', true)
@@ -80,6 +85,9 @@ class AdminController extends Controller
             $tingkatKelas = $itemKelas->tingkat;
             $namaKelas = $itemKelas->nama_kelas;
             $keyKelas = $tingkatKelas . ' ' . $namaKelas;
+
+            // tambahin ini buat export
+            $kelasIds[$keyKelas] = $itemKelas->id;
 
             // Ambil nama wali kelas
             $waliKelas[$keyKelas] = $itemKelas->guru->name ?? 'Tidak ada wali kelas';
@@ -165,8 +173,12 @@ class AdminController extends Controller
             'waliKelas',
             'setoranDetailsByKelas',
             'penarikanDetailsByKelas',
+            'kelasIds',
         ));
     }
+
+
+
 
 
 
@@ -199,7 +211,6 @@ class AdminController extends Controller
         return back()->withErrors([
             'email' => 'email atau password yang anda masukkan salah.',
         ])->onlyInput('email');
-
     }
 
     /**

@@ -83,8 +83,8 @@
     </div>
 
     {{-- Class Savings Statistics --}}
-    <div id="chart-total-tabungan" class="mt-10">
-        <div class="flex justify-between items-center mb-6">
+    <div>
+        <div class="flex justify-between mt-7 items-center mb-6">
             <h2 class="text-xl font-bold text-gray-800">Statistik Tabungan Kelas</h2>
         </div>
 
@@ -94,6 +94,11 @@
                     {{-- Class Header --}}
                     <div class="bg-gray-50 px-6 py-4 border-b border-gray-200">
                         <h3 class="text-lg font-semibold text-gray-800">Kelas {{ $kelas }}</h3>
+                        <a href="{{ route('export.tabungan.kelas', ['kelasId' => $kelasIds[$kelas]]) }}"
+                            class="inline-block mt-2 text-sm bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded">
+                            Export Excel
+                        </a>
+
                         <p class="text-sm text-gray-500 mt-1">
                             WaliKelas: <span class="font-medium">{{ $waliKelas[$kelas] ?? 'Not assigned' }}</span>
                         </p>
@@ -180,56 +185,3 @@
         </div>
     </div>
 @endsection
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // Data dari PHP ke JS
-        const kelasLabels = @json(array_keys($totalTabunganPerKelas));
-        const totalTabunganData = @json(array_values($totalTabunganPerKelas));
-
-        var options = {
-            chart: {
-                type: 'line',
-                height: 350
-            },
-            series: [{
-                name: 'Total Tabungan',
-                data: totalTabunganData
-            }],
-            xaxis: {
-                categories: kelasLabels,
-                title: {
-                    text: 'Kelas'
-                }
-            },
-            yaxis: {
-                title: {
-                    text: 'Jumlah Tabungan (Rp)'
-                },
-                labels: {
-                    formatter: function (val) {
-                        return 'Rp' + val.toLocaleString('id-ID');
-                    }
-                }
-            },
-            tooltip: {
-                y: {
-                    formatter: function (val) {
-                        return 'Rp' + val.toLocaleString('id-ID');
-                    }
-                }
-            },
-            title: {
-                text: 'Statistik Total Tabungan Per Kelas',
-                align: 'center',
-                margin: 20,
-                style: {
-                    fontSize: '18px',
-                }
-            }
-        };
-
-        var chart = new ApexCharts(document.querySelector("#chart-total-tabungan"), options);
-        chart.render();
-    });
-</script>
