@@ -131,7 +131,7 @@
                         <div class="relative">
                             <div class="relative z-10 bg-white p-1 rounded-xl shadow-lg">
                                 <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1471&amp;q=80"
-                                    alt="Students using E-Tabungan" class="w-full h-auto rounded-lg object-cover">
+                                    alt="Students using EduSavings" class="w-full h-auto rounded-lg object-cover">
                             </div>
 
                             <div
@@ -156,7 +156,7 @@
             <div class="container mx-auto px-4 md:px-6">
                 <div class="text-center mb-16">
                     <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Solusi Tabungan Modern untuk Siswa</h2>
-                    <p class="text-lg text-gray-700 max-w-2xl mx-auto">E-Tabungan hadir dengan fitur-fitur inovatif yang
+                    <p class="text-lg text-gray-700 max-w-2xl mx-auto">EduSavings hadir dengan fitur-fitur inovatif yang
                         memudahkan siswa mengelola tabungan pendidikan mereka.</p>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -317,7 +317,7 @@
         <section id="cara-kerja" class="py-16 md:py-24 bg-gray-50">
             <div class="container mx-auto px-4 md:px-6">
                 <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Bagaimana E-Tabungan Bekerja</h2>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Bagaimana EduSavings Bekerja</h2>
                     <p class="text-lg text-gray-700 max-w-2xl mx-auto">Empat langkah sederhana untuk memulai kebiasaan
                         menabung
                         yang cerdas untuk masa depan pendidikan.</p>
@@ -424,7 +424,7 @@
                                     d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                             </svg>
                             <blockquote class="text-lg text-gray-700 mb-6">
-                                "Berkat E-Tabungan, saya bisa memantau perkembangan tabungan kuliah saya dengan mudah. Fitur
+                                "Berkat EduSavings, saya bisa memantau perkembangan tabungan kuliah saya dengan mudah. Fitur
                                 visualisasinya sangat membantu!"
                             </blockquote>
                             <div class="flex items-center">
@@ -617,7 +617,7 @@
                                 </path>
                                 <path d="M2 9v1c0 1.1.9 2 2 2h1"></path>
                                 <path d="M16 11h0"></path>
-                            </svg><span class="ml-2 text-xl font-bold">E-Tabungan</span></div>
+                            </svg><span class="ml-2 text-xl font-bold">EduSavings</span></div>
                         <p class="text-gray-400 mb-6">Platform tabungan digital untuk siswa yang aman, transparan, dan
                             membangun
                             kebiasaan finansial yang sehat sejak dini.</p>
@@ -713,14 +713,14 @@
                                     class="lucide lucide-mail h-5 w-5 text-blue-400 mr-3">
                                     <rect width="20" height="16" x="2" y="4" rx="2"></rect>
                                     <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-                                </svg><a href="mailto:info@E-Tabungan.id"
-                                    class="text-gray-400 hover:text-blue-400 transition-colors">info@E-Tabungan.id</a>
+                                </svg><a href="mailto:info@EduSavings.id"
+                                    class="text-gray-400 hover:text-blue-400 transition-colors">info@EduSavings.id</a>
                             </li>
                         </ul>
                     </div>
                 </div>
                 <div class="pt-8 border-t border-gray-800 text-center md:flex md:justify-between md:items-center">
-                    <p class="text-gray-500 mb-4 md:mb-0">© 2025 E-Tabungan. Hak Cipta Dilindungi.</p>
+                    <p class="text-gray-500 mb-4 md:mb-0">© 2025 EduSavings. Hak Cipta Dilindungi.</p>
                     <div class="flex flex-wrap justify-center md:justify-end gap-4"><a href="#"
                             class="text-gray-500 hover:text-blue-400 transition-colors">Kebijakan Privasi</a><a href="#"
                             class="text-gray-500 hover:text-blue-400 transition-colors">Syarat &amp; Ketentuan</a><a

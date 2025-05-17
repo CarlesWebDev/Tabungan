@@ -94,7 +94,7 @@
                                             <span class="text-indigo-600 font-medium">{{ substr($kelass->nama_kelas, 0, 1) }}</span>
                                         </div>
                                         <div class="ml-4">
-                                            <div class="text-sm font-medium text-gray-900">{{ $kelass->nama_kelas }}</div>
+                                            <div class="text-sm font-medium text-gray-900">{{ $kelass->tingkat }}&nbsp;{{ $kelass->nama_kelas }}</div>
                                         </div>
                                     </div>
                                 </td>

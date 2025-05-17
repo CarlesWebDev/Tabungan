@@ -131,6 +131,13 @@
             </div>
         </div>
 
+        <div class="px-6 py-4 border-b border-gray-200">
+            <h3 class="text-lg font-semibold text-gray-800">Data Guru</h3>
+            <form method="GET" action="{{ route('admin.Users') }}" class="mt-3">
+                <input type="text" name="search_guru" value="{{ request('search_guru') }}" placeholder="Cari guru..."
+                    class="w-full md:w-1/2 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring focus:ring-green-300" />
+            </form>
+        </div>
         <!-- Teachers Table -->
         <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8">
             <div class="px-6 py-4 border-b border-gray-200">
@@ -218,6 +225,13 @@
             </div>
         </div>
 
+        <div class="px-6 py-4 border-b border-gray-200">
+            <h3 class="text-lg font-semibold text-gray-800">Data Siswa</h3>
+            <form method="GET" action="{{ route('admin.Users') }}" class="mt-3">
+                <input type="text" name="search_siswa" value="{{ request('search_siswa') }}" placeholder="Cari siswa..."
+                    class="w-full md:w-1/2 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300" />
+            </form>
+        </div>
         <!-- Siswa Table -->
         <div class="bg-white rounded-lg shadow-md overflow-hidden">
             <div class="px-6 py-4 border-b border-gray-200">
@@ -257,7 +271,7 @@
                         @forelse($siswas as $siswa)
                             <tr class="hover:bg-gray-50">
                                 <td class="px-6 py-4 whitespace-nowrap text-sm font-mono text-gray-500">
-                                    {{ chunk_split($siswa->nis, 2, '.') }}
+                                    {{ chunk_split($siswa->nis, 2, '') }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <div class="text-sm font-medium text-gray-900">{{ $siswa->name }}</div>
