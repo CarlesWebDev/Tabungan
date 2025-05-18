@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="max-w-xl mx-auto mt-10 bg-white shadow-lg p-8 rounded-lg">
+    <div class="max-w-xl mx-auto mt-10 bg-white p-8 rounded-lg">
         <h2 class="text-2xl font-bold mb-6 text-center">Edit Akun Siswa</h2>
 
         @if(session('success'))
