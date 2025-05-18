@@ -166,17 +166,15 @@
                 chart: {
                     type: 'area',
                     height: '100%',
-                    toolbar: {
-                        show: false
-                    },
-                    zoom: {
-                        enabled: false
-                    },
+                    toolbar: { show: false },
+                    zoom: { enabled: false },
                     fontFamily: 'Inter, sans-serif',
                     animations: {
                         enabled: true,
                         easing: 'easeinout',
-                        speed: 800
+                        speed: 900,
+                        animateGradually: { enabled: true, delay: 150 },
+                        dynamicAnimation: { enabled: true, speed: 350 }
                     }
                 },
                 series: [{
@@ -186,78 +184,59 @@
                 xaxis: {
                     categories: {!! json_encode($chartLabels) !!},
                     labels: {
-                        style: {
-                            colors: '#6B7280',
-                            fontSize: '12px'
-                        }
+                        style: { colors: '#6B7280', fontSize: '13px', fontWeight: '600' }
                     },
-                    axisBorder: {
-                        show: false
-                    },
-                    axisTicks: {
-                        show: false
-                    }
+                    axisBorder: { show: false },
+                    axisTicks: { show: false }
                 },
                 yaxis: {
                     labels: {
-                        formatter: function (val) {
-                            return 'Rp' + val.toLocaleString('id-ID');
-                        },
-                        style: {
-                            colors: '#6B7280',
-                            fontSize: '12px'
-                        }
-                    }
+                        formatter: val => 'Rp' + val.toLocaleString('id-ID'),
+                        style: { colors: '#6B7280', fontSize: '13px' }
+                    },
+                    forceNiceScale: true
                 },
                 stroke: {
                     curve: 'smooth',
-                    width: 3,
+                    width: 4,
                     colors: ['#3B82F6']
                 },
                 fill: {
                     type: 'gradient',
                     gradient: {
-                        shadeIntensity: 1,
+                        shade: 'light',
+                        type: 'vertical',
+                        shadeIntensity: 0.6,
+                        gradientToColors: ['#60A5FA'], // warna gradien akhir
                         opacityFrom: 0.7,
                         opacityTo: 0.2,
-                        stops: [0, 90, 100]
+                        stops: [0, 80, 100]
                     }
                 },
                 colors: ['#3B82F6'],
                 tooltip: {
                     enabled: true,
-                    style: {
-                        fontSize: '12px',
-                        fontFamily: 'Inter, sans-serif'
-                    },
+                    theme: 'light',
+                    style: { fontSize: '13px', fontFamily: 'Inter, sans-serif' },
                     y: {
-                        formatter: function (val) {
-                            return 'Rp' + val.toLocaleString('id-ID');
-                        }
-                    }
+                        formatter: val => 'Rp' + val.toLocaleString('id-ID'),
+                        title: { formatter: () => 'Saldo' }
+                    },
+                    x: { show: false }
                 },
                 grid: {
-                    borderColor: '#F3F4F6',
+                    borderColor: '#E5E7EB',
                     strokeDashArray: 4,
-                    padding: {
-                        left: 20,
-                        right: 20,
-                        top: 0,
-                        bottom: 0
-                    }
+                    padding: { left: 15, right: 15, top: 5, bottom: 5 }
                 },
                 markers: {
-                    size: 5,
+                    size: 6,
                     colors: ['#3B82F6'],
-                    strokeColors: '#fff',
-                    strokeWidth: 2,
-                    hover: {
-                        size: 7
-                    }
+                    strokeColors: '#FFFFFF',
+                    strokeWidth: 3,
+                    hover: { size: 9 }
                 },
-                dataLabels: {
-                    enabled: false
-                }
+                dataLabels: { enabled: false }
             };
 
             var chart = new ApexCharts(document.querySelector("#tabunganChart"), options);
