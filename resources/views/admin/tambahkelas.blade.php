@@ -60,7 +60,8 @@
                                 </option>
                                 <option value="Sipil" {{ old('jurusan') == 'MM' ? 'selected' : '' }}>Sipil</option>
                                 <option value="Listrik" {{ old('jurusan') == 'AKL' ? 'selected' : '' }}>Listrik</option>
-                                <option value="Mesin" {{ old('jurusan') == 'OTKP' ? 'selected' : '' }}>Mesin</select>
+                                <option value="Mesin" {{ old('jurusan') == 'OTKP' ? 'selected' : '' }}>Mesin
+                                </select>
                         </div>
                         @error('jurusan'))
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
@@ -97,10 +98,7 @@
                             <option value="">-- Pilih Wali Kelas --</option>
                             @foreach($gurus as $guru)
                                 <option value="{{ $guru->id }}" {{ old('guru_id') == $guru->id ? 'selected' : '' }}>
-                                    {{ $guru->name }} ({{ $guru->nip ?? 'N/A' }})
-                                    @if($guru->kelas)
-                                        - {{ $guru->kelas->count() }}
-                                    @endif
+                                    {{ $guru->name }} {{ $guru->kelas->count() > 0 ? ' (Sudah Menjadi wali kelas)' : '' }}
                                 </option>
                             @endforeach
                         </select>
@@ -108,7 +106,6 @@
                     @error('guru_id'))
                         <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                     @enderror
-                    <small class="text-gray-500">jika Ada Huruf 1 Maka Wali Kelas Sudah Di pakai</small>
                 </div>
 
                 <!-- Action Buttons -->
