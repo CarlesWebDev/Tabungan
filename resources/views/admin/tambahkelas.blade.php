@@ -98,6 +98,9 @@
                             @foreach($gurus as $guru)
                                 <option value="{{ $guru->id }}" {{ old('guru_id') == $guru->id ? 'selected' : '' }}>
                                     {{ $guru->name }} ({{ $guru->nip ?? 'N/A' }})
+                                    @if($guru->kelas)
+                                        - {{ $guru->kelas->count() }}
+                                    @endif
                                 </option>
                             @endforeach
                         </select>
@@ -105,6 +108,7 @@
                     @error('guru_id'))
                         <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                     @enderror
+                    <small class="text-gray-500">jika Ada Huruf 1 Maka Wali Kelas Sudah Di pakai</small>
                 </div>
 
                 <!-- Action Buttons -->

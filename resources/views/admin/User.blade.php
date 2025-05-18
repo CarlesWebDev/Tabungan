@@ -258,10 +258,14 @@
                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Status
                             </th>
-                                <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden lg:table-cell">
-                                    Terakhir Aktif
-                                </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden lg:table-cell">
+                                Terakhir Aktif
+                            </th>
+                            {{-- <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden lg:table-cell">
+                                Wali Kelas
+                            </th> --}}
                             <th scope="col"
                                 class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Aksi
                             </th>
@@ -291,6 +295,10 @@
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 hidden lg:table-cell">
                                     {{ $siswa->last_active_at ? $siswa->last_active_at->diffForHumans() : 'Belum pernah' }}
                                 </td>
+                            {{-- <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 hidden lg:table-cell">
+                                {{ $siswa->kelas && $siswa->kelas->guru ? $siswa->kelas->guru->name : '-' }}
+                            </td> --}}
+
                                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                     <div class="flex justify-end space-x-2">
                                         <a href="{{ route('admin.editsiswa', $siswa->id) }}"
