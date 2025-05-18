@@ -106,15 +106,22 @@
             </li> --}}
             <li>
                 <a href="{{ route('Student.notifikasi') }}"
-                 class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
-                    <svg class="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900"
-                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                        <path
-                            d="M8 2a6 6 0 0 1 12 0v12a6 6 0 0 1-12 0V2zm6 5a1 1 0 0 0-1 1v2H9V7a1 1 0 0 0-2 0v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1z" />
+                    class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
+                    <svg class="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" fill="currentColor"
+                        viewBox="0 0 20 20">
+                        <path d="..." />
                     </svg>
                     <span class="ms-3">Notifikasi</span>
+
+                    @if(isset($jumlahNotifikasi) && $jumlahNotifikasi > 0)
+                        <span
+                            class="ml-auto inline-flex items-center justify-center w-5 h-5 text-xs font-semibold text-white bg-red-500 rounded-full">
+                            {{ $jumlahNotifikasi }}
+                        </span>
+                    @endif
                 </a>
             </li>
+
 
             <li>
                 <form action="{{ route('Student.logout') }}" method="POST" id="logout-form">
