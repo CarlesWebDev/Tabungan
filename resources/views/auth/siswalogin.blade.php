@@ -20,11 +20,14 @@
                 <div class="flex flex-col justify-center p-10">
                     <div class="text-center md:text-left mb-8">
                         <div class="flex items-center justify-center md:justify-start mb-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-blue-600" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 19.477 5.754 19 7.5 19s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 19.477 18.247 19 16.5 19c-1.746 0-3.332.477-4.5 1.253" />
-                            </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="lucide lucide-piggy-bank h-8 w-8 text-blue-600"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M19 5c-1.5 0-2.8 1.4-3 2-3.5-1.5-11-.3-11 5 0 1.8 0 3 2 4.5V20h4v-2h3v2h4v-4c1-.5 1.7-1 2-2h2v-4h-2c0-1-.5-1.5-1-2h0V5z">
+                            </path>
+                            <path d="M2 9v1c0 1.1.9 2 2 2h1"></path>
+                            <path d="M16 11h0"></path>
+                        </svg>
                             <span class="ml-2 text-2xl font-bold text-gray-800">EduSavings</span>
                         </div>
                         <h1 class="text-3xl font-bold text-gray-900 mb-2">Masuk Sebagai Siswa</h1>
