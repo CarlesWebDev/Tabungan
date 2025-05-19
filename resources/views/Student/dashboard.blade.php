@@ -89,7 +89,7 @@
             <div class="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-100">
                 <div class="px-6 py-5 border-b border-gray-200">
                     <div class="flex items-center justify-between">
-                        <h3 class="text-lg font-semibold text-gray-900">Perkembangan Tabungan</h3>
+                        <h3 class="text-lg font-semibold text-gray-900">Perkembangan Total Tabungan</h3>
                     </div>
                 </div>
                 <div class="p-4 h-80">
@@ -97,7 +97,7 @@
                 </div>
             </div>
 
-            <!-- Transaksi Terakhir -->
+            <!-- Riwayat Terakhir -->
             <div class="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-100">
                 <div class="px-6 py-5 border-b border-gray-200 flex items-center justify-between">
                     <h3 class="text-lg font-semibold text-gray-900">Riwayat Transaksi</h3>

@@ -35,8 +35,17 @@
                             <h2 class="text-lg font-semibold text-gray-800">Riwayat Transaksi</h2>
                             <p class="text-sm text-gray-500">Siswa: {{ $siswa->name }}</p>
                         </div>
-                        <div class="bg-blue-50 px-3 py-1 rounded-full text-sm font-medium text-blue-700">
-                            Total Transaksi: {{ $riwayat->count() }}
+                        <div class="flex flex-col">
+
+                            <div class="bg-blue-50 px-3 py-1 mb-3 rounded-full text-sm font-medium text-blue-700">
+                                Total Transaksi: {{ $riwayat->count() }}
+                            </div>
+                            <div class="bg-blue-50 px-3 py-1  rounded-full mb-3 text-sm font-medium text-blue-700">
+                                Total Penarikan: {{ $riwayat->where('jenis_penarikan', 'penarikan')->count() }}
+                            </div>
+                            <div class="bg-blue-50 px-3 py-1  rounded-full text-sm font-medium text-blue-700">
+                                Total Pemasukan: {{ $riwayat->where('jenis_penarikan', 'setoran')->count() }}
+                            </div>
                         </div>
                     </div>
                 </div>
