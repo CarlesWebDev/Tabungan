@@ -1,66 +1,160 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <a href="https://laravel.com" target="_blank">
+    <img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo">
+  </a>
 </p>
 
-## About Laravel
+<h1 align="center">Edusavings 💰📚</h1>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+<p align="center">
+  Aplikasi pengelolaan tabungan siswa berbasis web yang modern dan efisien. <br />
+  Dibuat untuk memudahkan proses menabung, pemantauan, dan manajemen transaksi tabungan di lingkungan sekolah.
+</p>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+<p align="center">
+  <img src="https://img.shields.io/badge/PHP-^8.2-777BB4?logo=php" alt="PHP Version">
+  <img src="https://img.shields.io/badge/Laravel-11-FF2D20?logo=laravel" alt="Laravel Framework">
+  <img src="https://img.shields.io/badge/MySQL-Database-4479A1?logo=mysql" alt="MySQL">
+</p>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## 🚀 Sekilas Tentang Edusavings
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+**Edusavings** adalah sistem informasi tabungan siswa berbasis Laravel yang dirancang untuk mempermudah pengelolaan keuangan siswa di lingkungan sekolah. Aplikasi ini mendukung berbagai peran pengguna:
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- 👩‍🏫 **Admin**  
+  Mengelola akun guru dan siswa, memantau laporan keuangan, serta mengatur konfigurasi sistem.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- 🧑‍🏫 **Guru**  
+  Menginput transaksi tabungan siswa, mencetak laporan, dan memantau data siswa.
 
-## Laravel Sponsors
+- 🙋‍♂️ **Siswa**  
+  Melihat riwayat transaksi dan saldo tabungan 
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+---
 
-### Premium Partners
+## ✅ Fitur Utama
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+- Manajemen akun admin, guru, dan siswa
+- Input dan pemrosesan transaksi tabungan
+- Riwayat dan detail tabungan per siswa
+- Statistik tabungan per kelas
+- Fitur ekspor data tabungan ke Excel
+- Antarmuka ramah pengguna & desain responsive
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## 🛠️ Teknologi yang Digunakan
 
-## Code of Conduct
+- **Laravel 11**
+- **PHP 8.2+**
+- **MySQL**
+- **Tailwind CSS**
+- **Vite (untuk build frontend)**
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+---
 
-## Security Vulnerabilities
+## ✅ Prasyarat Sistem
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Pastikan perangkat lunak berikut sudah terinstal dan terkonfigurasi dengan baik di sistem Anda:
 
-## License
+* 🐘 **PHP:** Versi `^8.2` (atau sesuai kebutuhan proyek Anda)
+* 📦 **Composer:** [Versi terbaru](https://getcomposer.org/)
+* 🟢 **Node.js & NPM (atau Yarn):** Versi `^18.0` direkomendasikan
+* 🐬 **Database:** MySQL (Pastikan server database Anda berjalan)
+* 🌿 **Git:** Untuk kloning repositori
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+---
+
+## 📦 Langkah Instalasi
+
+ 1. **Clone repositori**
+```bash
+git clone -b master https://github.com/CARLESMARVINDevvv/Tabungan.git
+```
+
+ 2. **Lalu jalankan `composer install/composer install --no-cache(jika terjadi eror di install composer)`**
+  ```bash
+  composer install
+ ```
+**Atau**
+
+```bash
+composer install --no-cache
+```
+
+3. **lalu Jalankan**
+```bash
+cp .env.example .env
+```
+
+4. **lalu jalankan**
+```bash
+php artisan key:generate
+```
+
+5. **lalu konfigurasi database di file `.env` seperti di bawah ini**
+```bash
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=tabungansiswa
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+6. **lalu jalankan**
+```bash
+php artisan key:generate
+```
+
+7. **lalu jalankan untuk nge link**
+```bash
+php artisan storage:link
+```
+
+8. **lalu install Depedensi Untuk Frontend**
+```bash
+npm install
+```
+
+9. **Lalu jalan untuk `Node.Js nya` Untuk Frontend nya**
+```bash
+npm run dev
+```
+
+**Dan Jalankan untuk migrasi database**
+```bash
+php artisan migarate
+```
+
+10. **lalu jalankan Server Seedernya untuk dummy data(data test)**
+```bash
+php artisan db:seed
+```
+
+11 **lalu jalankan di localhost anda dengan perintah**
+```bash
+php artisan ser
+```
+
+### Selamat Seharusnya Aplikasi Sudah  Bisa Berjalan Di Laptop anda
+
+
+---
+
+### Note :
+### Saat menjalankan seeder
+```bash
+php artisan db:seed
+```
+ ### mungkin ad di bagian  seeder siswa yg g bisa di jalankan jangan khawatir itu tidak ada masalah jika inginseeder siswa ingin bisa jalan anda masuk ke login admin jangan lupa jalankan seedernya dlu speerti perintah di atas lalu buat kelasnya terlebih dahulu lalu jalankan ulang seeder siswanya 
+```bash
+php artisan db:seed --class= nama seeder siswa
+```
+
+Selamat Seharusnya seeder siswa sudah bisa terbuat
+
+
+    
