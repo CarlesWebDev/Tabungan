@@ -589,15 +589,16 @@
                         <p class="text-lg text-blue-100 mb-8">Bergabunglah bersama ribuan siswa yang telah mengamankan masa
                             depan pendidikan mereka. Daftar sekarang dan dapatkan bonus tabungan awal!</p>
                         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                            <button
-                                class="px-8 py-3 bg-white text-blue-700 font-medium rounded-lg hover:bg-gray-100 transition-colors shadow-md flex items-center justify-center">Daftar
-                                Sekarang<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="lucide lucide-arrow-right ml-2 h-5 w-5">
+                            <a href="{{ route('register.guru.form') }}"
+                                class="px-8 py-3 bg-white text-blue-700 font-medium rounded-lg hover:bg-gray-100 transition-colors shadow-md flex items-center justify-center">
+                                Daftar Sekarang
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right ml-2 h-5 w-5">
                                     <path d="M5 12h14"></path>
                                     <path d="m12 5 7 7-7 7"></path>
                                 </svg>
-                            </button>
+                            </a>
+
                         </div>
                     </div>
                 </div>

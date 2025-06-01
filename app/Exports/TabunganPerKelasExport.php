@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Exports;
-
 use App\Models\Tabungan;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
@@ -9,7 +7,6 @@ use Maatwebsite\Excel\Concerns\WithStyles;
 use Maatwebsite\Excel\Concerns\WithEvents;
 use Maatwebsite\Excel\Events\AfterSheet;
 use Maatwebsite\Excel\Concerns\WithColumnFormatting;
-use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 
@@ -22,57 +19,57 @@ class TabunganPerKelasExport implements FromCollection, WithHeadings, WithStyles
         $this->kelasId = $kelasId;
     }
 
-public function collection()
-{
-    $tabunganKelas = Tabungan::with('siswa')
-        ->whereHas('siswa', function ($query) {
-            $query->where('kelas_id', $this->kelasId);
-        })
-        ->get();
+    public function collection()
+    {
+        $tabunganKelas = Tabungan::with('siswa')
+            ->whereHas('siswa', function ($query) {
+                $query->where('kelas_id', $this->kelasId);
+            })
+            ->get();
 
-    $tabunganPerSiswa = $tabunganKelas->groupBy('siswa_id');
+        $tabunganPerSiswa = $tabunganKelas->groupBy('siswa_id');
 
-    $data = collect();
-    $totalSaldoBersih = 0;
+        $data = collect();
+        $totalSaldoBersih = 0;
 
-    foreach ($tabunganPerSiswa as $siswaId => $transaksis) {
-        $namaSiswa = $transaksis->first()->siswa->name;
+        foreach ($tabunganPerSiswa as $siswaId => $transaksis) {
+            $namaSiswa = $transaksis->first()->siswa->name;
 
-        $totalSetoran = $transaksis->where('jenis_penarikan', 'setoran')->sum('jumlah');
-        $totalPenarikan = $transaksis->where('jenis_penarikan', 'penarikan')->sum('jumlah');
-        $saldoBersih = $totalSetoran - $totalPenarikan;
+            $totalSetoran = $transaksis->where('jenis_penarikan', 'setoran')->sum('jumlah');
+            $totalPenarikan = $transaksis->where('jenis_penarikan', 'penarikan')->sum('jumlah');
+            $saldoBersih = $totalSetoran - $totalPenarikan;
 
-        $totalSaldoBersih += $saldoBersih;
+            $totalSaldoBersih += $saldoBersih;
 
-        foreach ($transaksis as $transaksi) {
-            $data->push([
-                'Nama Siswa' => $namaSiswa,
-                'Jenis' => $transaksi->jenis_penarikan,
-                'Jumlah' => $transaksi->jumlah,
-                'Tanggal' => $transaksi->created_at->format('Y-m-d'),
-            ]);
+            foreach ($transaksis as $transaksi) {
+                $data->push([
+                    'Nama Siswa' => $namaSiswa,
+                    'Jenis' => $transaksi->jenis_penarikan,
+                    'Jumlah' => $transaksi->jumlah,
+                    'Tanggal' => $transaksi->created_at->format('Y-m-d'),
+                ]);
+            }
         }
+
+        $jumlahTransaksi = $tabunganKelas->count();
+        $rataRata = $jumlahTransaksi > 0 ? $totalSaldoBersih / $jumlahTransaksi : 0;
+
+        $data->push([
+            'Nama Siswa' => 'TOTAL',
+            'Jenis' => '',
+            'Jumlah' => $totalSaldoBersih,
+            'Tanggal' => '',
+        ]);
+
+        $data->push([
+            'Nama Siswa' => 'RATA-RATA TABUNGAN',
+            'Jenis' => '',
+            'Jumlah' => round($rataRata),
+            'Tanggal' => '',
+        ]);
+
+        return $data;
     }
-
-    $jumlahTransaksi = $tabunganKelas->count();
-    $rataRata = $jumlahTransaksi > 0 ? $totalSaldoBersih / $jumlahTransaksi : 0;
-
-    $data->push([
-        'Nama Siswa' => 'TOTAL',
-        'Jenis' => '',
-        'Jumlah' => $totalSaldoBersih,
-        'Tanggal' => '',
-    ]);
-
-    $data->push([
-        'Nama Siswa' => 'RATA-RATA TABUNGAN',
-        'Jenis' => '',
-        'Jumlah' => round($rataRata),
-        'Tanggal' => '',
-    ]);
-
-    return $data;
-}
 
 
 
@@ -140,9 +137,9 @@ public function collection()
 
     // Format kolom Jumlah sebagai mata uang Rp
     public function columnFormats(): array
-{
-    return [
-        'C' => '"Rp" #,##0', // format angka dengan prefix Rp di depan tanpa desimal
-    ];
-}
+    {
+        return [
+            'C' => '"Rp" #,##0', // format angka dengan prefix Rp di depan tanpa desimal
+        ];
+    }
 }

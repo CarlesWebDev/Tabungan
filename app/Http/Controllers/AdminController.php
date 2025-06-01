@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -27,7 +26,7 @@ class AdminController extends Controller
                     ->orWhere('email', 'like', "%{$searchGuru}%");
             })
             ->paginate(10)
-            ->withQueryString(); // opsional, supaya query string pencarian ikut di pagination link
+            ->withQueryString();
 
         // Ambil kelas pertama (jika perlu)
         $kelas = Kelas::first();
@@ -315,15 +314,14 @@ class AdminController extends Controller
         }
 
 
+        // Update data guru
         $guru->nip = $request->nip;
         $guru->name = $request->name;
         $guru->email = $request->email;
-
         $guru->save();
 
         return redirect()->route('admin.dashboard')->with('success', 'Guru berhasil diubah.');
     }
-
 
 
 
@@ -403,11 +401,12 @@ class AdminController extends Controller
 
 
 
+
+
     // Crud Kelas
     public function Kelas(Request $request)
     {
         $totalSiswa = Siswa::count();
-
 
         $kata_kunci = $request->input('kata_kunci');
 
@@ -423,6 +422,7 @@ class AdminController extends Controller
 
         return view('admin.managementkelas', compact('kelas', 'totalSiswa'));
     }
+
 
 
     public function createkelas()
@@ -486,9 +486,6 @@ class AdminController extends Controller
 
         return redirect()->route('admin.Kelas')->with('success', 'Kelas berhasil diubah.');
     }
-
-
-
 
 
 

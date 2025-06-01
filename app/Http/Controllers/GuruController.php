@@ -110,7 +110,7 @@ class GuruController extends Controller
             'verification_file' => 'required|mimes:pdf,jpg,jpeg,png|max:10240',
         ]);
 
-        // Simpan file verifikasi
+        // Simpan file verifikasip
         $filepath = $request->file('verification_file')->store('verification_files', 'public');
 
         //Simpan Ke Database
@@ -138,6 +138,8 @@ class GuruController extends Controller
         if ($guru) {
             $guru->is_active = false;
             $guru->last_active_at = now();
+            // Gua nambahin ini di hari jumat 23-05-2025
+            $guru = Guru::findOrFail($guru->id);
             $guru->save();
         }
 
@@ -172,6 +174,7 @@ class GuruController extends Controller
 
     //     return view('Teacher.dashboard', compact('totalPemasukan', 'totalPenarikan'));
     // }
+
 
   public function dashboardGuru(Request $request)
 {

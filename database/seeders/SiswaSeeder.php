@@ -22,7 +22,7 @@ class SiswaSeeder extends Seeder
             'password' => Hash::make(' siswaMurid123'),
             // 'password_plaintext' => 'siswaMurid123',
             // 'kelas' => 'XI RPL 1',
-            'kelas_id' => 1,
+            // 'kelas_id' => 1,
             'role' => 'student',
             'created_at' => now(),
             'updated_at' => now(),

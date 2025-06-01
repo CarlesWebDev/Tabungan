@@ -31,7 +31,7 @@ class NotikasiController extends Controller
             ->count();
 
         $guru = Auth::guard('guru')->user();
-        $kelasIds = \App\Models\Kelas::where('guru_id', $guru->id)->pluck('id');
+        $kelasIds = Kelas::where('guru_id', $guru->id)->pluck('id');
 
         $siswas = Siswa::whereIn('kelas_id', $kelasIds)->with('kelas')->get();
         $notifikasis = Notikasi::with(['guru', 'siswa', 'kelas'])
