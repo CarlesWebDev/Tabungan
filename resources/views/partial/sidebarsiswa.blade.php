@@ -26,8 +26,13 @@
                             class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300"
                             aria-expanded="false" data-dropdown-toggle="dropdown-user">
                             <span class="sr-only">Open user menu</span>
-                            <img class="w-8 h-8 rounded-full"
-                                src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="user photo">
+                            <div
+                                class="relative inline-flex items-center justify-center w-8 h-8 overflow-hidden bg-gradient-to-br from-blue-500 to-blue-600 rounded-full">
+                                <span class="font-medium text-sm text-white">
+                                    {{ Auth::guard('siswa')->check() ? strtoupper(substr(Auth::guard('siswa')->user()->name, 0, 1)) : '?' }}
+                                </span>
+                            </div>
+
                         </button>
                     </div>
                     <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-sm shadow-sm"
@@ -74,45 +79,58 @@
         <ul class="space-y-2 font-medium">
             <li>
                 <a href="{{ route('Student.dashboard') }}"
-                    class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
-                    <svg class="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900"
-                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
-                        <path
-                            d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z" />
-                        <path
-                            d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z" />
-                    </svg>
-                    <span class="ms-3">Dashboard</span>
+                    class="flex items-center p-2 rounded-lg transition-colors duration-200 group
+                    {{ request()->routeIs('Student.dashboard') ? 'bg-blue-50 text-blue-600' : 'text-gray-600 hover:bg-gray-100' }}">
+
+                    <!-- Ikon -->
+                    <div class="flex items-center justify-center w-6 h-6 transition-colors duration-200
+                        {{ request()->routeIs('Student.dashboard') ? 'text-blue-600' : 'text-gray-500 group-hover:text-blue-600' }}">
+                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                            viewBox="0 0 22 21">
+                            <path
+                                d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z" />
+                            <path
+                                d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z" />
+                        </svg>
+                    </div>
+                    <span class="ms-3 font-medium">Dashboard</span>
                 </a>
             </li>
+
+
             <li>
-                <a href="{{ route('Student.riwayat') }}"
-                    class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
-                    <svg class="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M14 3h-4V2h-2v1H6a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1z" />
-                    </svg>
-                    <span class="ms-3">Riwayat Tabungan</span>
+                <a href="{{ route('Student.riwayat') }}" class="flex items-center p-2 rounded-lg transition-colors duration-200 group
+                    {{ request()->routeIs('Student.riwayat') ? 'bg-blue-50 text-blue-600' : 'text-gray-600 hover:bg-gray-100' }}">
+
+                    <!-- Ikon -->
+                    <div class="flex items-center justify-center w-6 h-6 transition-colors duration-200
+                        {{ request()->routeIs('Student.riwayat') ? 'text-blue-600' : 'text-gray-500 group-hover:text-blue-600' }}">
+                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                            viewBox="0 0 20 20">
+                            <path d="M14 3h-4V2h-2v1H6a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1z" />
+                        </svg>
+                    </div>
+
+                    <span class="ms-3 font-medium">Riwayat Tabungan</span>
                 </a>
             </li>
-            {{-- <li>
-                <a href="" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
-                    <svg class="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900"
-                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M8 2v6H2v12h16V8h-6V2H8z" />
-                    </svg>
-                    <span class="ms-3">Laporan Tabungan</span>
-                </a>
-            </li> --}}
+
             <li>
                 <a href="{{ route('Student.notifikasi') }}"
-                 class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
-                    <svg class="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                        <path
-                            d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z" />
-                    </svg>
-                    <span class="ms-3">Notifikasi</span>
+                    class="flex items-center p-2 rounded-lg transition-colors duration-200 group
+                    {{ request()->routeIs('Student.notifikasi') ? 'bg-blue-50 text-blue-600' : 'text-gray-600 hover:bg-gray-100' }}">
+
+                    <!-- Ikon -->
+                    <div class="flex items-center justify-center w-6 h-6 transition-colors duration-200
+                        {{ request()->routeIs('Student.notifikasi') ? 'text-blue-600' : 'text-gray-500 group-hover:text-blue-600' }}">
+                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                            viewBox="0 0 20 20">
+                            <path
+                                d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z" />
+                        </svg>
+                    </div>
+
+                    <span class="ms-3 font-medium">Notifikasi</span>
                 </a>
             </li>
 

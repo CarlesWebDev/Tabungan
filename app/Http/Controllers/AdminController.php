@@ -28,7 +28,7 @@ class AdminController extends Controller
             ->paginate(10)
             ->withQueryString();
 
-        // Ambil kelas pertama (jika perlu)
+        // Ambil kelas pertama
         $kelas = Kelas::first();
 
         // Query dengan pencarian untuk siswa dan eager load relasi kelas, paginasi juga
