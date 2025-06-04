@@ -1,10 +1,11 @@
 <?php
 namespace App\Http\Middleware;
 
+use App\Models\User;
+use Carbon\Carbon;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Carbon\Carbon;
 
 class CekAktivitas
 {public function handle(Request $request, Closure $next)
@@ -31,6 +32,7 @@ class CekAktivitas
     if (!$user->last_active_at) {
         $user->last_active_at = Carbon::now();
         $user->is_active = true;
+        $user = User::findOrFail($user->id);
         $user->save();
         return $next($request);
     }
@@ -38,6 +40,7 @@ class CekAktivitas
     // Cek timeout
     if ($user->last_active_at->diffInMinutes(Carbon::now()) > $timeout) {
         $user->is_active = false;
+        $user = User::findOrFail($user->id);
         $user->save();
         Auth::guard($guard)->logout();
 
@@ -53,6 +56,7 @@ class CekAktivitas
     // Update aktivitas
     $user->last_active_at = Carbon::now();
     $user->is_active = true;
+    $user = User::findOrFail($user->id);
     $user->save();
 
     return $next($request);

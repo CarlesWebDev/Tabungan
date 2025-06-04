@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -76,7 +77,6 @@ class AdminController extends Controller
     {
 
         // Ambil semua data siswa, guru, admin dan kelas beserta relasi wali kelas
-
         $siswas = Siswa::with('tabungan')->get();
         $gurus = Guru::all();
         $kelas = Kelas::with('guru')->get();
@@ -335,7 +335,7 @@ class AdminController extends Controller
 
     public function storesiswa(Request $request)
     {
-        // dd($request->all());
+
         $request->validate([
             'nis' => 'required|min:10',
             'name' => 'required',
@@ -415,7 +415,9 @@ class AdminController extends Controller
             ->when($kata_kunci, function ($query, $kata_kunci) {
                 // Filter berdasarkan nama kelas atau jurusan
                 $query->where('nama_kelas', 'like', "%$kata_kunci%")
-                    ->orWhere('jurusan', 'like', "%$kata_kunci%");
+                    ->orWhere('jurusan', 'like', "%$kata_kunci%")
+                    ->orWhere('id', 'like', "%$kata_kunci%")
+                    ->orWhere('tingkat', 'like', "%$kata_kunci%");
             })
             ->paginate(10);
 
@@ -431,7 +433,7 @@ class AdminController extends Controller
         $gurus = Guru::all();
         $kelas = Kelas::all();
         $siswas = Siswa::whereNull('kelas_id')->get();
-        return view('admin.tambahkelas', compact('gurus', 'kelas', 'siswas', ));
+        return view('admin.tambahkelas', compact('gurus', 'kelas', 'siswas',));
     }
 
     public function storeKelas(Request $request)

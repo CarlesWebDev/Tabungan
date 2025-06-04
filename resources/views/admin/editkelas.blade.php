@@ -90,7 +90,7 @@
                             <option value="">-- Pilih Wali Kelas --</option>
                             @foreach($gurus as $guru)
                                 <option value="{{ $guru->id }}" {{ old('guru_id', $kelas->guru_id) == $guru->id ? 'selected' : '' }}>
-                                {{ $guru->name }} {{ $guru->kelas->count() > 0 ? ' (Sudah Menjadi wali kelas)' : '' }}
+                                {{ $guru->name }} <!---{{ $guru->kelas->count() > 0 ? ' (Sudah Menjadi wali kelas)' : '' }}---!>
                                 </option>
                             @endforeach
                         </select>
