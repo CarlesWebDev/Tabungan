@@ -55,12 +55,7 @@ class GuruController extends Controller
                 'nip' => 'Kredensial tidak sesuai.',
             ])->onlyInput('nip', 'password');
         }
-        // Cek apakah akun sudah aktif
-        // if ($guru->is_active) {
-        //     return back()->withErrors([
-        //         'nip' => 'Akun Anda sudah aktif.',
-        //     ])->onlyInput('nip');
-        // }
+
 
 
         // Cek status guru

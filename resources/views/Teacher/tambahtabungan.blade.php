@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="max-w-full mx-auto my-8">
-    <div class="bg-white rounded-xl  overflow-hidden border border-gray-100">
+    <div class=" rounded-xl  overflow-hidden ">
         <!-- Form Header -->
         <div class="bg-gradient-to-r from-emerald-600 to-emerald-800 px-6 py-5">
             <div class="flex items-center justify-between">
