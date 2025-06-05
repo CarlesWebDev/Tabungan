@@ -53,26 +53,6 @@ class AdminController extends Controller
 
 
 
-
-    // ManagemenT kelas
-    // //    public function adminDashboard()
-    // // {
-    // //     $siswas = Siswa::with('tabungan')->get();
-    // //     $gurus = Guru::all();
-
-    // //     // Hitung total tabungan
-    // //     $totalSetoran = Tabungan::where('jenis_penarikan', 'setoran')->sum('jumlah');
-    // //     $totalPenarikan = Tabungan::where('jenis_penarikan', 'penarikan')->sum('jumlah');
-    // //     $totalTabungan = $totalSetoran - $totalPenarikan;
-
-    // //     return view('admin.dashboard', compct('siswas', 'gurus', 'totalTabungan'));
-    // // }
-
-
-
-
-
-
     public function adminDashboard()
     {
 

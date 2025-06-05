@@ -3,7 +3,7 @@
 
 @section('content')
     <div class="min-h-screen flex items-center justify-center  px-6 py-12">
-        <div class="max-w-6xl w-full bg-white rounded-2xl  overflow-hidden">
+        <div class="max-w-full w-full bg-white rounded-2xl  overflow-hidden">
             <div class="grid md:grid-cols-5">
                 <!-- Left Side - Accent Column -->
                 <div class="hidden md:block md:col-span-2 bg-blue-600 relative">

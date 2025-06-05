@@ -45,7 +45,7 @@ Route::get('/admin/export-tabungan-kelas/{kelasId}', function ($kelasId) {
 // Login Routes
 // ==============================
 // Route untuk login admin
-Route::get('/LoginAdmin', [AdminController::class, 'showLoginForm'])->name('login.admin.form');
+Route::get('/Login/Admin', [AdminController::class, 'showLoginForm'])->name('login.admin.form');
 Route::post('/LoginAdmin', [AdminController::class, 'login'])->name('login.admin');
 
 // Route untuk login guru
