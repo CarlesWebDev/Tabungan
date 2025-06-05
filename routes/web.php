@@ -49,7 +49,7 @@ Route::get('/LoginAdmin', [AdminController::class, 'showLoginForm'])->name('logi
 Route::post('/LoginAdmin', [AdminController::class, 'login'])->name('login.admin');
 
 // Route untuk login guru
-Route::get('/LoginGuru', [GuruController::class, 'showLoginFormGuru'])->name('login.guru.form');
+Route::get('/LoginGuru', [GuruController::class, 'showLoginFormGuru'])->name(name: 'login.guru.form');
 Route::post('/LoginGuru', [GuruController::class, 'loginGuru'])->name('login.guru');
 
 // Route untuk login siswa

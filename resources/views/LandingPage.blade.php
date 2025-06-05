@@ -41,12 +41,20 @@
                     </nav>
 
                     <!-- Desktop Buttons -->
-                    <a href="{{ route('login.guru') }}" class="hidden md:flex space-x-4">
-                        <button
-                            class="px-4 py-2 text-white rounded-md bg-blue-600 hover:text-b transition-colors">Masuk</button>
-                        <button
-                            class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors">Daftar</button>
-                    </a>
+                    <div class="hidden md:flex space-x-4">
+                        <a href="{{ route('login.guru') }}">
+                            <button
+                                class="px-4 py-2 bg-white text-blue-600 border border-blue-600 rounded-md hover:bg-blue-50 transition-colors">
+                                Masuk
+                            </button>
+                        </a>
+                        <a href="{{ route('register.guru.form') }}">
+                            <button class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors">
+                                Daftar
+                            </button>
+                        </a>
+                    </div>
+
 
                     <!-- Mobile Menu Button -->
                     <button id="mobile-menu-button" class="md:hidden focus:outline-none">
@@ -589,7 +597,7 @@
                         <p class="text-lg text-blue-100 mb-8">Bergabunglah bersama ribuan siswa yang telah mengamankan masa
                             depan pendidikan mereka. Daftar sekarang dan dapatkan bonus tabungan awal!</p>
                         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                            <a href="{{ route('register.guru.form') }}"
+                            <a href="{{ route('login.guru') }}"
                                 class="px-8 py-3 bg-white text-blue-700 font-medium rounded-lg hover:bg-gray-100 transition-colors shadow-md flex items-center justify-center">
                                 Daftar Sekarang
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
