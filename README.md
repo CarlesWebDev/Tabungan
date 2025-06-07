@@ -145,16 +145,18 @@ php artisan ser
 ---
 
 ### Note :
-### Saat menjalankan seeder
-```bash
-php artisan db:seed
-```
- ### mungkin ad di bagian  seeder siswa yg g bisa di jalankan jangan khawatir itu tidak ada masalah jika inginseeder siswa ingin bisa jalan anda masuk ke login admin jangan lupa jalankan seedernya dlu speerti perintah di atas lalu buat kelasnya terlebih dahulu lalu jalankan ulang seeder siswanya 
-```bash
-php artisan db:seed --class= nama seeder siswa
-```
+### Login Siswa(Dummy/Seeder)
+Jika siswa data dummy(seeder) tidak bisa di loginkan tidak apa itu karna kelas dari id siswa itu sudah di hapus jadi jika ingin login siswa,  buat akun siswa  di panel admin lalu loginkan kembali
 
-Selamat Seharusnya seeder siswa sudah bisa terbuat
+Selamat Seharusnya login siswanya sudah berhasil
 
+
+
+
+---
+
+
+**BUG?**
+### Repair Comming Soon
 
     
