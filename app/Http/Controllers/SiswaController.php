@@ -11,6 +11,48 @@ use App\Models\notikasi;
 class SiswaController extends Controller
 {
 
+    // Ini yg bener tanpa notifikasi di sidebar
+    // public function dashboard()
+    // {
+    //     $siswa = Auth::guard('siswa')->user();
+
+    //     $totalSetoran = Tabungan::where('siswa_id', $siswa->id)
+    //         ->where('jenis_penarikan', 'setoran')
+    //         ->sum('jumlah');
+
+    //     $totalPenarikan = Tabungan::where('siswa_id', $siswa->id)
+    //         ->where('jenis_penarikan', 'penarikan')
+    //         ->sum('jumlah');
+
+    //     $totalTabungan = $totalSetoran - $totalPenarikan;
+
+    //     $transaksiTerakhir = Tabungan::where('siswa_id', $siswa->id)
+    //         ->orderBy('tanggal', 'desc')
+    //         ->take(5)
+    //         ->get();
+
+    //     // Contoh chart bulanan
+    //     $dataPerBulan = Tabungan::selectRaw('MONTH(tanggal) as bulan, SUM(CASE WHEN jenis_penarikan = "setoran" THEN jumlah ELSE -jumlah END) as saldo')
+    //         ->where('siswa_id', $siswa->id)
+    //         ->groupBy('bulan')
+    //         ->orderBy('bulan')
+    //         ->get();
+
+    //     $chartLabels = $dataPerBulan->map(fn($d) => \Carbon\Carbon::create()->month($d->bulan)->format('F'))->toArray();
+    //     $chartData = $dataPerBulan->pluck('saldo')->toArray();
+
+    //     return view('Student.dashboard', compact(
+    //         'totalTabungan',
+    //         'totalSetoran',
+    //         'totalPenarikan',
+    //         'transaksiTerakhir',
+    //         'chartLabels',
+    //         'chartData'
+    //     ));
+    // }
+
+
+
     public function dashboard()
     {
         $siswa = Auth::guard('siswa')->user();
@@ -30,7 +72,6 @@ class SiswaController extends Controller
             ->take(5)
             ->get();
 
-        // Contoh chart bulanan
         $dataPerBulan = Tabungan::selectRaw('MONTH(tanggal) as bulan, SUM(CASE WHEN jenis_penarikan = "setoran" THEN jumlah ELSE -jumlah END) as saldo')
             ->where('siswa_id', $siswa->id)
             ->groupBy('bulan')
@@ -40,15 +81,22 @@ class SiswaController extends Controller
         $chartLabels = $dataPerBulan->map(fn($d) => \Carbon\Carbon::create()->month($d->bulan)->format('F'))->toArray();
         $chartData = $dataPerBulan->pluck('saldo')->toArray();
 
+        // Ambil jumlah notifikasi belum dibaca
+        $unread = Notikasi::where('siswa_id', $siswa->id)
+            ->where('status', 'unread')
+            ->count();
+
         return view('Student.dashboard', compact(
             'totalTabungan',
             'totalSetoran',
             'totalPenarikan',
             'transaksiTerakhir',
             'chartLabels',
-            'chartData'
+            'chartData',
+            'unread'    
         ));
     }
+
 
 
     // Untuk siswa melihat riwayat tabungannya sendiri

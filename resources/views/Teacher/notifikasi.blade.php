@@ -45,6 +45,7 @@
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Pesan</th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Dikirim Pada</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Dibaca Pada</th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Aksi</th>
 
                             </tr>
@@ -76,6 +77,15 @@
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                     {{ \Carbon\Carbon::parse($notif->created_at)->translatedFormat('d/m/Y, H:i') }}
                                 </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    @if($notif->read_at)
+                                        {{ \Carbon\Carbon::parse($notif->read_at)->translatedFormat('d/m/Y, H:i') }}
+                                    @else
+                                        <span class="text-yellow-600">Belum dibaca</span>
+                                    @endif
+                                </td>
+
+
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                     <form action="{{ route('Teacher.notifikasi.hapus', $notif->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus notifikasi ini?')">
                                         @csrf

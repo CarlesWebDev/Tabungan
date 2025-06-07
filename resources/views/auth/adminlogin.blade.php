@@ -1,19 +1,19 @@
 @extends('layouts.login_layout')
 
 @section('content')
-    <div class="min-h-screen  flex items-center justify-center px-4 py-12">
-        <div class="w-full max-5xl bg-white rounded-xl  overflow-hidden flex flex-col md:flex-row">
-            <!-- Left Column - Illustration -->
-            <div class="md:w-1/2  p-12 flex items-center justify-center">
+    <div class="min-h-screen flex items-center justify-center  px-4 py-12">
+        <div class="w-full max-w-6xl overflow-hidden flex flex-col md:flex-row">
+            <!-- Illustration -->
+            <div class="md:w-1/2 p-12 flex items-center justify-center">
                 <div class="text-center text-white">
-                    <img src="https://readymadeui.com/login-image.webp" class="w-full max-w-xs mx-auto mb-8"
+                    <img src="https://readymadeui.com/login-image.webp" class="w-full max-w-xs mx-auto mb-6 rounded-md "
                         alt="Admin Portal Illustration">
                     <h2 class="text-2xl font-bold mb-2">Admin Portal</h2>
                     <p class="opacity-90">Manage your system with powerful administrative tools</p>
                 </div>
             </div>
 
-            <!-- Right Column - Login Form -->
+            <!--  Login Form -->
             <div class="md:w-1/2 p-10">
                 <div class="mb-8">
                     <div class="flex items-center mb-4">
@@ -47,6 +47,8 @@
 
                 <form method="POST" action="{{ route('login.admin') }}" class="space-y-6">
                     @csrf
+
+                    <!-- Email -->
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
                         <div class="relative">
@@ -58,11 +60,12 @@
                                 </svg>
                             </div>
                             <input name="email" type="email" required value="{{ old('email') }}"
-                                class="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                class="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                                 placeholder="admin@example.com">
                         </div>
                     </div>
 
+                    <!-- Password -->
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Password</label>
                         <div class="relative">
@@ -74,12 +77,26 @@
                                         clip-rule="evenodd" />
                                 </svg>
                             </div>
-                            <input name="password" type="password" required
-                                class="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                            <input id="password" name="password" type="password" required
+                                class="block w-full pl-10 pr-10 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                                 placeholder="••••••••">
+                            <button type="button" onclick="togglePasswordVisibility()"
+                                class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-600 hover:text-gray-700">
+                                <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <!-- Ikon Mata Terbuka -->
+                                    <path id="eyeOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    <path id="eyeOpenLine" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                </svg>
+                            </button>
                         </div>
                     </div>
 
+
+
+                    <!-- Remember -->
                     <div class="flex items-center justify-between">
                         <div class="flex items-center">
                             <input id="remember-me" name="remember" type="checkbox"
@@ -91,14 +108,16 @@
                         </div>
                     </div>
 
+                    <!-- Submit -->
                     <div>
                         <button type="submit"
-                            class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150 ease-in-out">
+                            class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition">
                             Sign in
                         </button>
                     </div>
                 </form>
 
+                <!-- Back to Homepage -->
                 <div class="mt-6 text-center">
                     <a href="{{ route('landingpage') }}"
                         class="inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-500">
@@ -114,3 +133,31 @@
         </div>
     </div>
 @endsection
+
+<script>
+    function togglePasswordVisibility() {
+        const passwordField = document.getElementById('password');
+        const eyeIcon = document.getElementById('eyeIcon');
+
+        const isPassword = passwordField.type === 'password';
+        passwordField.type = isPassword ? 'text' : 'password';
+
+        if (isPassword) {
+            // Mata tertutup
+            eyeIcon.innerHTML = `
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M13.875 18.825A10.05 10.05 0 0112 19c-4.477 0-8.268-2.943-9.542-7a9.972 9.972 0 012.166-3.568M6.261 6.261A9.956 9.956 0 0112 5c4.478 0 8.268 2.943 9.542 7a9.972 9.972 0 01-4.107 5.148M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M3 3l18 18" />
+            `;
+        } else {
+            // Mata terbuka
+            eyeIcon.innerHTML = `
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+            `;
+        }
+    }
+</script>

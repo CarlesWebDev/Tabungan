@@ -42,6 +42,11 @@ class GuruController extends Controller
                 'nip' => 'NIP tidak ditemukan.',
             ])->onlyInput('nip', 'password');
         }
+        if (!$guru) {
+            return back()->withErrors([
+                'Password' => 'password yg anda masukan Salah',
+            ])->onlyInput('nip', 'password');
+        }
 
         if ($guru->status == 'pending') {
             return back()->withErrors(['email' => 'Akun Anda sedang dalam tahap pengajuan.'])->onlyInput('email');
