@@ -95,7 +95,7 @@
                                     placeholder="Masukkan kata sandi Anda" />
 
                                 <button type="button" onclick="togglePasswordVisibility()"
-                                    class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-600 hover:text-gray-700">
+                                    class="absolute inset-y-0 right-0 pr-4 flex items-center text-gray-600 hover:text-gray-700">
                                     <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
                                         viewBox="0 0 24 24" stroke="currentColor">
                                         <!-- Mata terbuka default -->

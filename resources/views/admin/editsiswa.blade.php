@@ -56,7 +56,7 @@
             <div>
                 <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap Siswa</label>
                 <input type="text" name="name" id="name"
-                    class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 @error('name') border-red-500 @enderror"
+                    class="w-full px-4 py-2 border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 @error('name') border-red-500 @enderror"
                     value="{{ old('name', $siswa->name) }}" placeholder="Masukkan nama lengkap siswa">
                 @error('name')
                     <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -67,7 +67,7 @@
             <div>
                 <label for="nis" class="block text-sm font-medium text-gray-700 mb-1">Nomor Induk Siswa (NIS)</label>
                 <input type="text" name="nis" id="nis"
-                    class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 @error('nis') border-red-500 @enderror"
+                    class="w-full px-4 py-2 border  rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 @error('nis') border-red-500 @enderror"
                     value="{{ old('nis', $siswa->nis) }}" placeholder="Masukkan NIS siswa">
                 @error('nis')
                     <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -78,7 +78,7 @@
             <div>
                 <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Alamat Email</label>
                 <input type="email" name="email" id="email"
-                    class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 @error('email') border-red-500 @enderror"
+                    class="w-full px-4 py-2 border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 @error('email') border-red-500 @enderror"
                     value="{{ old('email', $siswa->email) }}" placeholder="Masukkan alamat email">
                 @error('email')
                     <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -89,7 +89,7 @@
             <div>
                 <label for="kelas_id" class="block text-sm font-medium text-gray-700 mb-1">Kelas</label>
                 <select name="kelas_id" id="kelas_id"
-                    class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 @error('kelas_id') border-red-500 @enderror">
+                    class="w-full px-4 py-2 border  rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 @error('kelas_id') border-red-500 @enderror">
                     <option value="">-- Pilih Kelas --</option>
                     @foreach($kelas as $kelasItem)
                         <option value="{{ $kelasItem->id }}" {{ old('kelas_id', $siswa->kelas_id) == $kelasItem->id ? 'selected' : '' }}>

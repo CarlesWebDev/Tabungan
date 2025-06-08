@@ -2,11 +2,23 @@
 
 @section('content')
     <div class="max-w-full mx-auto my-8">
-        <div class="bg-white rounded-xl  overflow-hidden">
-            <div class="bg-gradient-to-r from-blue-600 to-blue-800 p-6 text-white">
-                <h2 class="text-2xl font-semibold">Tambah Akun Siswa Baru</h2>
-                <p class="text-blue-100">Isi formulir berikut untuk menambahkan akun siswa baru</p>
+        <div class="bg-white rounded-xl overflow-hidden justify-between">
+        <div class="bg-blue-200 px-6 py-5 mt-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h2 class="text-2xl font-semibold text-black">Tambah Akun Siswa Baru</h2>
+                    <p class="text-black mt-1">Isi formulir berikut untuk menambahkan akun siswa baru</p>
+                </div>
+                <div class="bg-indigo-500 p-3 rounded-lg">
+                    <!-- Ikon Murid -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24"
+                        stroke-width="2" stroke="currentColor">
+                        <path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Z" />
+                        <path d="M20 21a8 8 0 1 0-16 0" />
+                    </svg>
+                </div>
             </div>
+        </div>
 
             <div class="p-8">
                 @if($errors->any())
@@ -79,7 +91,7 @@
 
                                 <!-- Tombol tampil/sembunyi -->
                                 <button type="button" onclick="togglePasswordVisibility()"
-                                    class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-600 hover:text-gray-700">
+                                    class="absolute inset-y-0 right-0 pr-4 flex items-center text-gray-600 hover:text-gray-700">
                                     <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                                         stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

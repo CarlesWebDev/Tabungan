@@ -79,6 +79,7 @@ class GuruController extends Controller
 
             // Update status aktif
             $guru->is_active = true;
+            $guru->last_active_at = now(); 
             $guru->save();
 
             return redirect()->route('Teacher.dashboard');

@@ -152,10 +152,10 @@
             <li>
                 <form action="{{ route('Student.logout') }}" method="POST" id="logout-form">
                     @csrf
-                    <button type="submit"
+                    <button type="button" id="logout-button"
                         class="flex items-center p-2 text-red-500 rounded-lg hover:text-red-900 hover:bg-gray-100 group">
-                        <svg class="shrink-0 w-5 h-5 text-red-500 transition duration-75 group-hover:text-red-500"
-                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16">
+                        <svg class="shrink-0 w-5 h-5 text-red-500 transition duration-75 group-hover:text-red-500" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M4 8h11m0 0-4-4m4 4-4 4m-5 3H3a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h3" />
                         </svg>
@@ -166,3 +166,22 @@
         </ul>
     </div>
 </aside>
+
+<script>
+    document.getElementById('logout-button').addEventListener('click', function () {
+        Swal.fire({
+            title: 'Keluar?',
+            text: "Apakah kamu yakin ingin keluar?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, keluar',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('logout-form').submit();
+            }
+        });
+    });
+</script>

@@ -132,9 +132,8 @@
         </div>
 
         <div class="px-6 py-4 border-b border-gray-200">
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                <h3 class="text-lg font-semibold text-gray-800">Data Guru</h3>
-
+            <div class=" flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <h3 class="text-lg font-semibold text-gray-800"> Cari Guru</h3>
 
                 <form method="GET" action="{{ route('admin.Users') }}"
                     class="flex flex-col md:flex-row items-center gap-2 w-full md:w-auto">

@@ -15,15 +15,17 @@
                 </button>
                 <a href="https://png.pngtree.com/element_our/20190529/ourlarge/pngtree-financial-gold-currency-passbook-illustration-image_1224935.jpg"
                     class="flex ms-2 md:me-24">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="lucide lucide-piggy-bank h-9 w-9 text-blue-600" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="lucide lucide-piggy-bank h-9 w-9 text-blue-600"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
                         <path
                             d="M19 5c-1.5 0-2.8 1.4-3 2-3.5-1.5-11-.3-11 5 0 1.8 0 3 2 4.5V20h4v-2h3v2h4v-4c1-.5 1.7-1 2-2h2v-4h-2c0-1-.5-1.5-1-2h0V5z">
                         </path>
                         <path d="M2 9v1c0 1.1.9 2 2 2h1"></path>
                         <path d="M16 11h0"></path>
                     </svg>
-                    <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap  text-blue-500">EduSaving</span>
+                    <span
+                        class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap  text-blue-500">EduSaving</span>
                 </a>
             </div>
             <div class="flex items-center">
@@ -88,11 +90,11 @@
                 <a href="{{ route('Teacher.dashboard') }}"
                     class="flex items-center p-2 rounded-lg transition-colors duration-200 group
                     {{ request()->routeIs('Teacher.dashboard') ? 'bg-blue-50 text-blue-600' : 'text-gray-600 hover:bg-gray-100' }}">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path fill-rule="evenodd"
-                        d="M3 6a3 3 0 013-3h12a3 3 0 013 3v12a3 3 0 01-3 3H6a3 3 0 01-3-3V6zm6 2a1 1 0 00-2 0v8a1 1 0 002 0V8zm4 4a1 1 0 10-2 0v4a1 1 0 002 0v-4zm3-2a1 1 0 112 0v6a1 1 0 11-2 0V10z"
-                        clip-rule="evenodd" />
-                </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd"
+                            d="M3 6a3 3 0 013-3h12a3 3 0 013 3v12a3 3 0 01-3 3H6a3 3 0 01-3-3V6zm6 2a1 1 0 00-2 0v8a1 1 0 002 0V8zm4 4a1 1 0 10-2 0v4a1 1 0 002 0v-4zm3-2a1 1 0 112 0v6a1 1 0 11-2 0V10z"
+                            clip-rule="evenodd" />
+                    </svg>
                     <span class="ms-3 font-medium">Dashboard</span>
                 </a>
             </li>
@@ -102,8 +104,9 @@
                     class="flex items-center p-2 rounded-lg transition-colors duration-200 group
                     {{ request()->routeIs('Teacher.transaksi') ? 'bg-blue-50 text-blue-600' : 'text-gray-900 hover:bg-gray-100' }}">
                     <svg class="w-5 h-5 transition-colors duration-200
-                        {{ request()->routeIs('Teacher.transaksi') ? 'text-blue-600' : 'text-gray-500 group-hover:text-gray-900' }}" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        {{ request()->routeIs('Teacher.transaksi') ? 'text-blue-600' : 'text-gray-500 group-hover:text-gray-900' }}"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round"
                             d="M2.25 18.75a60.07 60.07 0 0 1 15.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 0 1 3 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 0 0-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 0 1-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 0 0 3 15h-.75M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm3 0h.008v.008H18V10.5Zm-12 0h.008v.008H6V10.5Z" />
                     </svg>
@@ -116,14 +119,15 @@
                     class="flex items-center p-2 rounded-lg transition-colors duration-200 group
                     {{ request()->routeIs('Teacher.createNotifikasi') ? 'bg-blue-50 text-blue-600' : 'text-gray-600 hover:bg-gray-100' }}">
 
-                    <div class="flex items-center justify-center w-6 h-6 transition-colors duration-200
+                    <div
+                        class="flex items-center justify-center w-6 h-6 transition-colors duration-200
                         {{ request()->routeIs('Teacher.createNotifikasi') ? 'text-blue-600' : 'text-gray-500 group-hover:text-blue-600' }}">
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                        class="lucide lucide-bell w-5 h-5 {{ request()->routeIs('Teacher.createNotifikasi') ? 'text-blue-600' : 'text-gray-500 group-hover:text-blue-600' }}"
-                        fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9" />
-                        <path d="M13.73 21a2 2 0 01-3.46 0" />
-                    </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            class="lucide lucide-bell w-5 h-5 {{ request()->routeIs('Teacher.createNotifikasi') ? 'text-blue-600' : 'text-gray-500 group-hover:text-blue-600' }}"
+                            fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9" />
+                            <path d="M13.73 21a2 2 0 01-3.46 0" />
+                        </svg>
                     </div>
 
                     <span class="ms-3 font-medium">Notifikasi</span>
@@ -132,9 +136,9 @@
 
 
             <li>
-                <form method="POST" action="{{ route('Teacher.logout') }}">
+                <form id="logout-form" method="POST" action="{{ route('Teacher.logout') }}">
                     @csrf
-                    <button type="submit"
+                    <button type="button" id="logout-button"
                         class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
                         <svg class="shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900"
                             fill="currentColor" viewBox="0 0 20 20">
@@ -152,14 +156,32 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-            const currentPath = window.location.pathname;
-            const navLinks = document.querySelectorAll('#logo-sidebar a[href]');
-            navLinks.forEach(link => {
-                if (link.getAttribute('href') === currentPath) {
-                    link.classList.add('bg-blue-50', 'text-blue-600');
-                    link.querySelector('div').classList.add('text-blue-600');
-                    link.querySelector('div').classList.remove('text-gray-500', 'group-hover:text-blue-600');
-                }
-            });
+        const currentPath = window.location.pathname;
+        const navLinks = document.querySelectorAll('#logo-sidebar a[href]');
+        navLinks.forEach(link => {
+            if (link.getAttribute('href') === currentPath) {
+                link.classList.add('bg-blue-50', 'text-blue-600');
+                link.querySelector('div').classList.add('text-blue-600');
+                link.querySelector('div').classList.remove('text-gray-500', 'group-hover:text-blue-600');
+            }
         });
+    });
+
+    document.getElementById('logout-button').addEventListener('click', function () {
+        Swal.fire({
+            title: 'Keluar?',
+            text: "Apakah kamu yakin ingin keluar?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, keluar',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('logout-form').submit();
+            }
+        })
+    });
+
 </script>

@@ -69,7 +69,7 @@
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Password</label>
                         <div class="relative">
-                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <div class="absolute inset-y-0 left-0  pl-3 flex items-center pointer-events-none">
                                 <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
                                     fill="currentColor">
                                     <path fill-rule="evenodd"
@@ -81,7 +81,7 @@
                                 class="block w-full pl-10 pr-10 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                                 placeholder="••••••••">
                             <button type="button" onclick="togglePasswordVisibility()"
-                                class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-600 hover:text-gray-700">
+                                class="absolute inset-y-0 right-0 pr-4 flex items-center text-gray-600 hover:text-gray-700">
                                 <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor">
                                     <!-- Ikon Mata Terbuka -->

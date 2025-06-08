@@ -137,10 +137,11 @@
             </li>
         </ul>
         <div class="mt-8 pt-4 border-t border-gray-100">
-            <form method="POST" action="{{ route('admin.logout') }}">
+            <form method="POST" action="{{ route('admin.logout') }}" id="logoutForm">
                 @csrf
-                <button type="submit"
+                <button id="logoutBtn" type="submit"
                     class="flex items-center w-full p-3 text-gray-600 rounded-lg hover:bg-gray-50 group transition-colors duration-200">
+                    <!-- ikon dan teks sama seperti sebelumnya -->
                     <div
                         class="flex items-center justify-center w-6 h-6 text-gray-500 group-hover:text-red-500 transition-colors duration-200">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -169,4 +170,23 @@
             }
         });
     });
+
+    document.getElementById('logoutBtn').addEventListener('click', function (e) {
+            e.preventDefault(); // cegah submit langsung
+
+            Swal.fire({
+                title: 'Apakah kamu yakin ingin keluar?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Keluar',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // submit form logout
+                    document.getElementById('logoutForm').submit();
+                }
+            });
+        });
 </script>

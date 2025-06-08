@@ -4,11 +4,11 @@
 <div class="max-w-full mx-auto my-8">
     <div class=" rounded-xl  overflow-hidden border border-gray-100">
         <!-- Form Header -->
-        <div class="bg-gradient-to-r from-indigo-600 to-indigo-800 px-6 py-5">
+        <div class="bg-blue-300 px-6 py-5">
             <div class="flex items-center justify-between">
                 <div>
-                    <h2 class="text-2xl font-semibold text-white">Tambah Akun Guru Baru</h2>
-                    <p class="text-indigo-100 mt-1">Lengkapi formulir untuk menambahkan data guru baru</p>
+                    <h2 class="text-2xl font-semibold text-black">Tambah Akun Guru Baru</h2>
+                    <p class="text-black mt-1">Lengkapi formulir untuk menambahkan data guru baru</p>
                 </div>
                 <div class="bg-indigo-500 p-3 rounded-lg">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
