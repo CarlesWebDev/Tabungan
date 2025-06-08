@@ -1,16 +1,20 @@
 <?php
+
 namespace App\Exports;
+
 use App\Models\Tabungan;
 use Maatwebsite\Excel\Concerns\FromCollection;
-use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithStyles;
 use Maatwebsite\Excel\Concerns\WithEvents;
 use Maatwebsite\Excel\Events\AfterSheet;
 use Maatwebsite\Excel\Concerns\WithColumnFormatting;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
+use PhpOffice\PhpSpreadsheet\Style\Alignment;
+use PhpOffice\PhpSpreadsheet\Style\Border;
+use PhpOffice\PhpSpreadsheet\Style\Fill;
 
-class TabunganPerKelasExport implements FromCollection, WithHeadings, WithStyles, WithEvents, WithColumnFormatting, ShouldAutoSize
+class TabunganPerKelasExport implements FromCollection, WithStyles, WithEvents, WithColumnFormatting, ShouldAutoSize
 {
     protected $kelasId;
 
@@ -21,15 +25,31 @@ class TabunganPerKelasExport implements FromCollection, WithHeadings, WithStyles
 
     public function collection()
     {
-        $tabunganKelas = Tabungan::with('siswa')
+        $tabunganKelas = Tabungan::with('siswa.kelas.guru')
             ->whereHas('siswa', function ($query) {
                 $query->where('kelas_id', $this->kelasId);
             })
             ->get();
 
         $tabunganPerSiswa = $tabunganKelas->groupBy('siswa_id');
-
         $data = collect();
+
+        // Ambil info kelas
+        $kelas = $tabunganKelas->first()?->siswa?->kelas;
+        $namaKelas = $kelas ? ($kelas->tingkat . ' ' . $kelas->nama_kelas) : '-';
+        $guru = $kelas?->guru?->name ?? '-';
+        $jumlahTransaksi = $tabunganKelas->count();
+
+        // Header informasi
+        $data->push(['LAPORAN TABUNGAN SISWA']);
+        $data->push(['Kelas', $namaKelas]);
+        $data->push(['Wali Kelas', $guru]);
+        $data->push(['Jumlah Transaksi', $jumlahTransaksi]);
+        $data->push([]); // Baris kosong
+
+        // Heading utama
+        $data->push(['Nama Siswa', 'Jenis Transaksi', 'Jumlah', 'Tanggal Transaksi']);
+
         $totalSaldoBersih = 0;
 
         foreach ($tabunganPerSiswa as $siswaId => $transaksis) {
@@ -43,103 +63,198 @@ class TabunganPerKelasExport implements FromCollection, WithHeadings, WithStyles
 
             foreach ($transaksis as $transaksi) {
                 $data->push([
-                    'Nama Siswa' => $namaSiswa,
-                    'Jenis' => $transaksi->jenis_penarikan,
-                    'Jumlah' => $transaksi->jumlah,
-                    'Tanggal' => $transaksi->created_at->format('Y-m-d'),
+                    $namaSiswa,
+                    ucfirst($transaksi->jenis_penarikan),
+                    $transaksi->jumlah,
+                    $transaksi->created_at->format('d-m-Y H:i'),
                 ]);
             }
+
+            // Tambahkan subtotal per siswa
+            $data->push([
+                'Subtotal ' . $namaSiswa,
+                '',
+                $saldoBersih,
+                ''
+            ]);
         }
 
-        $jumlahTransaksi = $tabunganKelas->count();
         $rataRata = $jumlahTransaksi > 0 ? $totalSaldoBersih / $jumlahTransaksi : 0;
 
-        $data->push([
-            'Nama Siswa' => 'TOTAL',
-            'Jenis' => '',
-            'Jumlah' => $totalSaldoBersih,
-            'Tanggal' => '',
-        ]);
+        // Tambahkan baris total
+        $data->push(['TOTAL TABUNGAN', '', $totalSaldoBersih, '']);
 
-        $data->push([
-            'Nama Siswa' => 'RATA-RATA TABUNGAN',
-            'Jenis' => '',
-            'Jumlah' => round($rataRata),
-            'Tanggal' => '',
-        ]);
+        // Tambahkan baris rata-rata
+        $data->push(['RATA-RATA TABUNGAN', '', round($rataRata), '']);
 
         return $data;
     }
 
-
-
-
-
-    public function headings(): array
-    {
-        return [
-            'Nama Siswa',
-            'Jenis',
-            'Jumlah',
-            'Tanggal',
-        ];
-    }
-
-    // Styling header dan baris total
     public function styles(Worksheet $sheet)
     {
-        // Header bold dan background abu muda
-        $sheet->getStyle('A1:D1')->applyFromArray([
-            'font' => ['bold' => true],
+        // Font default dan font family
+        $sheet->getParent()->getDefaultStyle()->getFont()->setName('Calibri')->setSize(11);
+
+        // Merge dan style judul laporan
+        $sheet->mergeCells('A1:D1');
+        $sheet->getStyle('A1')->applyFromArray([
+            'font' => [
+                'bold' => true,
+                'size' => 18,
+                'color' => ['rgb' => 'FFFFFF'],
+            ],
             'fill' => [
-                'fillType' => 'solid',
-                'startColor' => ['rgb' => 'D3D3D3'],
+                'fillType' => Fill::FILL_SOLID,
+                'startColor' => ['rgb' => '1F4E78'], // biru gelap profesional
+            ],
+            'alignment' => [
+                'horizontal' => Alignment::HORIZONTAL_CENTER,
+                'vertical' => Alignment::VERTICAL_CENTER,
+            ],
+            'borders' => [
+                'bottom' => [
+                    'borderStyle' => Border::BORDER_MEDIUM,
+                    'color' => ['rgb' => '000000'],
+                ],
             ],
         ]);
 
-        // Baris total (terakhir) bold dan background kuning muda
-        $lastRow = $sheet->getHighestRow();
-        $sheet->getStyle("A{$lastRow}:D{$lastRow}")->applyFromArray([
-            'font' => ['bold' => true],
-            'fill' => [
-                'fillType' => 'solid',
-                'startColor' => ['rgb' => 'FFFACD'], // LightYellow
-            ],
-            'borders' => [
-                'top' => ['borderStyle' => 'thick', 'color' => ['rgb' => '000000']],
+        // Style untuk info tambahan (Kelas, Wali Kelas, Jumlah Transaksi)
+        $sheet->getStyle('A2:B4')->applyFromArray([
+            'font' => ['bold' => true, 'size' => 12],
+            'alignment' => [
+                'horizontal' => Alignment::HORIZONTAL_LEFT,
+                'vertical' => Alignment::VERTICAL_CENTER,
             ],
         ]);
+        // Tambahkan border bawah untuk pisahkan info tambahan
+        $sheet->getStyle('A4:B4')->getBorders()->getBottom()->setBorderStyle(Border::BORDER_MEDIUM);
+
+        // Style header utama tabel
+        $sheet->getStyle('A6:D6')->applyFromArray([
+            'font' => [
+                'bold' => true,
+                'size' => 12,
+                'color' => ['rgb' => 'FFFFFF'],
+            ],
+            'fill' => [
+                'fillType' => Fill::FILL_SOLID,
+                'startColor' => ['rgb' => '1F4E78'], // konsisten warna biru gelap
+            ],
+            'alignment' => [
+                'horizontal' => Alignment::HORIZONTAL_CENTER,
+                'vertical' => Alignment::VERTICAL_CENTER,
+            ],
+            'borders' => [
+                'allBorders' => [
+                    'borderStyle' => Border::BORDER_THIN,
+                    'color' => ['rgb' => '000000'],
+                ],
+            ],
+        ]);
+
+        $lastRow = $sheet->getHighestRow();
+
+        // Style data transaksi
+        $sheet->getStyle("A7:D{$lastRow}")->applyFromArray([
+            'font' => ['size' => 11],
+            'alignment' => [
+                'horizontal' => Alignment::HORIZONTAL_LEFT,
+                'vertical' => Alignment::VERTICAL_CENTER,
+            ],
+            'borders' => [
+                'allBorders' => [
+                    'borderStyle' => Border::BORDER_THIN,
+                    'color' => ['rgb' => 'CCCCCC'],
+                ],
+            ],
+        ]);
+
+        // Highlight baris subtotal siswa dengan warna latar biru muda dan font tebal
+        foreach (range(7, $lastRow) as $row) {
+            $cellValue = $sheet->getCell("A{$row}")->getValue();
+            if (strpos($cellValue, 'Subtotal') !== false) {
+                $sheet->getStyle("A{$row}:D{$row}")->applyFromArray([
+                    'font' => ['bold' => true],
+                    'fill' => [
+                        'fillType' => Fill::FILL_SOLID,
+                        'startColor' => ['rgb' => 'D9E1F2'], // biru muda lembut
+                    ],
+                    'borders' => [
+                        'top' => [
+                            'borderStyle' => Border::BORDER_MEDIUM,
+                            'color' => ['rgb' => '1F4E78'],
+                        ],
+                        'bottom' => [
+                            'borderStyle' => Border::BORDER_MEDIUM,
+                            'color' => ['rgb' => '1F4E78'],
+                        ],
+                    ],
+                ]);
+            }
+        }
+
+        // Style baris TOTAL dan RATA-RATA (2 baris terakhir)
+        $sheet->getStyle("A" . ($lastRow - 1) . ":D{$lastRow}")->applyFromArray([
+            'font' => [
+                'bold' => true,
+                'size' => 12,
+                'color' => ['rgb' => 'FFFFFF'],
+            ],
+            'fill' => [
+                'fillType' => Fill::FILL_SOLID,
+                'startColor' => ['rgb' => '1F4E78'], // warna biru gelap
+            ],
+            'borders' => [
+                'allBorders' => [
+                    'borderStyle' => Border::BORDER_MEDIUM,
+                    'color' => ['rgb' => '000000'],
+                ],
+            ],
+        ]);
+
+        // Format angka kolom jumlah dengan format mata uang Rp
+        $sheet->getStyle("C7:C{$lastRow}")->getNumberFormat()->setFormatCode('"Rp" #,##0');
+
+        // Format tanggal kolom D dengan format dd MMM yyyy HH:mm (contoh: 08 Jun 2025 14:30)
+        $sheet->getStyle("D7:D{$lastRow}")->getNumberFormat()->setFormatCode('dd MMM yyyy HH:mm');
+
+        // Set lebar kolom khusus jika ingin override auto size
+        // Contoh: nama siswa dan jenis transaksi lebih lebar
+        $sheet->getColumnDimension('A')->setWidth(30);
+        $sheet->getColumnDimension('B')->setWidth(20);
+        $sheet->getColumnDimension('C')->setWidth(15);
+        $sheet->getColumnDimension('D')->setWidth(20);
 
         return [];
     }
 
-    // Event untuk border semua data
+
     public function registerEvents(): array
     {
         return [
             AfterSheet::class => function (AfterSheet $event) {
                 $sheet = $event->sheet->getDelegate();
-                $lastRow = $sheet->getHighestRow();
-                $lastColumn = $sheet->getHighestColumn();
 
-                // Border seluruh tabel
-                $sheet->getStyle("A1:{$lastColumn}{$lastRow}")->applyFromArray([
-                    'borders' => [
-                        'allBorders' => [
-                            'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
-                            'color' => ['rgb' => '000000'],
-                        ],
-                    ],
-                ]);
+                // Set tinggi baris untuk judul
+                $sheet->getRowDimension(1)->setRowHeight(25);
+
+                // Set tinggi baris untuk header
+                $sheet->getRowDimension(6)->setRowHeight(20);
+
+                // Set alignment untuk judul
+                $sheet->getStyle('A1')->getAlignment()->setWrapText(true);
+
+                // Freeze pane pada header
+                $sheet->freezePane('A7');
             },
         ];
     }
 
-    // Format kolom Jumlah sebagai mata uang Rp
     public function columnFormats(): array
     {
         return [
-            'C' => '"Rp" #,##0', // format angka dengan prefix Rp di depan tanpa desimal
+            'C' => '"Rp" #,##0',
         ];
     }
 }
