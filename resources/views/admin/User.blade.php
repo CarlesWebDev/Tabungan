@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <!-- Header Section -->
         <div class="mb-8">
             <h1 class="text-2xl font-bold text-gray-800">Admin Dashboard</h1>
@@ -132,12 +132,26 @@
         </div>
 
         <div class="px-6 py-4 border-b border-gray-200">
-            <h3 class="text-lg font-semibold text-gray-800">Data Guru</h3>
-            <form method="GET" action="{{ route('admin.Users') }}" class="mt-3">
-                <input type="text" name="search_guru" value="{{ request('search_guru') }}" placeholder="Cari guru..."
-                    class="w-full md:w-1/2 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring focus:ring-green-300" />
-            </form>
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <h3 class="text-lg font-semibold text-gray-800">Data Guru</h3>
+
+
+                <form method="GET" action="{{ route('admin.Users') }}"
+                    class="flex flex-col md:flex-row items-center gap-2 w-full md:w-auto">
+                    <input type="text" name="search_guru" value="{{ request('search_guru') }}" placeholder="Cari guru..."
+                        class="w-full md:w-64 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring focus:ring-green-300" />
+                    <div class="flex gap-2">
+                        <button type="submit"
+                            class="px-4 py-2 bg-green-600 hover:bg-green-700 text-sm text-white rounded-md">Cari</button>
+                        <a href="{{ route('admin.Users') }}"
+                            class="px-4 py-2 bg-gray-200 hover:bg-gray-300 text-sm text-gray-800 rounded-md">Reset</a>
+                    </div>
+                </form>
+
+            </div>
         </div>
+
+
         <!-- Teachers Table -->
         <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8">
             <div class="px-6 py-4 border-b border-gray-200">
@@ -226,12 +240,24 @@
         </div>
 
         <div class="px-6 py-4 border-b border-gray-200">
-            <h3 class="text-lg font-semibold text-gray-800">Data Siswa</h3>
-            <form method="GET" action="{{ route('admin.Users') }}" class="mt-3">
-                <input type="text" name="search_siswa" value="{{ request('search_siswa') }}" placeholder="Cari siswa..."
-                    class="w-full md:w-1/2 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300" />
-            </form>
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <h3 class="text-lg font-semibold text-gray-800">Data Siswa</h3>
+                <form method="GET" action="{{ route('admin.Users') }}"
+                    class="flex flex-col md:flex-row items-center gap-2 w-full md:w-auto">
+                    <input type="text" name="search_siswa" value="{{ request('search_siswa') }}" placeholder="Cari siswa..."
+                        class="w-full md:w-64 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300" />
+
+                    <div class="flex gap-2">
+                        <button type="submit"
+                            class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-sm text-white rounded-md">Cari</button>
+                        <a href="{{ route('admin.Users') }}"
+                            class="px-4 py-2 bg-gray-200 hover:bg-gray-300 text-sm text-gray-800 rounded-md">Reset</a>
+                    </div>
+                </form>
+            </div>
         </div>
+
+
         <!-- Siswa Table -->
         <div class="bg-white rounded-lg shadow-md overflow-hidden">
             <div class="px-6 py-4 border-b border-gray-200">

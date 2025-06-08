@@ -134,6 +134,8 @@
     </div>
 @endsection
 
+
+{{-- Logic buat buka eye di password --}}
 <script>
     function togglePasswordVisibility() {
         const passwordField = document.getElementById('password');
