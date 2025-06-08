@@ -20,14 +20,15 @@
                 <div class="flex flex-col justify-center p-10">
                     <div class="text-center md:text-left mb-8">
                         <div class="flex items-center justify-center md:justify-start mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="lucide lucide-piggy-bank h-8 w-8 text-blue-600"
-                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path
-                                d="M19 5c-1.5 0-2.8 1.4-3 2-3.5-1.5-11-.3-11 5 0 1.8 0 3 2 4.5V20h4v-2h3v2h4v-4c1-.5 1.7-1 2-2h2v-4h-2c0-1-.5-1.5-1-2h0V5z">
-                            </path>
-                            <path d="M2 9v1c0 1.1.9 2 2 2h1"></path>
-                            <path d="M16 11h0"></path>
-                        </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                class="lucide lucide-piggy-bank h-8 w-8 text-blue-600" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M19 5c-1.5 0-2.8 1.4-3 2-3.5-1.5-11-.3-11 5 0 1.8 0 3 2 4.5V20h4v-2h3v2h4v-4c1-.5 1.7-1 2-2h2v-4h-2c0-1-.5-1.5-1-2h0V5z">
+                                </path>
+                                <path d="M2 9v1c0 1.1.9 2 2 2h1"></path>
+                                <path d="M16 11h0"></path>
+                            </svg>
                             <span class="ml-2 text-2xl font-bold text-gray-800">EduSavings</span>
                         </div>
                         <h1 class="text-3xl font-bold text-gray-900 mb-2">Masuk Sebagai Siswa</h1>
@@ -82,8 +83,8 @@
 
                                 <button type="button" onclick="togglePasswordVisibility()"
                                     class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-600 hover:text-gray-700">
-                                    <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
+                                    <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
                                         <!-- Mata terbuka default -->
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />

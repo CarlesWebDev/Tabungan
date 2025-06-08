@@ -333,7 +333,7 @@ class AdminController extends Controller
             'role' => 'student',
         ]);
 
-        return redirect()->route('admin.dashboard')->with('success', 'Siswa berhasil ditambahkan.');
+        return redirect()->route('admin.Users')->with('success', 'Siswa berhasil ditambahkan.');
     }
 
     // Edit Siswa

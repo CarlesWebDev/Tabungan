@@ -44,6 +44,7 @@ class NotikasiController extends Controller
 
 
 
+    // Buat kirim  otifikasi ke siswa biar ad tanda notip di sidebarnya
     public function markAsRead($id)
     {
         $notikasi = notikasi::find($id);

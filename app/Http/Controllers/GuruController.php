@@ -42,6 +42,8 @@ class GuruController extends Controller
                 'nip' => 'NIP tidak ditemukan.',
             ])->onlyInput('nip', 'password');
         }
+
+
         if (!$guru) {
             return back()->withErrors([
                 'Password' => 'password yg anda masukan Salah',
@@ -139,7 +141,7 @@ class GuruController extends Controller
             $guru->is_active = false;
             $guru->last_active_at = now();
             // Gua nambahin ini di hari jumat 23-05-2025
-            $guru = Guru::findOrFail($guru->id);
+            // $guru = Guru::findOrFail($guru->id);
             $guru->save();
         }
 
