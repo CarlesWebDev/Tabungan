@@ -95,7 +95,7 @@ php artisan key:generate
 ```
 
 5. **lalu konfigurasi database di file `.env` seperti di bawah ini**
-```bash
+```php
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
