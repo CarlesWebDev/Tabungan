@@ -17,15 +17,13 @@
                 <div class="flex justify-between items-center">
                     <!-- Logo -->
                     <div class="flex items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                            class="lucide lucide-piggy-bank h-8 w-8 text-blue-600" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path
-                                d="M19 5c-1.5 0-2.8 1.4-3 2-3.5-1.5-11-.3-11 5 0 1.8 0 3 2 4.5V20h4v-2h3v2h4v-4c1-.5 1.7-1 2-2h2v-4h-2c0-1-.5-1.5-1-2h0V5z" />
-                            <path d="M2 9v1c0 1.1.9 2 2 2h1" />
-                            <path d="M16 11h0" />
-                        </svg>
-                        <span class="ml-2 text-xl font-bold text-gray-900">EduSavings</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                        class="size-10 text-blue-500">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
+                    </svg>
+
+                        <span class="ml-2 text-xl font-sans font-bold text-blue-500">EduSavings</span>
                     </div>
 
                     <!-- Desktop Nav -->
@@ -93,8 +91,8 @@
             <div class="container mx-auto px-4 md:px-6">
                 <div class="flex flex-col md:flex-row items-center">
                     <div class="md:w-1/2 text-center md:text-left mb-12 md:mb-0">
-                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-4">Tabungan
-                            Cerdas <span class="text-blue-600">untuk Masa Depan Cerah</span></h1>
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-4 font-sans">Tabungan
+                            Cerdas <span class="text-blue-600">Cerdas untuk Masa Depan Gemilang</span></h1>
                         <p class="text-lg md:text-xl text-gray-700 mb-8 max-w-lg mx-auto md:mx-0">EduSavings adalah platform
                             manajemen tabungan siswa yang modern dan efisien. Dengan antarmuka yang ramah pengguna dan
                             sistem yang terintegrasi, EduSavings membantu sekolah mengedukasi siswa tentang pentingnya

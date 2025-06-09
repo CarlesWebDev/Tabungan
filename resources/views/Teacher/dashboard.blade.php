@@ -104,27 +104,37 @@
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Keterangan</th>
                             </tr>
                         </thead>
-                        <tbody class="bg-white divide-y divide-gray-200">
-                            @foreach ($transaksis as $index => $item)
-                                <tr class="hover:bg-gray-50 transition">
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $index + 1 }}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                        {{ $item->nama_siswa }}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $item->nama_guru }}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                        {{ \Carbon\Carbon::parse($item->tanggal)->translatedFormat('d F Y') }}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <span class="px-2 py-1 text-xs font-semibold rounded-full {{ $item->jenis_penarikan == 'setoran' ? 'bg-green-200 text-green-800' : 'bg-red-100 text-red-800' }}">
-                                            {{ ucfirst($item->jenis_penarikan) }}
-                                        </span>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold {{ $item->jenis_penarikan == 'penarikan' ? 'text-red-700' : 'text-green-700' }}">
-                                        Rp{{ number_format($item->jumlah, 0, ',', '.') }}
-                                    </td>
-                                    <td class="px-6 py-4 text-sm text-gray-500 max-w-xs truncate">{{ucfirst($item->keterangan) }}</td>
-                                </tr>
-                            @endforeach
-                        </tbody>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        @forelse ($transaksis as $index => $item)
+                            <tr class="hover:bg-gray-50 transition">
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $index + 1 }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                    {{ $item->nama_siswa }}
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $item->nama_guru }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    {{ \Carbon\Carbon::parse($item->tanggal)->translatedFormat('d F Y') }}
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span
+                                        class="px-2 py-1 text-xs font-semibold rounded-full {{ $item->jenis_penarikan == 'setoran' ? 'bg-green-200 text-green-800' : 'bg-red-100 text-red-800' }}">
+                                        {{ ucfirst($item->jenis_penarikan) }}
+                                    </span>
+                                </td>
+                                <td
+                                    class="px-6 py-4 whitespace-nowrap text-sm font-semibold {{ $item->jenis_penarikan == 'penarikan' ? 'text-red-700' : 'text-green-700' }}">
+                                    Rp{{ number_format($item->jumlah, 0, ',', '.') }}
+                                </td>
+                                <td class="px-6 py-4 text-sm text-gray-500 max-w-xs truncate">{{ ucfirst($item->keterangan) }}</td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="7" class="px-6 py-4 text-center text-sm text-gray-500">
+                                    Tidak ada data transaksi.
+                                </td>
+                            </tr>
+                        @endforelse
+                    </tbody>
                     </table>
                 </div>
             </div>
