@@ -19,28 +19,38 @@ class AdminController extends Controller
         $searchGuru = $request->input('search_guru');
         $searchSiswa = $request->input('search_siswa');
 
-        // Query dengan pencarian untuk guru dan paginasi
+        // Penacarian guru dangan paginasi
         $gurus = Guru::query()
             ->when($searchGuru, function ($query, $searchGuru) {
-                return $query->where('name', 'like', "%{$searchGuru}%")
-                    ->orWhere('nip', 'like', "%{$searchGuru}%")
-                    ->orWhere('email', 'like', "%{$searchGuru}%");
+                $query->where(function ($q) use ($searchGuru) {
+                    $q->where('name', 'like', "%{$searchGuru}%")
+                        ->orWhere('nip', 'like', "%{$searchGuru}%")
+                        ->orWhere('email', 'like', "%{$searchGuru}%");
+                });
             })
             ->paginate(10)
             ->withQueryString();
 
-        // Ambil kelas pertama
+        // ambil data kelas
         $kelas = Kelas::first();
 
-        // Query dengan pencarian untuk siswa dan eager load relasi kelas, paginasi juga
+        // Penacarian siswa dengan paginasi
         $siswas = Siswa::with('kelas')
             ->when($searchSiswa, function ($query, $searchSiswa) {
-                return $query->where('name', 'like', "%{$searchSiswa}%")
-                    ->orWhere('nis', 'like', "%{$searchSiswa}%")
-                    ->orWhere('email', 'like', "%{$searchSiswa}%");
+                $query->where(function ($q) use ($searchSiswa) {
+                    $q->where('name', 'like', "%{$searchSiswa}%")
+                        ->orWhere('nis', 'like', "%{$searchSiswa}%")
+                        ->orWhere('email', 'like', "%{$searchSiswa}%")
+                        ->orWhereHas('kelas', function ($k) use ($searchSiswa) {
+                            $k->where('nama_kelas', 'like', "%{$searchSiswa}%")
+                                ->orWhere('jurusan', 'like', "%{$searchSiswa}%")
+                                ->orWhere('tingkat', 'like', "%{$searchSiswa}%");
+                        });
+                });
             })
             ->paginate(10)
             ->withQueryString();
+
 
         // Statistik
         $guruTidakAktif = Guru::where('is_active', false)->count();
@@ -50,6 +60,7 @@ class AdminController extends Controller
 
         return view('admin.User', compact('gurus', 'siswas', 'kelas', 'guruTidakAktif', 'siswaTidakAktif', 'guruAktif', 'siswaAktif'));
     }
+
 
 
 

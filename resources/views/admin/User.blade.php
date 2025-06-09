@@ -133,7 +133,7 @@
 
         <div class="px-6 py-4 border-b border-gray-200">
             <div class=" flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                <h3 class="text-lg font-semibold text-gray-800"> Cari Guru</h3>
+                <h3 class="text-lg font-semibold text-gray-800"> Data Guru</h3>
 
                 <form method="GET" action="{{ route('admin.Users') }}"
                     class="flex flex-col md:flex-row items-center gap-2 w-full md:w-auto">
@@ -153,9 +153,6 @@
 
         <!-- Teachers Table -->
         <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8">
-            <div class="px-6 py-4 border-b border-gray-200">
-                <h3 class="text-lg font-semibold text-gray-800">Data Guru</h3>
-            </div>
             <div class="overflow-x-auto">
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">
@@ -241,6 +238,8 @@
         <div class="px-6 py-4 border-b border-gray-200">
             <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                 <h3 class="text-lg font-semibold text-gray-800">Data Siswa</h3>
+
+                {{-- Serch Siswa --}}
                 <form method="GET" action="{{ route('admin.Users') }}"
                     class="flex flex-col md:flex-row items-center gap-2 w-full md:w-auto">
                     <input type="text" name="search_siswa" value="{{ request('search_siswa') }}" placeholder="Cari siswa..."
@@ -259,9 +258,6 @@
 
         <!-- Siswa Table -->
         <div class="bg-white rounded-lg shadow-md overflow-hidden">
-            <div class="px-6 py-4 border-b border-gray-200">
-                <h3 class="text-lg font-semibold text-gray-800">Data Siswa</h3>
-            </div>
             <div class="overflow-x-auto">
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">
