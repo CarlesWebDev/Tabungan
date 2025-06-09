@@ -136,6 +136,9 @@ Route::middleware('auth:guru')->prefix('Teacher')->name('Teacher.')->group(funct
 
 
 
+    // Datasiswa
+    Route::get('/datasiswa', [GuruController::class, 'Datasiswa'])->name('datasiswa');
+
     //   Create Notifikasi
     Route::get('/notifikasi', [NotikasiController::class, 'notifikasi'])->name('createNotifikasi');
     Route::get('/notifikasi/create', [NotikasiController::class, 'create'])->name('tambahNotifikasi');

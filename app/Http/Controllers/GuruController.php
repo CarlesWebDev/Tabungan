@@ -79,7 +79,7 @@ class GuruController extends Controller
 
             // Update status aktif
             $guru->is_active = true;
-            $guru->last_active_at = now(); 
+            $guru->last_active_at = now();
             $guru->save();
 
             return redirect()->route('Teacher.dashboard');
@@ -179,38 +179,38 @@ class GuruController extends Controller
     // }
 
 
-  public function dashboardGuru(Request $request)
-{
-    $guru = auth('guru')->user();
+    public function dashboardGuru(Request $request)
+    {
+        $guru = auth('guru')->user();
 
-    // Hitung total pemasukan dan penarikan
-    $totalPemasukan = Tabungan::where('nama_guru', $guru->name)
-        ->where('jenis_penarikan', 'setoran')
-        ->sum('jumlah');
+        // Hitung total pemasukan dan penarikan
+        $totalPemasukan = Tabungan::where('nama_guru', $guru->name)
+            ->where('jenis_penarikan', 'setoran')
+            ->sum('jumlah');
 
-    $totalPenarikan = Tabungan::where('nama_guru', $guru->name)
-        ->where('jenis_penarikan', 'penarikan')
-        ->sum('jumlah');
+        $totalPenarikan = Tabungan::where('nama_guru', $guru->name)
+            ->where('jenis_penarikan', 'penarikan')
+            ->sum('jumlah');
 
-    // Filter transaksi berdasarkan input dari form
-    $transaksiQuery = Tabungan::where('nama_guru', $guru->name);
+        // Filter transaksi berdasarkan input dari form
+        $transaksiQuery = Tabungan::where('nama_guru', $guru->name);
 
-    if ($request->filled('search')) {
-        $transaksiQuery->where('nama_siswa', 'like', '%' . $request->search . '%');
+        if ($request->filled('search')) {
+            $transaksiQuery->where('nama_siswa', 'like', '%' . $request->search . '%');
+        }
+
+        if ($request->filled('tanggal')) {
+            $transaksiQuery->whereDate('tanggal', $request->tanggal);
+        }
+
+        if ($request->filled('jenis')) {
+            $transaksiQuery->where('jenis_penarikan', $request->jenis);
+        }
+
+        $transaksis = $transaksiQuery->latest()->get();
+
+        return view('Teacher.dashboard', compact('totalPemasukan', 'totalPenarikan', 'transaksis'));
     }
-
-    if ($request->filled('tanggal')) {
-        $transaksiQuery->whereDate('tanggal', $request->tanggal);
-    }
-
-    if ($request->filled('jenis')) {
-        $transaksiQuery->where('jenis_penarikan', $request->jenis);
-    }
-
-    $transaksis = $transaksiQuery->latest()->get();
-
-    return view('Teacher.dashboard', compact('totalPemasukan', 'totalPenarikan', 'transaksis'));
-}
 
 
 
@@ -276,6 +276,31 @@ class GuruController extends Controller
 
     //     return redirect()->route('Teacher.transaksi')->with('success', 'Transaksi berhasil dibuat.');
     // }
+
+
+    public function Datasiswa(Request $request)
+    {
+        $guruId = auth('guru')->user()->id;
+
+        $kelasIds = Kelas::where('guru_id', $guruId)->pluck('id');
+
+        $query = Siswa::whereIn('kelas_id', $kelasIds)->with('kelas');
+
+        if ($request->filled('search')) {
+            $keyword = $request->search;
+            $query->where(function ($q) use ($keyword) {
+                $q->where('name', 'like', '%' . $keyword . '%')
+                    ->orWhere('nis', 'like', '%' . $keyword . '%')
+                    ->orWhereHas('kelas', function ($q2) use ($keyword) {
+                        $q2->where('nama_kelas', 'like', '%' . $keyword . '%');
+                    });
+            });
+        }
+
+        $siswas = $query->get();
+
+        return view('Teacher.datasiswa', compact('siswas'));
+    }
 
 
 
