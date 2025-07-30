@@ -127,7 +127,6 @@ class AdminController extends Controller
                 ->count();
 
             // DETAIL SETORAN PER SISWA
-            // DETAIL SETORAN PER SISWA
             $setoranDetailsByKelas[$keyKelas] = Tabungan::where('jenis_penarikan', 'setoran')
                 ->whereHas('siswa', fn($q) => $q->where('kelas_id', $itemKelas->id))
                 ->with('siswa')
@@ -379,7 +378,7 @@ class AdminController extends Controller
 
         $siswa->save();
 
-        return redirect()->route('admin.dashboard')->with('success', 'Siswa berhasil diubah.');
+        return redirect()->route('admin.Users')->with('success', 'Siswa berhasil diubah.');
     }
 
     public function hapusSiswa($id)

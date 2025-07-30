@@ -153,30 +153,7 @@ class GuruController extends Controller
         return redirect()->route('login.guru.form'); // Redirect ke halaman login guru
     }
 
-    // transaksi
-    // public function tabungan()
-    // {
 
-    //     $tabungan = Tabungan::all();
-    //     return view('Teacher.transaksi', compact('tabungan'));
-    // }
-
-
-
-    // public function dashboardGuru()
-    // {
-    //     $guru = auth('guru')->user();
-
-    //     $totalPemasukan = Tabungan::where('nama_guru', $guru->name)
-    //         ->where('jenis_penarikan', 'setoran')
-    //         ->sum('jumlah');
-
-    //     $totalPenarikan = Tabungan::where('nama_guru', $guru->name)
-    //         ->where('jenis_penarikan', 'penarikan')
-    //         ->sum('jumlah');
-
-    //     return view('Teacher.dashboard', compact('totalPemasukan', 'totalPenarikan'));
-    // }
 
 
     public function dashboardGuru(Request $request)
@@ -253,29 +230,6 @@ class GuruController extends Controller
         return view('Teacher.tambahtabungan', compact('siswas'));
     }
 
-
-    // public function storetabungan(Request $request)
-    // {
-    //     $request->validate([
-    //         'siswa_id' => 'required|exists:siswas,id',
-    //         'nama_guru' => 'required|string|max:255',
-    //         'tanggal' => 'required|date',
-    //         'jenis_penarikan' => 'required|in:setoran,penarikan',
-    //         'jumlah' => 'required|numeric',
-    //         'keterangan' => 'required|string|max:255',
-    //     ]);
-
-    //     Tabungan::create([
-    //         'siswa_id' => $request->siswa_id,
-    //         'nama_guru' => $request->nama_guru,
-    //         'tanggal' => $request->tanggal,
-    //         'jenis_penarikan' => $request->jenis_penarikan,
-    //         'jumlah' => $request->jumlah,
-    //         'keterangan' => $request->keterangan,
-    //     ]);
-
-    //     return redirect()->route('Teacher.transaksi')->with('success', 'Transaksi berhasil dibuat.');
-    // }
 
 
     public function Datasiswa(Request $request)

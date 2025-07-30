@@ -1,6 +1,6 @@
 <nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-100 shadow-sm">
     <div class="px-4 py-3 lg:px-6">
-        <div class="flex items-center justify-between">
+        <div class="flex items-center max-w-7xl mx-auto justify-between">
             <div class="flex items-center justify-start rtl:justify-end">
                 <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar"
                     type="button"
@@ -12,7 +12,7 @@
                         </path>
                     </svg>
                 </button>
-                <a href="#" class="flex ms-2 md:me-24 items-center">
+                <a href="#" class="flex ms-2  items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="size-8 text-blue-500">
                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -32,7 +32,7 @@
                             <div
                                 class="relative inline-flex items-center justify-center w-8 h-8 overflow-hidden bg-gradient-to-br from-blue-500 to-blue-600 rounded-full">
                                 <span
-                                    class="font-medium text-sm text-white">{{ strtoupper(substr(Auth::guard('admin')->user()->name, 0, 1)) }}
+                                    class="font-medium  text-sm text-white">{{ strtoupper(substr(Auth::guard('admin')->user()->name, 0, 1)) }}
                                 </span>
                             </div>
                         </button>
@@ -75,11 +75,11 @@
 </nav>
 
 
-<aside id="logo-sidebar"
+<aside id="logo-sidebar "
     class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-100 shadow-sm sm:translate-x-0"
     aria-label="Sidebar">
     <div class="h-full px-3 pb-4 overflow-y-auto bg-white">
-        <ul class="space-y-1">
+        <ul class="space-y-1 ">
             <li>
                 <a href="{{ route('admin.dashboard') }}"
                     class="flex items-center p-3 rounded-lg group transition-colors duration-200 {{ request()->routeIs('admin.dashboard') ? 'bg-blue-50 text-blue-600' : 'text-gray-600 hover:bg-gray-50' }}">

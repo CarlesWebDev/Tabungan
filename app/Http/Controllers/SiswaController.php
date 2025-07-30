@@ -93,7 +93,7 @@ class SiswaController extends Controller
             'transaksiTerakhir',
             'chartLabels',
             'chartData',
-            'unread'    
+            'unread'
         ));
     }
 

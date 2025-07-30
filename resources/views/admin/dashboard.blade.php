@@ -2,12 +2,12 @@
 
 @section('content')
     {{-- Header Dashboard --}}
-    <div class="flex flex-col md:flex-row justify-between items-center gap-4 mt-5 mb-8">
+    <div class="flex flex-col max-w-7xl mx-auto md:flex-row justify-between items-center gap-4 mt-5 mb-8">
         <h1 class="text-2xl sm:text-3xl font-bold text-gray-800">Welcome {{ Auth::user()->name }}</h1>
     </div>
 
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 max-w-7xl mx-auto sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {{-- Student Count --}}
         <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
             <div class="flex items-center p-6">
@@ -84,11 +84,11 @@
 
     {{-- Class Savings Statistics --}}
     <div>
-        <div class="flex justify-between mt-7 items-center mb-6">
+        <div class="flex max-w-7xl mx-auto justify-between mt-7 items-center mb-6">
             <h2 class="text-xl font-bold text-gray-800">Statistik Tabungan Kelas</h2>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+        <div class="grid max-w-7xl mx-auto grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
             @foreach ($totalTabunganPerKelas as $kelas => $total)
                 <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
                     {{-- Class Header --}}
