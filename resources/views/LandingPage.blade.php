@@ -90,7 +90,7 @@
         <section id="beranda" class="pt-24 md:pt-32 pb-16 md:pb-24 bg-gradient-to-br from-blue-50 to-white">
             <div class="container mx-auto px-4 md:px-6">
                 <div class="flex flex-col md:flex-row items-center">
-                    <div class="md:w-1/2 text-center md:text-left mb-12 md:mb-0">
+                    <div class="md:w-1/2 text-center md:text-left  mb-12 md:mb-0">
                         <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-4 font-sans">Tabungan
                             Cerdas <span class="text-blue-600">Cerdas untuk Masa Depan Gemilang</span></h1>
                         <p class="text-lg md:text-xl text-gray-700 mb-8 max-w-lg mx-auto md:mx-0">EduSavings adalah platform

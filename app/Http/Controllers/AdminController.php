@@ -72,6 +72,7 @@ class AdminController extends Controller
         $gurus = Guru::all();
         $kelas = Kelas::with('guru')->get();
 
+         $jumlahRequestAkun = Guru::where('status', 'pending')->count();
 
         // Total setoran & penarikan seluruh siswa
         $totalSetoran = Tabungan::where('jenis_penarikan', 'setoran')->sum('jumlah');
@@ -188,6 +189,7 @@ class AdminController extends Controller
             'setoranDetailsByKelas',
             'penarikanDetailsByKelas',
             'kelasIds',
+            'jumlahRequestAkun'
         ));
     }
 

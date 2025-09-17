@@ -80,6 +80,25 @@
                 </div>
             </div>
         </div>
+        {{-- Request Akun --}}
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+            <div class="flex items-center p-6">
+                <div class="p-3 bg-red-50 rounded-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-red-600" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor" stroke-width="1.5">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5" />
+                    <line x1="12" y1="8" x2="12" y2="16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                    <line x1="8" y1="12" x2="16" y2="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                </svg>
+
+                </div>
+                <div class="ml-4">
+                    <h3 class="text-md font-medium text-gray-500">Request Akun</h3>
+                    <p class="text-2xl font-bold text-gray-800">{{ $jumlahRequestAkun }}</p>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     {{-- Class Savings Statistics --}}
