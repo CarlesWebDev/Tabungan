@@ -623,7 +623,7 @@
             });
         </script>
 
-        <section class="py-16 md:py-24 bg-gray-50">
+        {{-- <section class="py-16 md:py-24 bg-gray-50">
             <div class="container mx-auto px-4 md:px-6">
                 <div class="bg-gradient-to-r from-blue-600 to-blue-800 rounded-2xl p-8 md:p-12 shadow-xl">
                     <div class="max-w-3xl mx-auto text-center">
@@ -646,7 +646,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> --}}
 
         <footer class="bg-gray-900 text-white pt-16 pb-8">
             <div class="container mx-auto px-4 md:px-6">
