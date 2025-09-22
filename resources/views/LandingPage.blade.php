@@ -11,6 +11,7 @@
         @vite('resources/css/app.css')
     </head>
 
+
     <body class="bg-white text-black">
         <header class="fixed w-full z-50 transition-all duration-300 bg-gray-100 py-4 shadow-md">
             <div class="container mx-auto px-4 md:px-6">
@@ -38,20 +39,55 @@
                         <a href="#faq" class="font-medium text-gray-700 hover:text-blue-600 transition-colors">FAQ</a>
                     </nav>
 
-                    <!-- Desktop Buttons -->
-                    <div class="hidden md:flex space-x-4">
-                        <a href="{{ route('login.guru') }}">
-                            <button
-                                class="px-4 py-2 bg-white text-blue-600 border border-blue-600 rounded-md hover:bg-blue-50 transition-colors">
-                                Masuk
+                <div class="hidden md:flex space-x-4">
+                    <button onclick="toggleModal(true)"
+                        class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors">
+                        Masuk / Daftar
+                    </button>
+                </div>
+
+                <!-- Modal -->
+                <div id="roleModal" class="fixed inset-0 bg-black/10 hidden items-center justify-center z-50">
+                    <div class="bg-white rounded-xl shadow-lg w-96 p-6">
+                        <h2 class="text-lg font-semibold text-gray-800 mb-4 text-center">Pilih Role</h2>
+
+                        <div class="space-y-4">
+                            <!-- Login -->
+                            <div>
+                                <h3 class="font-medium text-gray-700 mb-2">Masuk</h3>
+                                <div class="flex space-x-2">
+                                    <a href="{{ route('login.guru') }}"
+                                        class="flex-1 px-3 py-2 text-center bg-blue-100 text-blue-600 rounded-md hover:bg-blue-200 transition">
+                                        Guru
+                                    </a>
+                                    <a href="{{ route('login.siswa') }}"
+                                        class="flex-1 px-3 py-2 text-center bg-green-100 text-green-600 rounded-md hover:bg-green-200 transition">
+                                        Siswa
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Register -->
+                            <div>
+                                <h3 class="font-medium text-gray-700 mb-2">Daftar</h3>
+                                <div class="flex space-x-2">
+                                    <a href="{{ route('register.guru.form') }}"
+                                        class="flex-1 px-3 py-2 text-center bg-blue-600 text-white rounded-md hover:bg-blue-700 transition">
+                                        Guru
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tombol close -->
+                        <div class="mt-6 text-center">
+                            <button onclick="toggleModal(false)"
+                                class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition">
+                                Batal
                             </button>
-                        </a>
-                        <a href="{{ route('register.guru.form') }}">
-                            <button class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors">
-                                Daftar
-                            </button>
-                        </a>
+                        </div>
                     </div>
+                </div>
 
 
                     <!-- Mobile Menu Button -->
@@ -98,8 +134,8 @@
                             sistem yang terintegrasi, EduSavings membantu sekolah mengedukasi siswa tentang pentingnya
                             menabung sejak dini.</p>
                         <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                            <a href="{{ route('login.siswa') }}"
-                                class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors shadow-md flex items-center justify-center">Mulai
+                            {{-- <a href="{{ route('login.siswa') }}"
+                                class="px-6 py-3 bg-blue-600 text-white rounded-lg justify-center hover:bg-blue-700 transition-colors shadow-md flex items-center ">Mulai
                                 Sekarang
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -107,11 +143,12 @@
                                     <path d="M5 12h14"></path>
                                     <path d="m12 5 7 7-7 7"></path>
                                 </svg>
+                            </a> --}}
+                            <a href="#cara-kerja"
+                                class="px-6 py-3 bg-white text-blue-600 border border-blue-600 rounded-lg hover:bg-blue-50 transition-colors">
+                                Pelajari Lebih Lanjut
                             </a>
-                            <button
-                                class="px-6 py-3 bg-white text-blue-600 border border-blue-600 rounded-lg hover:bg-blue-50 transition-colors">Pelajari
-                                Lebih Lanjut
-                            </button>
+
                         </div>
 
                         <div class="mt-8 flex items-center justify-center md:justify-start space-x-4">
@@ -742,6 +779,19 @@
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
         });
+
+       function toggleModal(show) {
+            const modal = document.getElementById('roleModal');
+            if (show) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                document.body.classList.add('overflow-hidden');
+            } else {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                document.body.classList.remove('overflow-hidden');
+            }
+        }
     </script>
 
     </html>
