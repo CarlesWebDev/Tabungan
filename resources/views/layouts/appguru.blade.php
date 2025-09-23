@@ -15,7 +15,7 @@
 <body class="flex flex-col md:flex-row">
     @include('partial.sidebarguru')
 
-    <main class="flex-1 p-4 md:p-10 ml-0 md:ml-64 mt-8">
+    <main class="flex-1 p-4 md:p-10 overflow-x-hidden ml-0 md:ml-64 mt-8">
         @yield('content')
     </main>
 

@@ -95,7 +95,7 @@
                                             <form action="{{ route('Student.markAsRead', $notifikasi->id) }}" method="POST" class="inline-block">
                                                 @csrf
                                                 @method('PATCH')
-                                                <button type="submit" class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+                                                <button type="submit" class="px-2.5 py-0.5 cursor-pointer rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
                                                     Tandai Telah dibaca
                                                 </button>
                                             </form>

@@ -26,6 +26,71 @@ class GuruController extends Controller
     /**
      * Login the guru.
      */
+    // public function loginGuru(Request $request)
+    // {
+    //     $credentials = $request->validate([
+    //         'nip' => 'required|min:18',
+    //         'password' => 'required|min:8',
+    //     ]);
+
+    //     // Ambil data guru berdasarkan NIP
+    //     $guru = Guru::where('nip', $request->nip)->first();
+
+    //     // Cek apakah guru ditemukan
+    //     if (!$guru) {
+    //         return back()->withErrors([
+    //             'nip' => 'NIP tidak ditemukan.',
+    //         ])->onlyInput('nip', 'password');
+    //     }
+
+
+    //     if (!$guru) {
+    //         return back()->withErrors([
+    //             'Password' => 'password yg anda masukan Salah',
+    //         ])->onlyInput('nip', 'password');
+    //     }
+
+    //     if ($guru->status == 'pending') {
+    //         return back()->withErrors(['email' => 'Akun Anda sedang dalam tahap pengajuan.'])->onlyInput('email');
+    //     }
+    //     if ($guru->status == 'rejected') {
+    //         return back()->withErrors(['email' => 'Akun Anda telah ditolak oleh admin.'])->onlyInput('email');
+    //     }
+    //     // Cek apakah password sesuai
+    //     if (!Hash::check($request->password, $guru->password)) {
+    //         return back()->withErrors([
+    //             'nip' => 'Kredensial tidak sesuai.',
+    //         ])->onlyInput('nip', 'password');
+    //     }
+
+
+
+    //     // Cek status guru
+    //     if ($guru->status !== 'active') {
+    //         return back()->withErrors([
+    //             'nip' => 'Akun Anda telah ditolak oleh admin.',
+    //         ])->onlyInput('nip');
+    //     }
+
+
+    //     // Coba login
+    //     if (Auth::guard('guru')->attempt($credentials)) {
+    //         $request->session()->regenerate();
+
+    //         // Update status aktif
+    //         $guru->is_active = true;
+    //         $guru->last_active_at = now();
+    //         $guru->save();
+
+    //         return redirect()->route('Teacher.dashboard');
+    //     }
+
+    //     return back()->withErrors([
+    //         'nip' => 'Kredensial tidak sesuai.',
+    //     ])->onlyInput('nip');
+    // }
+
+
     public function loginGuru(Request $request)
     {
         $credentials = $request->validate([
@@ -36,51 +101,50 @@ class GuruController extends Controller
         // Ambil data guru berdasarkan NIP
         $guru = Guru::where('nip', $request->nip)->first();
 
-        // Cek apakah guru ditemukan
         if (!$guru) {
             return back()->withErrors([
                 'nip' => 'NIP tidak ditemukan.',
             ])->onlyInput('nip', 'password');
         }
 
-
-        if (!$guru) {
-            return back()->withErrors([
-                'Password' => 'password yg anda masukan Salah',
-            ])->onlyInput('nip', 'password');
-        }
-
+        // Cek status akun
         if ($guru->status == 'pending') {
-            return back()->withErrors(['email' => 'Akun Anda sedang dalam tahap pengajuan.'])->onlyInput('email');
+            return back()->withErrors(['nip' => 'Akun Anda sedang dalam tahap pengajuan.'])->onlyInput('nip');
         }
         if ($guru->status == 'rejected') {
-            return back()->withErrors(['email' => 'Akun Anda telah ditolak oleh admin.'])->onlyInput('email');
+            return back()->withErrors(['nip' => 'Akun Anda telah ditolak oleh admin.'])->onlyInput('nip');
         }
-        // Cek apakah password sesuai
+        if ($guru->status !== 'active') {
+            return back()->withErrors(['nip' => 'Akun Anda belum aktif.'])->onlyInput('nip');
+        }
+
+        // Cek password
         if (!Hash::check($request->password, $guru->password)) {
             return back()->withErrors([
-                'nip' => 'Kredensial tidak sesuai.',
+                'password' => 'Password yang Anda masukkan salah.',
             ])->onlyInput('nip', 'password');
         }
 
+        // Login
+        // if (Auth::guard('guru')->attempt($credentials)) {
+        //     $request->session()->regenerate();
 
+        //     // Update status aktif
+        //     $guru->update([
+        //         'is_active' => true,
+        //         'last_active_at' => now(),
+        //     ]);
 
-        // Cek status guru
-        if ($guru->status !== 'active') {
-            return back()->withErrors([
-                'nip' => 'Akun Anda telah ditolak oleh admin.',
-            ])->onlyInput('nip');
-        }
+        //     return redirect()->route('Teacher.dashboard');
+        // }
 
-
-        // Coba login
         if (Auth::guard('guru')->attempt($credentials)) {
             $request->session()->regenerate();
 
-            // Update status aktif
-            $guru->is_active = true;
-            $guru->last_active_at = now();
-            $guru->save();
+            // Update status aktif aja, jangan sentuh last_active_at
+            $guru->update([
+                'is_active' => true,
+            ]);
 
             return redirect()->route('Teacher.dashboard');
         }
@@ -89,6 +153,7 @@ class GuruController extends Controller
             'nip' => 'Kredensial tidak sesuai.',
         ])->onlyInput('nip');
     }
+
 
 
 
@@ -132,27 +197,26 @@ class GuruController extends Controller
     }
 
 
-    public function logoutGuru(Request $request)
-    {
-        // Ambil data guru yang sedang login
-        $guru = Auth::guard('guru')->user();
+    // public function logoutGuru(Request $request)
+    // {
+    //     // Ambil data guru yang sedang login
+    //     $guru = Auth::guard('guru')->user();
 
-        // Update status guru menjadi nonaktif dan simpan ke database
-        if ($guru) {
-            $guru->is_active = false;
-            $guru->last_active_at = now();
-            // Gua nambahin ini di hari jumat 23-05-2025
-            // $guru = Guru::findOrFail($guru->id);
-            $guru->save();
-        }
+    //     // Update status guru menjadi nonaktif dan simpan ke database
+    //     if ($guru) {
+    //         $guru->is_active = false;
+    //         $guru->last_active_at = now();
+    //         // Gua nambahin ini di hari jumat 23-05-2025
+    //         // $guru = Guru::findOrFail($guru->id);
+    //         $guru->save();
+    //     }
 
 
-        Auth::guard('guru')->logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-        return redirect()->route('login.guru.form'); // Redirect ke halaman login guru
-    }
-
+    //     Auth::guard('guru')->logout();
+    //     $request->session()->invalidate();
+    //     $request->session()->regenerateToken();
+    //     return redirect()->route('login.guru.form'); // Redirect ke halaman login guru
+    // }
 
 
 
@@ -343,5 +407,24 @@ class GuruController extends Controller
         $tabungan = Tabungan::findOrFail($id);
         $tabungan->delete();
         return redirect()->route('Teacher.transaksi')->with('success', 'Transaksi berhasil dihapus.');
+    }
+
+
+    public function logoutGuru(Request $request)
+    {
+        $guru = Auth::guard('guru')->user();
+
+        if ($guru) {
+            $guru->update([
+                'is_active' => false,
+                'last_active_at' => now(),
+            ]);
+        }
+
+        Auth::guard('guru')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route('login.guru.form');
     }
 }

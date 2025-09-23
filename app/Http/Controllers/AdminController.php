@@ -482,45 +482,6 @@ class AdminController extends Controller
     }
 
 
-
-    // public function updatekelas(Request $request, $id)
-    // {
-    //     $kelas = Kelas::findOrFail($id);
-
-    //     $request->validate([
-    //         'nama_kelas' => 'required',
-    //         'jurusan' => 'required',
-    //         'tingkat' => 'required',
-    //         'guru_id' => 'required',
-    //     ]);
-
-    //     // Jika ada perubahan guru_id, buat entri kelas baru
-    //     if ($kelas->guru_id != $request->guru_id || $kelas->nama_kelas != $request->nama_kelas) {
-    //         $kelasBaru = Kelas::create([
-    //             'nama_kelas' => $request->nama_kelas,
-    //             'jurusan' => $request->jurusan,
-    //             'tingkat' => $request->tingkat,
-    //             'guru_id' => $request->guru_id,
-    //         ]);
-
-    //         return redirect()->route('admin.Kelas')
-    //             ->with('success', 'Kelas baru berhasil dibuat. Siswa tetap di kelas lama.');
-    //     }
-
-    //     // Jika tidak ada perubahan wali/nama kelas, update seperti biasa
-    //     $kelas->update([
-    //         'nama_kelas' => $request->nama_kelas,
-    //         'jurusan' => $request->jurusan,
-    //         'tingkat' => $request->tingkat,
-    //         'guru_id' => $request->guru_id,
-    //     ]);
-
-    //     return redirect()->route('admin.Kelas')->with('success', 'Kelas berhasil diperbarui.');
-    // }
-
-
-
-
     public function hapuskelas($id)
     {
         $kelas = Kelas::findOrFail($id);
@@ -552,23 +513,6 @@ class AdminController extends Controller
         return view('admin.verivikasiakun', compact('gurus'));
     }
 
-    // public function approveGuru($guruId)
-    // {
-    //     $guru = Guru::findOrFail($guruId);
-    //     $guru->status = 'approved'; // Ubah status menjadi approved
-    //     $guru->save();
-
-    //     return redirect()->back()->with('success', 'Akun guru berhasil disetujui.');
-    // }
-
-    // public function rejectGuru($guruId)
-    // {
-    //     $guru = Guru::findOrFail($guruId);
-    //     $guru->status = 'rejected'; // Ubah status menjadi rejected
-    //     $guru->save();
-
-    //     return redirect()->back()->with('error', 'Akun guru ditolak.');
-    // }
 
 
 

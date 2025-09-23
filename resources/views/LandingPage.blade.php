@@ -111,12 +111,9 @@
                     <a href="#testimonial"
                         class="block py-2 text-gray-700 hover:text-blue-600 transition-colors">Testimonial</a>
                     <a href="#faq" class="block py-2 text-gray-700 hover:text-blue-600 transition-colors">FAQ</a>
-                    <div class="flex flex-col space-y-2 pt-2 border-t border-gray-100">
-                        <button
-                            class="w-full text-left px-4 py-2 text-gray-700 hover:text-blue-600 transition-colors">Masuk</button>
-                        <button
-                            class="w-full text-left px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors">Daftar</button>
-                    </div>
+                    <button onclick="toggleModal(true)"
+                        class="w-full px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors">
+                        Masuk / Daftar
                 </div>
             </div>
         </header>
@@ -134,8 +131,8 @@
                             sistem yang terintegrasi, EduSavings membantu sekolah mengedukasi siswa tentang pentingnya
                             menabung sejak dini.</p>
                         <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                            {{-- <a href="{{ route('login.siswa') }}"
-                                class="px-6 py-3 bg-blue-600 text-white rounded-lg justify-center hover:bg-blue-700 transition-colors shadow-md flex items-center ">Mulai
+                            <button onclick="toggleModal(true)"
+                                class="px-6 py-3 bg-blue-600 md:hidden text-white rounded-lg justify-center hover:bg-blue-700 transition-colors shadow-md flex items-center ">Mulai
                                 Sekarang
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -143,7 +140,7 @@
                                     <path d="M5 12h14"></path>
                                     <path d="m12 5 7 7-7 7"></path>
                                 </svg>
-                            </a> --}}
+                            </button>
                             <a href="#cara-kerja"
                                 class="px-6 py-3 bg-white text-blue-600 border border-blue-600 rounded-lg hover:bg-blue-50 transition-colors">
                                 Pelajari Lebih Lanjut
@@ -623,7 +620,7 @@
             });
         </script>
 
-        {{-- <section class="py-16 md:py-24 bg-gray-50">
+        <section class="py-16 md:py-24 bg-gray-50">
             <div class="container mx-auto px-4 md:px-6">
                 <div class="bg-gradient-to-r from-blue-600 to-blue-800 rounded-2xl p-8 md:p-12 shadow-xl">
                     <div class="max-w-3xl mx-auto text-center">
@@ -646,7 +643,7 @@
                     </div>
                 </div>
             </div>
-        </section> --}}
+        </section>
 
         <footer class="bg-gray-900 text-white pt-16 pb-8">
             <div class="container mx-auto px-4 md:px-6">

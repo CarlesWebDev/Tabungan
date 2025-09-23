@@ -1,46 +1,56 @@
 @extends('layouts.login_layout')
 
 @section('content')
-    <div class="min-h-screen flex items-center justify-center bg-gray-50 px-4 py-8">
-        <div class="w-full max-w-6xl  rounded-xl  overflow-hidden">
+    <div class="min-h-screen flex items-center justify-center  px-4 py-6 sm:px-6 lg:px-8">
+        <div class="w-full max-w-6xl rounded-xl overflow-hidden">
+            {{-- Alert --}}
             @if (session('success'))
                 <div class="fixed top-5 right-5 z-50">
-                    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg shadow-lg"
+                    <div class= text-green-700 px-4 py-3 rounded-lg"
                         role="alert">
-                        <strong class="font-bold">Berhasil!</strong>
+                        <strong class="font-bold">Berhasil login !</strong>
                         <span class="block sm:inline">{{ session('success') }}</span>
                     </div>
                 </div>
             @endif
 
-            <div class="grid md:grid-cols-2 gap-0">
-                <!-- Image Column -->
-                <div class="hidden md:flex items-center justify-center  p-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-0 bg-white rounded-xl">
+                {{-- Image Column --}}
+                <div class="hidden md:flex items-center justify-center p-6 lg:p-10">
                     <div class="text-center w-full">
                         <img src="https://rozzyna.uschoolonline.com/Public/images/Rozzyna_Login_bg.png"
                             class="w-3/4 max-w-xs mx-auto object-contain" alt="Teacher Login Illustration" />
                         <div class="mt-8 text-white">
-                            <h3 class="text-2xl text-blue-500 font-bold mb-2">Sistem Monitoring Tabungan Siswa</h3>
-                            <p class="text-blue-500 text-base">Pantau dan kelola tabungan siswa dengan mudah dan efisien</p>
+                            <h3 class="text-2xl lg:text-3xl text-blue-500 font-bold mb-2">
+                                Sistem Monitoring Tabungan Siswa
+                            </h3>
+                            <p class="text-blue-500 text-base lg:text-lg">
+                                Pantau dan kelola tabungan siswa dengan mudah dan efisien
+                            </p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Form Column -->
-                <div class="flex flex-col justify-center p-8">
+                {{-- Form Column --}}
+                <div class="flex flex-col justify-center p-6 sm:p-8 lg:p-10">
                     <div class="mb-8 text-center md:text-left">
                         <div class="flex items-center justify-center md:justify-start mb-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                class="size-8 text-blue-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-8 h-8 text-blue-500">
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                     d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
                             </svg>
                             <span class="ml-2 text-2xl font-bold text-blue-500">EduSavings</span>
                         </div>
-                        <h1 class="text-3xl font-bold text-gray-900 mb-2">Masuk Sebagai Guru</h1>
-                        <p class="text-gray-600">Gunakan kredensial Anda untuk mengakses dashboard</p>
+                        <h1 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
+                            Masuk Sebagai Guru
+                        </h1>
+                        <p class="text-gray-600 text-sm sm:text-base">
+                            Gunakan kredensial Anda untuk mengakses dashboard
+                        </p>
                     </div>
 
+                    {{-- Error Alert --}}
                     @if ($errors->any())
                         <div class="mb-6 bg-red-50 border-l-4 border-red-500 p-4 rounded">
                             <div class="flex items-center">
@@ -54,13 +64,14 @@
                         </div>
                     @endif
 
+                    {{-- Form --}}
                     <form method="POST" action="{{ route('login.guru') }}" class="space-y-6">
                         @csrf
-
                         {{-- NIP --}}
                         <div>
-                            <label for="nip" class="block text-sm font-medium text-gray-700 mb-2">Nomor Induk Pegawai
-                                (NIP)</label>
+                            <label for="nip" class="block text-sm font-medium text-gray-700 mb-2">
+                                Nomor Induk Pegawai (NIP)
+                            </label>
                             <div class="relative">
                                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                     <svg class="h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
@@ -74,11 +85,11 @@
                             </div>
                         </div>
 
-
-
-                        {{-- password --}}
+                        {{-- Password --}}
                         <div>
-                            <label for="password" class="block text-sm font-medium text-gray-700 mb-2">Kata Sandi</label>
+                            <label for="password" class="block text-sm font-medium text-gray-700 mb-2">
+                                Kata Sandi
+                            </label>
                             <div class="relative">
                                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                     <svg class="h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
@@ -90,12 +101,10 @@
                                 <input id="password" name="password" type="password" required
                                     class="block w-full pl-10 pr-10 py-3 text-sm border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                                     placeholder="Masukkan kata sandi Anda" />
-
                                 <button type="button" onclick="togglePasswordVisibility()"
                                     class="absolute inset-y-0 right-0 pr-4 flex items-center text-gray-600 hover:text-gray-700">
                                     <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
                                         viewBox="0 0 24 24" stroke="currentColor">
-                                        <!-- Mata terbuka default -->
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -105,7 +114,7 @@
                             </div>
                         </div>
 
-
+                        {{-- Remember + Forgot --}}
                         <div class="flex items-center justify-between">
                             <div class="flex items-center">
                                 <input id="remember-me" name="remember-me" type="checkbox"
@@ -114,7 +123,6 @@
                                     Ingat saya
                                 </label>
                             </div>
-
                             <div class="text-sm">
                                 <a href="#" class="font-medium text-blue-600 hover:text-blue-500">
                                     Lupa kata sandi?
@@ -122,6 +130,7 @@
                             </div>
                         </div>
 
+                        {{-- Submit --}}
                         <div>
                             <button type="submit"
                                 class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200">
@@ -130,7 +139,8 @@
                         </div>
                     </form>
 
-                    <div class="mt-8 border-t border-gray-500 pt-6">
+                    {{-- Footer --}}
+                    <div class="mt-8 border-t border-gray-200 pt-6">
                         <div class="text-sm text-center text-gray-600 mb-4">
                             <p class="mb-2">Belum memiliki akun guru?</p>
                             <a href="{{ route('register.guru.form') }}"
@@ -138,7 +148,6 @@
                                 Daftar akun baru
                             </a>
                         </div>
-
                         <div class="text-sm text-center">
                             <p class="text-gray-600">Atau masuk sebagai</p>
                             <a href="{{ route('login.siswa') }}" class="font-medium text-blue-600 hover:text-blue-500">
@@ -162,31 +171,3 @@
         </div>
     </div>
 @endsection
-
-<script>
-    function togglePasswordVisibility() {
-        const passwordField = document.getElementById('password');
-        const eyeIcon = document.getElementById('eyeIcon');
-
-        const isPassword = passwordField.type === 'password';
-        passwordField.type = isPassword ? 'text' : 'password';
-
-        if (isPassword) {
-            // Mata tertutup
-            eyeIcon.innerHTML = `
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M13.875 18.825A10.05 10.05 0 0112 19c-4.477 0-8.268-2.943-9.542-7a9.972 9.972 0 012.166-3.568M6.261 6.261A9.956 9.956 0 0112 5c4.478 0 8.268 2.943 9.542 7a9.972 9.972 0 01-4.107 5.148M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M3 3l18 18" />
-            `;
-        } else {
-            // Mata terbuka
-            eyeIcon.innerHTML = `
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-            `;
-        }
-    }
-</script>

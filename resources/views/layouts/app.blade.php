@@ -18,7 +18,7 @@
     @include('partial.sidebaradmin')
 
 
-    <main class="flex-1 p-4 md:p-10 ml-0 md:ml-64 mt-8">
+    <main class="flex-1 overflow-x-hidden p-4 md:p-10 ml-0 md:ml-64 mt-8">
         @yield('content')
     </main>
 

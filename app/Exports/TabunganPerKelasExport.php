@@ -39,11 +39,15 @@ class TabunganPerKelasExport implements FromCollection, WithStyles, WithEvents, 
         $namaKelas = $kelas ? ($kelas->tingkat . ' ' . $kelas->nama_kelas) : '-';
         $guru = $kelas?->guru?->name ?? '-';
         $jumlahTransaksi = $tabunganKelas->count();
+        // Ambil jumlah siswa
+        $jumlahSiswa = $tabunganKelas->pluck('siswa_id')->unique()->count();
+
 
         // Header informasi
         $data->push(['LAPORAN TABUNGAN SISWA']);
         $data->push(['Kelas', $namaKelas]);
         $data->push(['Wali Kelas', $guru]);
+        $data->push(['Jumlah Siswa', $jumlahSiswa]);
         $data->push(['Jumlah Transaksi', $jumlahTransaksi]);
         $data->push([]); // Baris kosong
 
@@ -105,7 +109,7 @@ class TabunganPerKelasExport implements FromCollection, WithStyles, WithEvents, 
             ],
             'fill' => [
                 'fillType' => Fill::FILL_SOLID,
-                'startColor' => ['rgb' => '1F4E78'], // biru gelap profesional
+                'startColor' => ['rgb' => '2E7D32'], // hijau emerald
             ],
             'alignment' => [
                 'horizontal' => Alignment::HORIZONTAL_CENTER,
@@ -139,7 +143,7 @@ class TabunganPerKelasExport implements FromCollection, WithStyles, WithEvents, 
             ],
             'fill' => [
                 'fillType' => Fill::FILL_SOLID,
-                'startColor' => ['rgb' => '1F4E78'], // konsisten warna biru gelap
+                'startColor' => ['rgb' => '388E3C'], // hijau lebih gelap untuk header tabel
             ],
             'alignment' => [
                 'horizontal' => Alignment::HORIZONTAL_CENTER,
@@ -152,6 +156,7 @@ class TabunganPerKelasExport implements FromCollection, WithStyles, WithEvents, 
                 ],
             ],
         ]);
+
 
         $lastRow = $sheet->getHighestRow();
 
@@ -178,16 +183,16 @@ class TabunganPerKelasExport implements FromCollection, WithStyles, WithEvents, 
                     'font' => ['bold' => true],
                     'fill' => [
                         'fillType' => Fill::FILL_SOLID,
-                        'startColor' => ['rgb' => 'D9E1F2'], // biru muda lembut
+                        'startColor' => ['rgb' => 'C8E6C9'], // hijau muda lembut
                     ],
                     'borders' => [
                         'top' => [
                             'borderStyle' => Border::BORDER_MEDIUM,
-                            'color' => ['rgb' => '1F4E78'],
+                            'color' => ['rgb' => '388E3C'],
                         ],
                         'bottom' => [
                             'borderStyle' => Border::BORDER_MEDIUM,
-                            'color' => ['rgb' => '1F4E78'],
+                            'color' => ['rgb' => '388E3C'],
                         ],
                     ],
                 ]);
@@ -203,7 +208,7 @@ class TabunganPerKelasExport implements FromCollection, WithStyles, WithEvents, 
             ],
             'fill' => [
                 'fillType' => Fill::FILL_SOLID,
-                'startColor' => ['rgb' => '1F4E78'], // warna biru gelap
+                'startColor' => ['rgb' => '1B5E20'], // hijau tua solid
             ],
             'borders' => [
                 'allBorders' => [

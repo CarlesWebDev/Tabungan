@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <!-- Header Section -->
         <div class="mb-8">
             <h1 class="text-2xl font-bold text-gray-800">Admin Dashboard</h1>
@@ -196,7 +196,10 @@
                                     </span>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 hidden lg:table-cell">
-                                    {{ $guru->last_active_at ? $guru->last_active_at->diffForHumans() : 'Belum pernah' }}
+                                    @if($guru->is_active)
+                                    @else
+                                        {{ $guru->last_active_at ? $guru->last_active_at->diffForHumans() : 'Belum pernah' }}
+                                    @endif
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                     <div class="flex justify-end space-x-2">
@@ -283,10 +286,6 @@
                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden lg:table-cell">
                                 Terakhir Aktif
                             </th>
-                            {{-- <th scope="col"
-                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden lg:table-cell">
-                                Wali Kelas
-                            </th> --}}
                             <th scope="col"
                                 class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Aksi
                             </th>
@@ -314,11 +313,12 @@
                                     </span>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 hidden lg:table-cell">
-                                    {{ $siswa->last_active_at ? $siswa->last_active_at->diffForHumans() : 'Belum pernah' }}
+                                    @if($siswa->is_active)
+                                    @else
+                                        {{ $siswa->last_active_at ? $siswa->last_active_at->diffForHumans() : 'Belum pernah' }}
+                                    @endif
                                 </td>
-                            {{-- <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 hidden lg:table-cell">
-                                {{ $siswa->kelas && $siswa->kelas->guru ? $siswa->kelas->guru->name : '-' }}
-                            </td> --}}
+
 
                                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                     <div class="flex justify-end space-x-2">
