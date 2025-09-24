@@ -122,10 +122,13 @@ class AdminController extends Controller
             $jumlahTransaksi = Tabungan::whereHas('siswa', fn($q) => $q->where('kelas_id', $itemKelas->id))->count();
             $rataRataPerTransaksi = $jumlahTransaksi > 0 ? $saldo / $jumlahTransaksi : 0;
 
-            $jumlahSiswa = Siswa::where('kelas_id', $itemKelas->id)
-                ->where('is_active', true)
-                ->whereHas('tabungan')
-                ->count();
+            // $jumlahSiswa = Siswa::where('kelas_id', $itemKelas->id)
+            //     ->where('is_active', true)
+            //     ->whereHas('tabungan')
+            //     ->count();
+
+            $jumlahSiswa = Siswa::where('kelas_id', $itemKelas->id)->count();
+
 
             // DETAIL SETORAN PER SISWA
             $setoranDetailsByKelas[$keyKelas] = Tabungan::where('jenis_penarikan', 'setoran')
@@ -280,7 +283,7 @@ class AdminController extends Controller
         $guru = Guru::findOrFail($id);
         $guru->delete();
 
-        return redirect()->route('admin.dashboard')->with('success', 'Guru berhasil dihapus.');
+        return redirect()->route('admin.Users')->with('success', 'Guru berhasil dihapus.');
     }
 
     public function editguru($id)
@@ -388,7 +391,7 @@ class AdminController extends Controller
         $siswa = Siswa::findOrFail($id);
         $siswa->delete();
 
-        return redirect()->route('admin.dashboard')->with('success', 'Siswa berhasil dihapus.');
+        return redirect()->route('admin.Users')->with('success', 'Siswa berhasil dihapus.');
     }
 
 

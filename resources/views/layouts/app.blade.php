@@ -18,6 +18,7 @@
     @include('partial.sidebaradmin')
 
 
+
     <main class="flex-1 overflow-x-hidden p-4 md:p-10 ml-0 md:ml-64 mt-8">
         @yield('content')
     </main>
@@ -46,6 +47,9 @@
             });
         </script>
     @endif
+
+    <script> window.addEventListener("load", (event) => { setTimeout(() => { let aioa_script_tag = document.createElement("script"); aioa_script_tag.src = "https://www.skynettechnologies.com/accessibility/js/all-in-one-accessibility-js-widget-minify.js?colorcode=#420083&token=&position=bottom_right"; aioa_script_tag.id = "aioa-adawidget"; document.getElementsByTagName("body")[0].appendChild(aioa_script_tag); }, 3000) }); </script>
+
 </body>
 
 

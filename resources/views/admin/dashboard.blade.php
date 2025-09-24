@@ -121,15 +121,21 @@
                         <p class="text-sm text-gray-500 mt-1">
                             WaliKelas: <span class="font-medium">{{ $waliKelas[$kelas] ?? 'Not assigned' }}</span>
                         </p>
+                        <p class="text-sm text-gray-500 mt-1">
+                            Jumlah Siswa :
+                            <span class="font-medium">{{ $jumlahSiswaPerKelas[$kelas] ?? 0 }}</span>
+                        </p>
+
+
                     </div>
 
                     {{-- Statistik --}}
                     <div class="p-6">
                         <div class="grid grid-cols-2 gap-4 mb-4">
-                            <div>
+                            {{-- <div>
                                 <p class="text-sm text-gray-500">Murid Aktif</p>
                                 <p class="font-medium text-gray-800">{{ $jumlahSiswaPerKelas[$kelas] ?? 0 }}</p>
-                            </div>
+                            </div> --}}
                             <div>
                                 <p class="text-sm text-gray-500">Jumlah transaksi</p>
                                 <p class="font-medium text-gray-800">{{ $jumlahTransaksiPerKelas[$kelas] ?? 0 }}</p>

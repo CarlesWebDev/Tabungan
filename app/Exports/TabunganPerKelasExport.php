@@ -1,7 +1,7 @@
 <?php
-
 namespace App\Exports;
-
+use App\Models\Siswa;
+use App\Models\Kelas;
 use App\Models\Tabungan;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithStyles;
@@ -34,13 +34,19 @@ class TabunganPerKelasExport implements FromCollection, WithStyles, WithEvents, 
         $tabunganPerSiswa = $tabunganKelas->groupBy('siswa_id');
         $data = collect();
 
-        // Ambil info kelas
-        $kelas = $tabunganKelas->first()?->siswa?->kelas;
+        // Ambil info kelas langsung
+        $kelas = Kelas::with('guru')->find($this->kelasId);
         $namaKelas = $kelas ? ($kelas->tingkat . ' ' . $kelas->nama_kelas) : '-';
         $guru = $kelas?->guru?->name ?? '-';
+
+        $tabunganKelas = Tabungan::with('siswa')
+            ->whereHas('siswa', fn($q) => $q->where('kelas_id', $this->kelasId))
+            ->get();
+
         $jumlahTransaksi = $tabunganKelas->count();
         // Ambil jumlah siswa
-        $jumlahSiswa = $tabunganKelas->pluck('siswa_id')->unique()->count();
+        // Ambil jumlah siswa di kelas (bukan yang nabung aja)
+        $jumlahSiswa = Siswa::where('kelas_id', $this->kelasId)->count();
 
 
         // Header informasi
