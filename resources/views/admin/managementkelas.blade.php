@@ -60,23 +60,32 @@
             <div class="px-6 py-4 border-b border-gray-200 flex flex-col md:flex-row justify-between items-center">
                 <h3 class="text-lg font-medium text-gray-900 mb-4 md:mb-0">Daftar Kelas</h3>
 
-                <form action="{{ route('admin.cariKelas') }}" method="GET"
-                    class="flex items-center space-x-4 w-full md:w-auto">
-                    <input name="kata_kunci" type="text" placeholder="Cari kelas..."
+                <form action="{{ route('admin.Kelas') }}" method="GET"
+                    class="flex flex-wrap items-center space-x-2 md:space-x-4 w-full md:w-auto">
+                    <input name="kata_kunci" type="text" placeholder="Cari kelas..." value="{{ request('kata_kunci') }}"
                         class="w-full md:w-60 px-3 py-2 border border-gray-300 rounded-md text-sm shadow-sm focus:ring-indigo-500 focus:border-indigo-500 focus:outline-none">
-                    <button type="submit"
-                        class="px-4 py-2 bg-indigo-600 text-white text-xs font-semibold uppercase rounded-md hover:bg-indigo-700 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                        Cari
-                    </button>
+
+                    <select name="jurusan" class="px-3 py-2 border border-gray-300 rounded-md text-sm">
+                        <option value="">Semua Jurusan</option>
+                        <option value="RPL" {{ request('jurusan') == 'RPL' ? 'selected' : '' }}>RPL</option>
+                        <option value="Sipil" {{ request('jurusan') == 'Sipil' ? 'selected' : '' }}>Sipil</option>
+                        <option value="Listrik" {{ request('jurusan') == 'Listrik' ? 'selected' : '' }}>Listrik</option>
+                        <option value="Mesin" {{ request('jurusan') == 'Mesin' ? 'selected' : '' }}>Mesin</option>
+                    </select>
+
+                    <select name="tingkat" class="px-3 py-2 border border-gray-300 rounded-md text-sm">
+                        <option value="">Semua Tingkat</option>
+                        <option value="X" {{ request('tingkat') == 'X' ? 'selected' : '' }}>X</option>
+                        <option value="XI" {{ request('tingkat') == 'XI' ? 'selected' : '' }}>XI</option>
+                        <option value="XII" {{ request('tingkat') == 'XII' ? 'selected' : '' }}>XII</option>
+                        <option value="XIII" {{ request('tingkat') == 'XIII' ? 'selected' : '' }}>XIII</option>
+                    </select>
+
+                    <button type="submit" class="px-4 py-2 bg-indigo-600 text-white rounded-md text-xs font-semibold">Filter</button>
                     <a href="{{ route('admin.Kelas') }}"
-                        class="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 flex items-center">
-                        <svg class="h-5 w-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                        </svg>
-                        Reset
-                    </a>
+                        class="px-4 py-2 border border-gray-300 rounded-md text-xs font-semibold text-gray-700 hover:bg-gray-50">Reset</a>
                 </form>
+
             </div>
 
             <div class="overflow-x-auto">
@@ -120,7 +129,7 @@
                                     </div>
                                 </td>
                                 <td class="px-6 py-4 text-sm text-gray-500">
-                                    {{ $kelass->tingkat }} 
+                                    {{ $kelass->tingkat }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <div class="text-sm text-gray-900">{{ $kelass->guru->name ?? '-' }}</div>

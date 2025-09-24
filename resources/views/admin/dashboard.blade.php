@@ -146,7 +146,7 @@
                         <div class="space-y-3">
                             <div class="flex justify-between items-center">
                                 <span class="text-sm font-medium text-gray-500">Total Tabungan</span>
-                                <span class="font-bold text-green-600">Rp{{ number_format($total, 0, ',', '.') }}</span>
+                                <span class="font-bold text-green-600 text-wrap">Rp{{ number_format($total, 0, ',', '.') }}</span>
                             </div>
                             <div class="flex justify-between items-center">
                                 <span class="text-sm font-medium text-gray-500">Total setoran</span>

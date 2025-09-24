@@ -14,12 +14,61 @@ class AdminController extends Controller
 {
 
     // User
+    // public function Users(Request $request)
+    // {
+    //     $searchGuru = $request->input('search_guru');
+    //     $searchSiswa = $request->input('search_siswa');
+    //     $kelas_id = $request->input('kelas_id');
+
+    //     // Penacarian guru dangan paginasi
+    //     $gurus = Guru::query()
+    //         ->when($searchGuru, function ($query, $searchGuru) {
+    //             $query->where(function ($q) use ($searchGuru) {
+    //                 $q->where('name', 'like', "%{$searchGuru}%")
+    //                     ->orWhere('nip', 'like', "%{$searchGuru}%")
+    //                     ->orWhere('email', 'like', "%{$searchGuru}%");
+    //             });
+    //         })
+    //         ->paginate(10)
+    //         ->withQueryString();
+
+    //     // ambil data kelas
+    //     $kelas = Kelas::first();
+
+    //     // Penacarian siswa dengan paginasi
+    //     $siswas = Siswa::with('kelas')
+    //         ->when($searchSiswa, function ($query, $searchSiswa) {
+    //             $query->where(function ($q) use ($searchSiswa) {
+    //                 $q->where('name', 'like', "%{$searchSiswa}%")
+    //                     ->orWhere('nis', 'like', "%{$searchSiswa}%")
+    //                     ->orWhere('email', 'like', "%{$searchSiswa}%")
+    //                     ->orWhereHas('kelas', function ($k) use ($searchSiswa) {
+    //                         $k->where('nama_kelas', 'like', "%{$searchSiswa}%")
+    //                             ->orWhere('jurusan', 'like', "%{$searchSiswa}%")
+    //                             ->orWhere('tingkat', 'like', "%{$searchSiswa}%");
+    //                     });
+    //             });
+    //         })
+    //         ->paginate(10)
+    //         ->withQueryString();
+
+
+    //     // Statistik
+    //     $guruTidakAktif = Guru::where('is_active', false)->count();
+    //     $siswaTidakAktif = Siswa::where('is_active', false)->count();
+    //     $guruAktif = Guru::where('is_active', true)->count();
+    //     $siswaAktif = Siswa::where('is_active', true)->count();
+
+    //     return view('admin.User', compact('gurus', 'siswas', 'kelas', 'guruTidakAktif', 'siswaTidakAktif', 'guruAktif', 'siswaAktif'));
+    // }
+
     public function Users(Request $request)
     {
         $searchGuru = $request->input('search_guru');
         $searchSiswa = $request->input('search_siswa');
+        $kelas_id = $request->input('kelas_id');
 
-        // Penacarian guru dangan paginasi
+        // Pencarian guru dengan paginasi
         $gurus = Guru::query()
             ->when($searchGuru, function ($query, $searchGuru) {
                 $query->where(function ($q) use ($searchGuru) {
@@ -31,10 +80,10 @@ class AdminController extends Controller
             ->paginate(10)
             ->withQueryString();
 
-        // ambil data kelas
-        $kelas = Kelas::first();
+        // Ambil semua kelas untuk dropdown filter
+        $kelas = Kelas::all();
 
-        // Penacarian siswa dengan paginasi
+        // Pencarian siswa dengan filter kelas + paginasi
         $siswas = Siswa::with('kelas')
             ->when($searchSiswa, function ($query, $searchSiswa) {
                 $query->where(function ($q) use ($searchSiswa) {
@@ -48,9 +97,11 @@ class AdminController extends Controller
                         });
                 });
             })
+            ->when($kelas_id, function ($query, $kelas_id) {
+                $query->where('kelas_id', $kelas_id);
+            })
             ->paginate(10)
             ->withQueryString();
-
 
         // Statistik
         $guruTidakAktif = Guru::where('is_active', false)->count();
@@ -58,10 +109,16 @@ class AdminController extends Controller
         $guruAktif = Guru::where('is_active', true)->count();
         $siswaAktif = Siswa::where('is_active', true)->count();
 
-        return view('admin.User', compact('gurus', 'siswas', 'kelas', 'guruTidakAktif', 'siswaTidakAktif', 'guruAktif', 'siswaAktif'));
+        return view('admin.User', compact(
+            'gurus',
+            'siswas',
+            'kelas',
+            'guruTidakAktif',
+            'siswaTidakAktif',
+            'guruAktif',
+            'siswaAktif'
+        ));
     }
-
-
 
 
     public function adminDashboard()
@@ -261,10 +318,10 @@ class AdminController extends Controller
     public function storeguru(Request $request)
     {
         $request->validate([
-            'nip' => 'required|min:18',
-            'name' => 'required',
+            'nip' => 'required|min:18|unique:gurus,nip',
+            'name' => 'required|string|max:255',
             'email' => 'required|email|unique:gurus,email',
-            'password' => 'required|min:8',
+            'password' => 'required|string|min:8',
         ]);
 
         Guru::create([
@@ -277,6 +334,7 @@ class AdminController extends Controller
 
         return redirect()->route('admin.dashboard')->with('success', 'Guru berhasil ditambahkan.');
     }
+
 
     public function hapusguru($id)
     {
@@ -399,23 +457,51 @@ class AdminController extends Controller
 
 
     // Crud Kelas
+    // public function Kelas(Request $request)
+    // {
+    //     $totalSiswa = Siswa::count();
+
+    //     $kata_kunci = $request->input('kata_kunci');
+
+    //     // Ambil data kelas dengan jumlah siswa, dipaginasi, dan difilter berdasarkan kata kunci
+    //     $kelas = Kelas::withCount('siswas')
+    //         ->when($kata_kunci, function ($query, $kata_kunci) {
+    //             // Filter berdasarkan nama kelas atau jurusan
+    //             $query->where('nama_kelas', 'like', "%$kata_kunci%")
+    //                 ->orWhere('jurusan', 'like', "%$kata_kunci%")
+    //                 ->orWhere('id', 'like', "%$kata_kunci%")
+    //                 ->orWhere('tingkat', 'like', "%$kata_kunci%");
+    //         })
+    //         ->paginate(10);
+
+
+    //     return view('admin.managementkelas', compact('kelas', 'totalSiswa'));
+    // }
+
     public function Kelas(Request $request)
     {
         $totalSiswa = Siswa::count();
 
         $kata_kunci = $request->input('kata_kunci');
 
-        // Ambil data kelas dengan jumlah siswa, dipaginasi, dan difilter berdasarkan kata kunci
+        // filter jurusan dan tingkat
+        $jurusan = $request->input('jurusan');
+        $tingkat = $request->input('tingkat');
+
         $kelas = Kelas::withCount('siswas')
             ->when($kata_kunci, function ($query, $kata_kunci) {
-                // Filter berdasarkan nama kelas atau jurusan
                 $query->where('nama_kelas', 'like', "%$kata_kunci%")
                     ->orWhere('jurusan', 'like', "%$kata_kunci%")
                     ->orWhere('id', 'like', "%$kata_kunci%")
                     ->orWhere('tingkat', 'like', "%$kata_kunci%");
             })
+            ->when($jurusan, function ($query, $jurusan) {
+                $query->where('jurusan', $jurusan);
+            })
+            ->when($tingkat, function ($query, $tingkat) {
+                $query->where('tingkat', $tingkat);
+            })
             ->paginate(10);
-
 
         return view('admin.managementkelas', compact('kelas', 'totalSiswa'));
     }

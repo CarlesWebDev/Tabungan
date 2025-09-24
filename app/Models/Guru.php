@@ -40,7 +40,7 @@ class Guru extends Authenticatable
         return $this->hasMany(Kelas::class);
     }
 
-    
+
     public function siswas()
     {
         return $this->hasMany(Siswa::class);

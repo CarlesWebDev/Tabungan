@@ -243,18 +243,30 @@
                 <h3 class="text-lg font-semibold text-gray-800">Data Siswa</h3>
 
                 {{-- Serch Siswa --}}
-                <form method="GET" action="{{ route('admin.Users') }}"
-                    class="flex flex-col md:flex-row items-center gap-2 w-full md:w-auto">
-                    <input type="text" name="search_siswa" value="{{ request('search_siswa') }}" placeholder="Cari siswa..."
-                        class="w-full md:w-64 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300" />
+            <form method="GET" action="{{ route('admin.Users') }}"
+                class="flex flex-col md:flex-row items-center gap-2 w-full md:w-auto">
 
-                    <div class="flex gap-2">
-                        <button type="submit"
-                            class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-sm text-white rounded-md">Cari</button>
-                        <a href="{{ route('admin.Users') }}"
-                            class="px-4 py-2 bg-gray-200 hover:bg-gray-300 text-sm text-gray-800 rounded-md">Reset</a>
-                    </div>
-                </form>
+                <input type="text" name="search_siswa" value="{{ request('search_siswa') }}" placeholder="Cari siswa..."
+                    class="w-full md:w-64 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300" />
+
+                <select name="kelas_id"
+                    class="w-full md:w-48 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300">
+                    <option value="">Semua Kelas</option>
+                    @foreach($kelas as $k)
+                        <option value="{{ $k->id }}" {{ request('kelas_id') == $k->id ? 'selected' : '' }}>
+                            {{ $k->tingkat }} {{ $k->nama_kelas }}
+                        </option>
+                    @endforeach
+                </select>
+
+                <div class="flex gap-2">
+                    <button type="submit"
+                        class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-sm text-white rounded-md">Cari</button>
+                    <a href="{{ route('admin.Users') }}"
+                        class="px-4 py-2 bg-gray-200 hover:bg-gray-300 text-sm text-gray-800 rounded-md">Reset</a>
+                </div>
+            </form>
+
             </div>
         </div>
 

@@ -96,11 +96,20 @@
                             class="focus:ring-blue-500 focus:border-blue-500 block w-full px-4 py-3 sm:text-sm border-gray-300 rounded-lg border"
                             required>
                             <option value="">-- Pilih Wali Kelas --</option>
-                            @foreach($gurus as $guru)
+                            {{-- @foreach($gurus as $guru)
                                 <option value="{{ $guru->id }}" {{ old('guru_id') == $guru->id ? 'selected' : '' }}>
                                     {{ $guru->name }} {{ $guru->kelas->count() > 0 ? ' (Sudah Menjadi wali kelas)' : '' }}
                                 </option>
+                            @endforeach --}}
+
+                            @foreach($gurus as $guru)
+                                @if($guru->kelas->count() === 0)
+                                    <option value="{{ $guru->id }}" {{ old('guru_id') == $guru->id ? 'selected' : '' }}>
+                                        {{ $guru->name }}
+                                    </option>
+                                @endif
                             @endforeach
+
                         </select>
                     </div>
                     @error('guru_id'))
