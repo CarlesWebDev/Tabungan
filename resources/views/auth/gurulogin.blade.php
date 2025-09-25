@@ -8,7 +8,7 @@
                 <div class="fixed top-5 right-5 z-50">
                     <div class= text-green-700 px-4 py-3 rounded-lg"
                         role="alert">
-                        <strong class="font-bold">Berhasil login !</strong>
+                        <strong class="font-bold"></strong>
                         <span class="block sm:inline">{{ session('success') }}</span>
                     </div>
                 </div>

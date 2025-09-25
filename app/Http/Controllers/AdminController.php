@@ -330,6 +330,8 @@ class AdminController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'role' => 'teacher',
+            'status' => 'active',
+            'is_active' => true,
         ]);
 
         return redirect()->route('admin.dashboard')->with('success', 'Guru berhasil ditambahkan.');
@@ -618,8 +620,9 @@ class AdminController extends Controller
     {
         $guru = Guru::findOrFail($id);
         $guru->status = 'rejected';
-        $guru->save();
-        return redirect()->route('admin.verifikasiakun')->with('error', 'Akun guru ditolak.');
+        // $guru->save();
+        $guru->delete();
+        return redirect()->route('admin.verifikasiakun')->with('error', 'Akun guru telah ditolak.');
     }
 
 
