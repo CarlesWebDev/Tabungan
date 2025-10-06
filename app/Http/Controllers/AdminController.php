@@ -558,7 +558,8 @@ class AdminController extends Controller
             'jurusan' => 'required',
             'tingkat' => 'required',
             // 'jumlah_siswa' => 'required',
-            'guru_id' => 'required',
+            'guru_id' => 'required|unique:kelas,guru_id,' . $kelas->id, 
+
         ]);
 
         $kelas->nama_kelas = $request->nama_kelas;
