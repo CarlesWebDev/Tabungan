@@ -605,7 +605,6 @@
                     showSlide(currentIndex);
                 }
 
-                // Event listeners
                 prevButton.addEventListener('click', prevSlide);
                 nextButton.addEventListener('click', nextSlide);
 
