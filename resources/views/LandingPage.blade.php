@@ -552,7 +552,6 @@
                     aria-label="Slide 3" data-carousel-slide-to="2"></button>
             </div>
 
-            <!-- Slider controls -->
             <button type="button"
                 class="absolute top-1/2 left-4 z-10 flex items-center justify-center w-10 h-10 bg-white/50 rounded-full shadow hover:bg-white/80 transition-colors group focus:outline-none"
                 data-carousel-prev>
