@@ -458,7 +458,6 @@
             </div>
         </section>
 
-        <!-- Carousel Flowbite -->
         <div id="testimonial" class="relative w-full max-w-4xl mx-auto" data-carousel="slide">
             <div class="relative h-96 overflow-hidden rounded-2xl">
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
