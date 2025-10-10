@@ -90,7 +90,6 @@
                     </div>
 
 
-                    <!-- Mobile Menu Button -->
                     <button id="mobile-menu-button" class="md:hidden focus:outline-none">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-900" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
