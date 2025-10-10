@@ -616,7 +616,6 @@
                     });
                 });
 
-                // Auto-rotate (optional)
                 let interval = setInterval(nextSlide, 5000);
 
                 carousel.addEventListener('mouseenter', () => clearInterval(interval));
