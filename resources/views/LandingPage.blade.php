@@ -18,11 +18,11 @@
                 <div class="flex justify-between items-center">
                     <!-- Logo -->
                     <div class="flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                        class="size-10 text-blue-500">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
-                    </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="size-10 text-blue-500">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
+                        </svg>
 
                         <span class="ml-2 text-xl font-sans font-bold text-blue-500">EduSavings</span>
                     </div>
@@ -39,55 +39,55 @@
                         <a href="#faq" class="font-medium text-gray-700 hover:text-blue-600 transition-colors">FAQ</a>
                     </nav>
 
-                <div class="hidden md:flex space-x-4">
-                    <button onclick="toggleModal(true)"
-                        class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors">
-                        Masuk / Daftar
-                    </button>
-                </div>
+                    <div class="hidden md:flex space-x-4">
+                        <button onclick="toggleModal(true)"
+                            class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors">
+                            Masuk / Daftar
+                        </button>
+                    </div>
 
-                <!-- Modal -->
-                <div id="roleModal" class="fixed inset-0 bg-black/10 hidden items-center justify-center z-50">
-                    <div class="bg-white rounded-xl shadow-lg w-96 p-6">
-                        <h2 class="text-lg font-semibold text-gray-800 mb-4 text-center">Pilih Role</h2>
+                    <!-- Modal -->
+                    <div id="roleModal" class="fixed inset-0 bg-black/10 hidden items-center justify-center z-50">
+                        <div class="bg-white rounded-xl shadow-lg w-96 p-6">
+                            <h2 class="text-lg font-semibold text-gray-800 mb-4 text-center">Pilih Role</h2>
 
-                        <div class="space-y-4">
-                            <!-- Login -->
-                            <div>
-                                <h3 class="font-medium text-gray-700 mb-2">Masuk</h3>
-                                <div class="flex space-x-2">
-                                    <a href="{{ route('login.guru') }}"
-                                        class="flex-1 px-3 py-2 text-center bg-blue-100 text-blue-600 rounded-md hover:bg-blue-200 transition">
-                                        Guru
-                                    </a>
-                                    <a href="{{ route('login.siswa') }}"
-                                        class="flex-1 px-3 py-2 text-center bg-green-100 text-green-600 rounded-md hover:bg-green-200 transition">
-                                        Siswa
-                                    </a>
+                            <div class="space-y-4">
+                                <!-- Login -->
+                                <div>
+                                    <h3 class="font-medium text-gray-700 mb-2">Masuk</h3>
+                                    <div class="flex space-x-2">
+                                        <a href="{{ route('login.guru') }}"
+                                            class="flex-1 px-3 py-2 text-center bg-blue-100 text-blue-600 rounded-md hover:bg-blue-200 transition">
+                                            Guru
+                                        </a>
+                                        <a href="{{ route('login.siswa') }}"
+                                            class="flex-1 px-3 py-2 text-center bg-green-100 text-green-600 rounded-md hover:bg-green-200 transition">
+                                            Siswa
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- Register -->
+                                <div>
+                                    <h3 class="font-medium text-gray-700 mb-2">Daftar</h3>
+                                    <div class="flex space-x-2">
+                                        <a href="{{ route('register.guru.form') }}"
+                                            class="flex-1 px-3 py-2 text-center bg-blue-600 text-white rounded-md hover:bg-blue-700 transition">
+                                            Guru
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
 
-                            <!-- Register -->
-                            <div>
-                                <h3 class="font-medium text-gray-700 mb-2">Daftar</h3>
-                                <div class="flex space-x-2">
-                                    <a href="{{ route('register.guru.form') }}"
-                                        class="flex-1 px-3 py-2 text-center bg-blue-600 text-white rounded-md hover:bg-blue-700 transition">
-                                        Guru
-                                    </a>
-                                </div>
+                            <!-- Tombol close -->
+                            <div class="mt-6 text-center">
+                                <button onclick="toggleModal(false)"
+                                    class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition">
+                                    Batal
+                                </button>
                             </div>
-                        </div>
-
-                        <!-- Tombol close -->
-                        <div class="mt-6 text-center">
-                            <button onclick="toggleModal(false)"
-                                class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition">
-                                Batal
-                            </button>
                         </div>
                     </div>
-                </div>
 
 
                     <!-- Mobile Menu Button -->
@@ -124,7 +124,8 @@
             <div class="container mx-auto px-4 md:px-6">
                 <div class="flex flex-col md:flex-row items-center">
                     <div class="md:w-1/2 text-center md:text-left  mb-12 md:mb-0">
-                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-4 font-sans">Tabungan
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-4 font-sans">
+                            Tabungan
                             Cerdas <span class="text-blue-600">Cerdas untuk Masa Depan Gemilang</span></h1>
                         <p class="text-lg md:text-xl text-gray-700 mb-8 max-w-lg mx-auto md:mx-0">EduSavings adalah platform
                             manajemen tabungan siswa yang modern dan efisien. Dengan antarmuka yang ramah pengguna dan
@@ -203,9 +204,9 @@
                     <div
                         class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow border border-gray-100 group">
                         <div class="mb-4 transition-transform duration-300 transform group-hover:scale-110"><svg
-                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                class="lucide lucide-shield-check w-10 h-10 text-blue-600">
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="lucide lucide-shield-check w-10 h-10 text-blue-600">
                                 <path
                                     d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z">
                                 </path>
@@ -218,9 +219,9 @@
                     <div
                         class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow border border-gray-100 group">
                         <div class="mb-4 transition-transform duration-300 transform group-hover:scale-110"><svg
-                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                class="lucide lucide-line-chart w-10 h-10 text-blue-600">
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="lucide lucide-line-chart w-10 h-10 text-blue-600">
                                 <path d="M3 3v18h18"></path>
                                 <path d="m19 9-5 5-4-4-3 3"></path>
                             </svg></div>
@@ -232,9 +233,9 @@
                     <div
                         class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow border border-gray-100 group">
                         <div class="mb-4 transition-transform duration-300 transform group-hover:scale-110"><svg
-                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                class="lucide lucide-clock w-10 h-10 text-blue-600">
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="lucide lucide-clock w-10 h-10 text-blue-600">
                                 <circle cx="12" cy="12" r="10"></circle>
                                 <polyline points="12 6 12 12 16 14"></polyline>
                             </svg></div>
@@ -246,9 +247,9 @@
                     <div
                         class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow border border-gray-100 group">
                         <div class="mb-4 transition-transform duration-300 transform group-hover:scale-110"><svg
-                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                class="lucide lucide-credit-card w-10 h-10 text-blue-600">
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="lucide lucide-credit-card w-10 h-10 text-blue-600">
                                 <rect width="20" height="14" x="2" y="5" rx="2"></rect>
                                 <line x1="2" x2="22" y1="10" y2="10"></line>
                             </svg></div>
@@ -259,9 +260,9 @@
                     <div
                         class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow border border-gray-100 group">
                         <div class="mb-4 transition-transform duration-300 transform group-hover:scale-110"><svg
-                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                class="lucide lucide-bar-chart3 w-10 h-10 text-blue-600">
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="lucide lucide-bar-chart3 w-10 h-10 text-blue-600">
                                 <path d="M3 3v18h18"></path>
                                 <path d="M18 17V9"></path>
                                 <path d="M13 17V5"></path>
@@ -275,9 +276,9 @@
                     <div
                         class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow border border-gray-100 group">
                         <div class="mb-4 transition-transform duration-300 transform group-hover:scale-110"><svg
-                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                class="lucide lucide-badge-check w-10 h-10 text-blue-600">
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="lucide lucide-badge-check w-10 h-10 text-blue-600">
                                 <path
                                     d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z">
                                 </path>
@@ -296,9 +297,9 @@
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
                     <div class="text-center">
                         <div class="bg-white rounded-full h-16 w-16 flex items-center justify-center mx-auto mb-4"><svg
-                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                class="lucide lucide-users h-8 w-8 text-blue-600">
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="lucide lucide-users h-8 w-8 text-blue-600">
                                 <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
                                 <circle cx="9" cy="7" r="4"></circle>
                                 <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
@@ -309,9 +310,9 @@
                     </div>
                     <div class="text-center">
                         <div class="bg-white rounded-full h-16 w-16 flex items-center justify-center mx-auto mb-4"><svg
-                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                class="lucide lucide-school h-8 w-8 text-blue-600">
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="lucide lucide-school h-8 w-8 text-blue-600">
                                 <path d="M14 22v-4a2 2 0 1 0-4 0v4"></path>
                                 <path d="m18 10 4 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-8l4-2"></path>
                                 <path d="M18 5v17"></path>
@@ -324,9 +325,9 @@
                     </div>
                     <div class="text-center">
                         <div class="bg-white rounded-full h-16 w-16 flex items-center justify-center mx-auto mb-4"><svg
-                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                class="lucide lucide-landmark h-8 w-8 text-blue-600">
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="lucide lucide-landmark h-8 w-8 text-blue-600">
                                 <line x1="3" x2="21" y1="22" y2="22"></line>
                                 <line x1="6" x2="6" y1="18" y2="11"></line>
                                 <line x1="10" x2="10" y1="18" y2="11"></line>
@@ -339,9 +340,9 @@
                     </div>
                     <div class="text-center">
                         <div class="bg-white rounded-full h-16 w-16 flex items-center justify-center mx-auto mb-4"><svg
-                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                class="lucide lucide-badge-check h-8 w-8 text-blue-600">
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="lucide lucide-badge-check h-8 w-8 text-blue-600">
                                 <path
                                     d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z">
                                 </path>
@@ -368,9 +369,10 @@
                         <div class="relative flex flex-col items-center">
                             <div
                                 class="bg-blue-600 w-16 h-16 rounded-full flex items-center justify-center shadow-md mb-4 z-10">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="lucide lucide-user-plus w-10 h-10 text-white">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"
+                                    class="lucide lucide-user-plus w-10 h-10 text-white">
                                     <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
                                     <circle cx="9" cy="7" r="4"></circle>
                                     <line x1="19" x2="19" y1="8" y2="14"></line>
@@ -390,9 +392,10 @@
                         <div class="relative flex flex-col items-center">
                             <div
                                 class="bg-green-500 w-16 h-16 rounded-full flex items-center justify-center shadow-md mb-4 z-10">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="lucide lucide-piggy-bank w-10 h-10 text-white">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"
+                                    class="lucide lucide-piggy-bank w-10 h-10 text-white">
                                     <path
                                         d="M19 5c-1.5 0-2.8 1.4-3 2-3.5-1.5-11-.3-11 5 0 1.8 0 3 2 4.5V20h4v-2h3v2h4v-4c1-.5 1.7-1 2-2h2v-4h-2c0-1-.5-1.5-1-2h0V5z">
                                     </path>
@@ -412,9 +415,10 @@
                         <div class="relative flex flex-col items-center">
                             <div
                                 class="bg-indigo-500 w-16 h-16 rounded-full flex items-center justify-center shadow-md mb-4 z-10">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="lucide lucide-bar-chart w-10 h-10 text-white">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"
+                                    class="lucide lucide-bar-chart w-10 h-10 text-white">
                                     <line x1="12" x2="12" y1="20" y2="10"></line>
                                     <line x1="18" x2="18" y1="20" y2="4"></line>
                                     <line x1="6" x2="6" y1="20" y2="16"></line>
@@ -422,7 +426,8 @@
                             </div>
                             <div class="text-center">
                                 <h3 class="text-xl font-semibold text-gray-900 mb-2">Pantau Pertumbuhan</h3>
-                                <p class="text-gray-700">Lihat perkembangan tabungan dan analisis kebiasaan menabung melalui
+                                <p class="text-gray-700">Lihat perkembangan tabungan dan analisis kebiasaan menabung
+                                    melalui
                                     dasbor.</p>
                             </div>
                             <div class="hidden md:flex absolute top-8 -right-4 items-center justify-center">
@@ -432,16 +437,18 @@
                         <div class="relative flex flex-col items-center">
                             <div
                                 class="bg-orange-500 w-16 h-16 rounded-full flex items-center justify-center shadow-md mb-4 z-10">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="lucide lucide-award w-10 h-10 text-white">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"
+                                    class="lucide lucide-award w-10 h-10 text-white">
                                     <circle cx="12" cy="8" r="6"></circle>
                                     <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path>
                                 </svg>
                             </div>
                             <div class="text-center">
                                 <h3 class="text-xl font-semibold text-gray-900 mb-2">Persiapan Masa Depan</h3>
-                                <p class="text-gray-700"> menabung hari ini untuk mendukung impian dan pendidikan esok hari.
+                                <p class="text-gray-700"> menabung hari ini untuk mendukung impian dan pendidikan esok
+                                    hari.
                                 </p>
                             </div>
                             <div class="hidden md:flex absolute top-8 -right-4 items-center justify-center"></div>
@@ -566,7 +573,7 @@
 
         <!-- JavaScript untuk carousel -->
         <script>
-            document.addEventListener('DOMContentLoaded', function () {
+            document.addEventListener('DOMContentLoaded', function() {
                 const carousel = document.querySelector('[data-carousel="slide"]');
                 const items = carousel.querySelectorAll('[data-carousel-item]');
                 const indicators = carousel.querySelectorAll('[data-carousel-slide-to]');
@@ -632,8 +639,10 @@
                             <a href="{{ route('login.guru') }}"
                                 class="px-8 py-3 bg-white text-blue-700 font-medium rounded-lg hover:bg-gray-100 transition-colors shadow-md flex items-center justify-center">
                                 Daftar Sekarang
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right ml-2 h-5 w-5">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"
+                                    class="lucide lucide-arrow-right ml-2 h-5 w-5">
                                     <path d="M5 12h14"></path>
                                     <path d="m12 5 7 7-7 7"></path>
                                 </svg>
@@ -649,61 +658,78 @@
             <div class="container mx-auto px-4 md:px-6">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
                     <div>
-                        <div class="flex items-center mb-4"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round"
-                                class="lucide lucide-piggy-bank h-8 w-8 text-blue-400">
+                        <div class="flex items-center mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="lucide lucide-piggy-bank h-8 w-8 text-blue-400">
                                 <path
                                     d="M19 5c-1.5 0-2.8 1.4-3 2-3.5-1.5-11-.3-11 5 0 1.8 0 3 2 4.5V20h4v-2h3v2h4v-4c1-.5 1.7-1 2-2h2v-4h-2c0-1-.5-1.5-1-2h0V5z">
                                 </path>
                                 <path d="M2 9v1c0 1.1.9 2 2 2h1"></path>
                                 <path d="M16 11h0"></path>
-                            </svg><span class="ml-2 text-xl font-bold">EduSavings</span></div>
+                            </svg>
+                            <span class="ml-2 text-xl font-bold">EduSavings</span>
+                        </div>
                         <p class="text-gray-400 mb-6">Platform tabungan digital untuk siswa yang aman, transparan, dan
                             membangun
                             kebiasaan finansial yang sehat sejak dini.</p>
-                        <div class="flex space-x-4"><a href="#"
-                                class="h-10 w-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors"><svg
-                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="lucide lucide-facebook h-5 w-5">
+                        <div class="flex space-x-4">
+                            <a href="#"
+                                class="h-10 w-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"
+                                    class="lucide lucide-facebook h-5 w-5">
                                     <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                                </svg></a><a href="#"
-                                class="h-10 w-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-400 transition-colors"><svg
-                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="lucide lucide-twitter h-5 w-5">
+                                </svg>
+                            </a>
+                            <a href="#"
+                                class="h-10 w-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-400 transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-twitter h-5 w-5">
                                     <path
                                         d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z">
                                     </path>
-                                </svg></a><a href="#"
-                                class="h-10 w-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-pink-600 transition-colors"><svg
-                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="lucide lucide-instagram h-5 w-5">
-                                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                                </svg>
+                            </a>
+                            <a href="#"
+                                class="h-10 w-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-pink-600 transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"
+                                    class="lucide lucide-instagram h-5 w-5">
+                                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5">
+                                    </rect>
                                     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
                                     <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
-                                </svg></a><a href="#"
-                                class="h-10 w-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-red-600 transition-colors"><svg
-                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="lucide lucide-youtube h-5 w-5">
+                                </svg>
+                            </a>
+                            <a href="#"
+                                class="h-10 w-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-red-600 transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-youtube h-5 w-5">
                                     <path
                                         d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17">
                                     </path>
                                     <path d="m10 15 5-3-5-3z"></path>
-                                </svg></a></div>
+                                </svg>
+                            </a>
+                        </div>
                     </div>
                     <div>
                         <h3 class="text-lg font-semibold mb-4">Tautan Cepat</h3>
                         <ul class="space-y-3">
                             <li><a href="#beranda" class="text-gray-400 hover:text-blue-400 transition-colors">Beranda</a>
                             </li>
-                            <li><a href="#tentang-kami" class="text-gray-400 hover:text-blue-400 transition-colors">Tentang
+                            <li><a href="#tentang-kami"
+                                    class="text-gray-400 hover:text-blue-400 transition-colors">Tentang
                                     Kami</a></li>
-                            <li><a href="#fitur" class="text-gray-400 hover:text-blue-400 transition-colors">Fitur</a></li>
-                            <li><a href="#harga" class="text-gray-400 hover:text-blue-400 transition-colors">Harga</a></li>
+                            <li><a href="#fitur" class="text-gray-400 hover:text-blue-400 transition-colors">Fitur</a>
+                            </li>
+                            <li><a href="#harga" class="text-gray-400 hover:text-blue-400 transition-colors">Harga</a>
+                            </li>
                             <li><a href="#cara-kerja" class="text-gray-400 hover:text-blue-400 transition-colors">Cara
                                     Kerja</a>
                             </li>
@@ -716,12 +742,16 @@
                             <li><a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">Tabungan
                                     Pendidikan</a>
                             </li>
-                            <li><a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">Tabungan Rutin</a>
+                            <li><a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">Tabungan
+                                    Rutin</a>
                             </li>
-                            <li><a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">Laporan Keuangan</a>
+                            <li><a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">Laporan
+                                    Keuangan</a>
                             </li>
-                            <li><a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">Konsultasi</a></li>
-                            <li><a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">Program Sekolah</a>
+                            <li><a href="#"
+                                    class="text-gray-400 hover:text-blue-400 transition-colors">Konsultasi</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">Program
+                                    Sekolah</a>
                             </li>
                             <li><a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">Edukasi
                                     Finansial</a>
@@ -731,30 +761,38 @@
                     <div>
                         <h3 class="text-lg font-semibold mb-4">Kontak Kami</h3>
                         <ul class="space-y-3">
-                            <li class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                     stroke-linecap="round" stroke-linejoin="round"
                                     class="lucide lucide-map-pin h-5 w-5 text-blue-400 mr-3 mt-0.5">
                                     <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
                                     <circle cx="12" cy="10" r="3"></circle>
-                                </svg><span class="text-gray-400">Jl. Veteran No.1A, RT.005/RW.002, Babakan, Kec. Tangerang,
-                                    Kota Tangerang, Banten 15118</span></li>
-                            <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                </svg>
+                                <span class="text-gray-400">Jl. Veteran No.1A, RT.005/RW.002, Babakan, Kec. Tangerang,
+                                    Kota Tangerang, Banten 15118</span>
+                            </li>
+                            <li class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                     stroke-linecap="round" stroke-linejoin="round"
                                     class="lucide lucide-phone h-5 w-5 text-blue-400 mr-3">
                                     <path
                                         d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
                                     </path>
-                                </svg><a href="tel:+6281234567890"
-                                    class="text-gray-400 hover:text-blue-400 transition-colors">+6283807362506</a></li>
-                            <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                </svg>
+                                <a href="tel:+44 7723 442982"
+                                    class="text-gray-400 hover:text-blue-400 transition-colors">+447723442982</a>
+                            </li>
+                            <li class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                     stroke-linecap="round" stroke-linejoin="round"
                                     class="lucide lucide-mail h-5 w-5 text-blue-400 mr-3">
                                     <rect width="20" height="16" x="2" y="4" rx="2"></rect>
                                     <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-                                </svg><a href="mailto:info@EduSavings.id"
+                                </svg>
+                                <a href="mailto:info@EduSavings.id"
                                     class="text-gray-400 hover:text-blue-400 transition-colors">info@EduSavings.id</a>
                             </li>
                         </ul>
@@ -762,22 +800,36 @@
                 </div>
                 <div class="pt-8 border-t border-gray-800 text-center md:flex md:justify-between md:items-center">
                     <p class="text-gray-500 mb-4 md:mb-0">© 2025 EduSavings. Hak Cipta Dilindungi.</p>
-                    <div class="flex flex-wrap justify-center md:justify-end gap-4"><a href="#"
-                            class="text-gray-500 hover:text-blue-400 transition-colors">Kebijakan Privasi</a><a href="#"
-                            class="text-gray-500 hover:text-blue-400 transition-colors">Syarat &amp; Ketentuan</a><a
-                            href="#" class="text-gray-500 hover:text-blue-400 transition-colors">Peta Situs</a></div>
+                    <div class="flex flex-wrap justify-center md:justify-end gap-4">
+                        <a href="#" class="text-gray-500 hover:text-blue-400 transition-colors">Kebijakan
+                            Privasi</a>
+                        <a href="#" class="text-gray-500 hover:text-blue-400 transition-colors">Syarat &amp;
+                            Ketentuan</a>
+                        <a href="#" class="text-gray-500 hover:text-blue-400 transition-colors">Peta Situs</a>
+                    </div>
                 </div>
+
+                <!-- AWAL: Tambahan Created by DikaWebDev -->
+                <div class="text-center py-4 border-t border-gray-800 mt-4">
+                    <p class="text-gray-500 text-sm">
+                        Created with <span class="text-red-500">♥</span> by <a href="https://link-portofolio-anda.com"
+                            target="_blank"
+                            class="text-blue-400 hover:text-blue-300 transition-colors font-semibold">CarlesWebDev</a>
+                    </p>
+                </div>
+                <!-- AKHIR: Tambahan Created by DikaWebDev -->
+
             </div>
         </footer>
     </body>
     <script>
         // Toggle mobile menu
-        document.getElementById('mobile-menu-button').addEventListener('click', function () {
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
         });
 
-       function toggleModal(show) {
+        function toggleModal(show) {
             const modal = document.getElementById('roleModal');
             if (show) {
                 modal.classList.remove('hidden');
