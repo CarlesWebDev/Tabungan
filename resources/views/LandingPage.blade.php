@@ -119,7 +119,6 @@
         </header>
 
 
-        <!-- Section -->
         <section id="beranda" class="pt-24 md:pt-32 pb-16 md:pb-24 bg-gradient-to-br from-blue-50 to-white">
             <div class="container mx-auto px-4 md:px-6">
                 <div class="flex flex-col md:flex-row items-center">
