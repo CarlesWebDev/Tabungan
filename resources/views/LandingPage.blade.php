@@ -809,7 +809,6 @@
                     </div>
                 </div>
 
-                <!-- AWAL: Tambahan Created by DikaWebDev -->
                 <div class="text-center py-4 border-t border-gray-800 mt-4">
                     <p class="text-gray-500 text-sm">
                         Created with <span class="text-red-500">♥</span> by <a href="https://link-portofolio-anda.com"
