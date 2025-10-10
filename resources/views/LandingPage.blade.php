@@ -462,7 +462,6 @@
         <div id="testimonial" class="relative w-full max-w-4xl mx-auto" data-carousel="slide">
             <!-- Carousel wrapper -->
             <div class="relative h-96 overflow-hidden rounded-2xl">
-                <!-- Slide 1 -->
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
                     <div class="absolute inset-0 flex items-center justify-center p-8">
                         <div class=" p-8 rounded-xl shadow-lg border border-gray-100 max-w-2xl w-full">
