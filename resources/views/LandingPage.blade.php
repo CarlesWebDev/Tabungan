@@ -16,7 +16,6 @@
         <header class="fixed w-full z-50 transition-all duration-300 bg-gray-100 py-4 shadow-md">
             <div class="container mx-auto px-4 md:px-6">
                 <div class="flex justify-between items-center">
-                    <!-- Logo -->
                     <div class="flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="size-10 text-blue-500">
