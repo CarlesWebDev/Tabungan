@@ -635,7 +635,7 @@
             </div>
         </section>
 
-        <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <footer class="bg-white text-black pt-16 pb-8">
             <div class="container mx-auto px-4 md:px-6">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
                     <div>
@@ -651,12 +651,13 @@
                             </svg>
                             <span class="ml-2 text-xl font-bold">EduSavings</span>
                         </div>
-                        <p class="text-gray-400 mb-6">Platform tabungan digital untuk siswa yang aman, transparan, dan
-                            membangun
-                            kebiasaan finansial yang sehat sejak dini.</p>
+                        <p class="text-black mb-6">
+                            Platform tabungan digital untuk siswa yang aman, transparan, dan membangun kebiasaan finansial
+                            yang sehat sejak dini.
+                        </p>
                         <div class="flex space-x-4">
                             <a href="#"
-                                class="h-10 w-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors">
+                                class="h-10 w-10 bg-gray-200 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                     stroke-linecap="round" stroke-linejoin="round"
@@ -665,7 +666,7 @@
                                 </svg>
                             </a>
                             <a href="#"
-                                class="h-10 w-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-400 transition-colors">
+                                class="h-10 w-10 bg-gray-200 rounded-full flex items-center justify-center hover:bg-blue-400 transition-colors">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                     stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-twitter h-5 w-5">
@@ -675,7 +676,7 @@
                                 </svg>
                             </a>
                             <a href="#"
-                                class="h-10 w-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-pink-600 transition-colors">
+                                class="h-10 w-10 bg-gray-200 rounded-full flex items-center justify-center hover:bg-pink-600 transition-colors">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                     stroke-linecap="round" stroke-linejoin="round"
@@ -687,7 +688,7 @@
                                 </svg>
                             </a>
                             <a href="#"
-                                class="h-10 w-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-red-600 transition-colors">
+                                class="h-10 w-10 bg-gray-200 rounded-full flex items-center justify-center hover:bg-red-600 transition-colors">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                     stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-youtube h-5 w-5">
@@ -699,108 +700,102 @@
                             </a>
                         </div>
                     </div>
+
+                    <!-- Kolom lainnya -->
                     <div>
                         <h3 class="text-lg font-semibold mb-4">Tautan Cepat</h3>
                         <ul class="space-y-3">
-                            <li><a href="#beranda" class="text-gray-400 hover:text-blue-400 transition-colors">Beranda</a>
+                            <li><a href="#beranda" class="text-black hover:text-blue-500 transition-colors">Beranda</a>
                             </li>
-                            <li><a href="#tentang-kami"
-                                    class="text-gray-400 hover:text-blue-400 transition-colors">Tentang
+                            <li><a href="#tentang-kami" class="text-black hover:text-blue-500 transition-colors">Tentang
                                     Kami</a></li>
-                            <li><a href="#fitur" class="text-gray-400 hover:text-blue-400 transition-colors">Fitur</a>
-                            </li>
-                            <li><a href="#harga" class="text-gray-400 hover:text-blue-400 transition-colors">Harga</a>
-                            </li>
-                            <li><a href="#cara-kerja" class="text-gray-400 hover:text-blue-400 transition-colors">Cara
-                                    Kerja</a>
-                            </li>
-                            <li><a href="#faq" class="text-gray-400 hover:text-blue-400 transition-colors">FAQ</a></li>
+                            <li><a href="#fitur" class="text-black hover:text-blue-500 transition-colors">Fitur</a></li>
+                            <li><a href="#harga" class="text-black hover:text-blue-500 transition-colors">Harga</a></li>
+                            <li><a href="#cara-kerja" class="text-black hover:text-blue-500 transition-colors">Cara
+                                    Kerja</a></li>
+                            <li><a href="#faq" class="text-black hover:text-blue-500 transition-colors">FAQ</a></li>
                         </ul>
                     </div>
+
                     <div>
                         <h3 class="text-lg font-semibold mb-4">Layanan</h3>
                         <ul class="space-y-3">
-                            <li><a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">Tabungan
-                                    Pendidikan</a>
+                            <li><a href="#" class="text-black hover:text-blue-500 transition-colors">Tabungan
+                                    Pendidikan</a></li>
+                            <li><a href="#" class="text-black hover:text-blue-500 transition-colors">Tabungan
+                                    Rutin</a></li>
+                            <li><a href="#" class="text-black hover:text-blue-500 transition-colors">Laporan
+                                    Keuangan</a></li>
+                            <li><a href="#" class="text-black hover:text-blue-500 transition-colors">Konsultasi</a>
                             </li>
-                            <li><a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">Tabungan
-                                    Rutin</a>
-                            </li>
-                            <li><a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">Laporan
-                                    Keuangan</a>
-                            </li>
-                            <li><a href="#"
-                                    class="text-gray-400 hover:text-blue-400 transition-colors">Konsultasi</a></li>
-                            <li><a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">Program
-                                    Sekolah</a>
-                            </li>
-                            <li><a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">Edukasi
-                                    Finansial</a>
-                            </li>
+                            <li><a href="#" class="text-black hover:text-blue-500 transition-colors">Program
+                                    Sekolah</a></li>
+                            <li><a href="#" class="text-black hover:text-blue-500 transition-colors">Edukasi
+                                    Finansial</a></li>
                         </ul>
                     </div>
+
                     <div>
                         <h3 class="text-lg font-semibold mb-4">Kontak Kami</h3>
-                        <ul class="space-y-3">
+                        <ul class="space-y-3 text-black">
                             <li class="flex items-start">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round"
-                                    class="lucide lucide-map-pin h-5 w-5 text-blue-400 mr-3 mt-0.5">
+                                <svg class="lucide lucide-map-pin h-5 w-5 text-blue-400 mr-3 mt-0.5"
+                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
                                     <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
                                     <circle cx="12" cy="10" r="3"></circle>
                                 </svg>
-                                <span class="text-gray-400">Jl. Veteran No.1A, RT.005/RW.002, Babakan, Kec. Tangerang,
-                                    Kota Tangerang, Banten 15118</span>
+                                <span>Jl. Veteran No.1A, RT.005/RW.002, Babakan, Kec. Tangerang, Kota Tangerang, Banten
+                                    15118</span>
                             </li>
                             <li class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round"
-                                    class="lucide lucide-phone h-5 w-5 text-blue-400 mr-3">
+                                <svg class="lucide lucide-phone h-5 w-5 text-blue-400 mr-3"
+                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
                                     <path
                                         d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
                                     </path>
                                 </svg>
                                 <a href="tel:+44 7723 442982"
-                                    class="text-gray-400 hover:text-blue-400 transition-colors">+447723442982</a>
+                                    class="text-black hover:text-blue-500 transition-colors">+447723442982</a>
                             </li>
                             <li class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round"
-                                    class="lucide lucide-mail h-5 w-5 text-blue-400 mr-3">
+                                <svg class="lucide lucide-mail h-5 w-5 text-blue-400 mr-3"
+                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
                                     <rect width="20" height="16" x="2" y="4" rx="2"></rect>
                                     <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
                                 </svg>
                                 <a href="mailto:info@EduSavings.id"
-                                    class="text-gray-400 hover:text-blue-400 transition-colors">info@EduSavings.id</a>
+                                    class="text-black hover:text-blue-500 transition-colors">info@EduSavings.id</a>
                             </li>
                         </ul>
                     </div>
                 </div>
-                <div class="pt-8 border-t border-gray-800 text-center md:flex md:justify-between md:items-center">
-                    <p class="text-gray-500 mb-4 md:mb-0">© 2025 EduSavings. Hak Cipta Dilindungi.</p>
+
+                <div class="pt-8 border-t border-gray-300 text-center md:flex md:justify-between md:items-center">
+                    <p class="text-black mb-4 md:mb-0">© 2025 EduSavings. Hak Cipta Dilindungi.</p>
                     <div class="flex flex-wrap justify-center md:justify-end gap-4">
-                        <a href="#" class="text-gray-500 hover:text-blue-400 transition-colors">Kebijakan
-                            Privasi</a>
-                        <a href="#" class="text-gray-500 hover:text-blue-400 transition-colors">Syarat &amp;
+                        <a href="#" class="text-black hover:text-blue-500 transition-colors">Kebijakan Privasi</a>
+                        <a href="#" class="text-black hover:text-blue-500 transition-colors">Syarat &amp;
                             Ketentuan</a>
-                        <a href="#" class="text-gray-500 hover:text-blue-400 transition-colors">Peta Situs</a>
+                        <a href="#" class="text-black hover:text-blue-500 transition-colors">Peta Situs</a>
                     </div>
                 </div>
 
-                <div class="text-center py-4 border-t border-gray-800 mt-4">
-                    <p class="text-gray-500 text-sm">
-                        Created with <span class="text-red-500">♥</span> by <a href="#"
-                            target="_blank"
-                            class="text-blue-400 hover:text-blue-300 transition-colors font-semibold">CarlesWebDev</a>
+                <div class="text-center py-4 border-t border-gray-300 mt-4">
+                    <p class="text-black text-sm">
+                        Created with <span class="text-red-500">♥</span> by
+                        <a href="#" target="_blank"
+                            class="text-blue-500 hover:text-blue-400 transition-colors font-semibold">CarlesWebDev</a>
                     </p>
                 </div>
-                <!-- AKHIR: Tambahan Created by DikaWebDev -->
-
             </div>
         </footer>
+
     </body>
     <script>
         // Toggle mobile menu
