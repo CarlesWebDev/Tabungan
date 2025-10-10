@@ -52,7 +52,6 @@
                             <h2 class="text-lg font-semibold text-gray-800 mb-4 text-center">Pilih Role</h2>
 
                             <div class="space-y-4">
-                                <!-- Login -->
                                 <div>
                                     <h3 class="font-medium text-gray-700 mb-2">Masuk</h3>
                                     <div class="flex space-x-2">
