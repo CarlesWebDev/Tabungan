@@ -515,7 +515,6 @@
                     </div>
                 </div>
 
-                <!-- Slide 3 (Tambahan contoh) -->
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
                     <div class="absolute inset-0 flex items-center justify-center p-8">
                         <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-100 max-w-2xl w-full">
