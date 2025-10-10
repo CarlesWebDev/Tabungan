@@ -67,7 +67,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Register -->
                                 <div>
                                     <h3 class="font-medium text-gray-700 mb-2">Daftar</h3>
                                     <div class="flex space-x-2">
