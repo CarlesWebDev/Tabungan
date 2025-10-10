@@ -571,7 +571,6 @@
             </button>
         </div>
 
-        <!-- JavaScript untuk carousel -->
         <script>
             document.addEventListener('DOMContentLoaded', function() {
                 const carousel = document.querySelector('[data-carousel="slide"]');
