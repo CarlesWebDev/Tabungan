@@ -27,7 +27,6 @@
                         <span class="ml-2 text-xl font-sans font-bold text-blue-500">EduSavings</span>
                     </div>
 
-                    <!-- Desktop Nav -->
                     <nav class="hidden md:flex space-x-8">
                         <a href="#beranda"
                             class="font-medium text-gray-700 hover:text-blue-600 transition-colors">Beranda</a>
@@ -46,7 +45,6 @@
                         </button>
                     </div>
 
-                    <!-- Modal -->
                     <div id="roleModal" class="fixed inset-0 bg-black/10 hidden items-center justify-center z-50">
                         <div class="bg-white rounded-xl shadow-lg w-96 p-6">
                             <h2 class="text-lg font-semibold text-gray-800 mb-4 text-center">Pilih Role</h2>
