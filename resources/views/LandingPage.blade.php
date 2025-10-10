@@ -542,7 +542,6 @@
                 </div>
             </div>
 
-            <!-- Slider indicators -->
             <div class="flex justify-center mt-6 space-x-3">
                 <button type="button" class="w-3 h-3 rounded-full bg-gray-300 hover:bg-blue-600 transition-colors"
                     aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
