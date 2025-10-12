@@ -191,7 +191,7 @@
                     <p class="text-lg text-gray-700 max-w-2xl mx-auto">EduSavings hadir dengan fitur-fitur inovatif yang
                         memudahkan siswa mengelola tabungan pendidikan mereka.</p>
                 </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3  gap-8">
                     <div
                         class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow border border-gray-100 group">
                         <div class="mb-4 transition-transform duration-300 transform group-hover:scale-110"><svg

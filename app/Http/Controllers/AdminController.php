@@ -319,10 +319,10 @@ class AdminController extends Controller
             'password' => Hash::make($request->password),
             'role' => 'teacher',
             'status' => 'active',
-            'is_active' => true,
+            'is_active' => false,
         ]);
 
-        return redirect()->route('admin.dashboard')->with('success', 'Guru berhasil ditambahkan.');
+        return redirect()->route('admin.Users')->with('success', 'Guru berhasil ditambahkan.');
     }
 
     public function hapusguru($id)

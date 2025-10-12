@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\GuruController;
@@ -12,15 +11,15 @@ use Maatwebsite\Excel\Facades\Excel;
 // ==============================
 // Landing Page
 // ==============================
-Route::view('/', 'LandingPage');  // Mengarahkan langsung ke landing page
-Route::view('/LandingPage', 'LandingPage')->name('landingpage');  // Nama route landing page
+Route::view('/', 'LandingPage');
+Route::view('/LandingPage', 'LandingPage')->name('landingpage');
 
 
 // ==============================
 // Ngide
 // ==============================
 Route::get('/login', function () {
-    return redirect('/LoginAdmin');
+    return redirect(to: '/Login/Admin');
 })->name('login');
 
 
@@ -46,7 +45,8 @@ Route::get('/admin/export-tabungan-kelas/{kelasId}', function ($kelasId) {
 // ==============================
 // Route untuk login admin
 Route::get('/Login/Admin', [AdminController::class, 'showLoginForm'])->name('login.admin.form');
-Route::post('/LoginAdmin', [AdminController::class, 'login'])->name('login.admin');
+Route::post('/Login/Admin', [AdminController::class, 'login'])->name('login.admin');
+
 
 // Route untuk login guru
 Route::get('/LoginGuru', [GuruController::class, 'showLoginFormGuru'])->name(name: 'login.guru.form');
@@ -57,7 +57,7 @@ Route::get('/LoginSiswa', [SiswaController::class, 'showLoginFormSiswa'])->name(
 Route::post('/LoginSiswa', [SiswaController::class, 'loginSiswa'])->name('login.siswa');
 
 // ==============================
-// Admin Routes (Protected by Middleware)
+// Admin Routes (Protected by auth)
 // ==============================
 Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'adminDashboard'])->name('dashboard');
@@ -119,7 +119,7 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
 });
 
 // ==============================
-// Guru Routes (Protected by Middleware)
+// Guru Routes (Protected by auth)
 // ==============================
 Route::middleware('auth:guru')->prefix('Teacher')->name('Teacher.')->group(function () {
     Route::get('/dashboard', [GuruController::class, 'dashboardGuru'])->name('dashboard');
@@ -149,7 +149,7 @@ Route::middleware('auth:guru')->prefix('Teacher')->name('Teacher.')->group(funct
 });
 
 // ==============================
-// Siswa Routes (Protected by Middleware)
+// Siswa Routes (Protected by auth)
 // ==============================
 Route::middleware('auth:siswa')->prefix('Student')->name('Student.')->group(function () {
     Route::get('/dashboard', [SiswaController::class, 'dashboard'])->name('dashboard');
