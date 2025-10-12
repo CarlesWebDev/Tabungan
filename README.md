@@ -123,7 +123,7 @@ npm run dev
 
 **Dan Jalankan untuk migrasi database**
 ```bash
-php artisan migarate
+php artisan migrate
 ```
 
 9. **lalu jalankan Server Seedernya untuk dummy data(data test)**
