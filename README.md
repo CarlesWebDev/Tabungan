@@ -89,12 +89,9 @@ composer install --no-cache
 cp .env.example .env
 ```
 
-4. **lalu jalankan**
-```bash
-php artisan key:generate
-```
 
-5. **lalu konfigurasi database di file `.env` seperti di bawah ini**
+
+4. **lalu konfigurasi database di file `.env` seperti di bawah ini**
 ```php
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
@@ -104,22 +101,22 @@ DB_USERNAME=root
 DB_PASSWORD=
 ```
 
-6. **lalu jalankan**
+5. **lalu jalankan**
 ```bash
 php artisan key:generate
 ```
 
-7. **lalu jalankan untuk nge link**
+6. **lalu jalankan untuk nge link**
 ```bash
 php artisan storage:link
 ```
 
-8. **lalu install Depedensi Untuk Frontend**
+7. **lalu install Depedensi Untuk Frontend**
 ```bash
 npm install
 ```
 
-9. **Lalu jalan untuk `Node.Js nya` Untuk Frontend nya**
+8. **Lalu jalan untuk `Node.Js nya` Untuk Frontend nya**
 ```bash
 npm run dev
 ```
@@ -129,12 +126,12 @@ npm run dev
 php artisan migarate
 ```
 
-10. **lalu jalankan Server Seedernya untuk dummy data(data test)**
+9. **lalu jalankan Server Seedernya untuk dummy data(data test)**
 ```bash
 php artisan db:seed
 ```
 
-11 **lalu jalankan di localhost anda dengan perintah**
+10 **lalu jalankan di localhost anda dengan perintah**
 ```bash
 php artisan ser
 ```
