@@ -7,6 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
     <script src="https://unpkg.com/flowbite@2.3.0/dist/flowbite.bundle.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
     @vite('resources/css/app.css')
     <title>@yield('title', 'Landing Page')</title>
 </head>

@@ -639,17 +639,17 @@
             </div>
         </section>
 
-        <footer class="bg-white text-black pt-16 pb-8">
+        <footer class="bg-gray-100 text-black pt-16 pb-8">
             <div class="container mx-auto px-4 md:px-6">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
                     <div>
                         <div class="flex items-center mb-4">
-                           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor"
-                            class="w-10 h-10 text-blue-500 transition-transform duration-200 group-hover:scale-110">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
-                        </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor"
+                                class="w-10 h-10 text-blue-500 transition-transform duration-200 group-hover:scale-110">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
+                            </svg>
                             <span class="ml-2 text-xl text-blue-500 font-bold">EduSavings</span>
                         </div>
                         <p class="text-black mb-6">
@@ -782,7 +782,6 @@
                         <a href="#" class="text-black hover:text-blue-500 transition-colors">Kebijakan Privasi</a>
                         <a href="#" class="text-black hover:text-blue-500 transition-colors">Syarat &amp;
                             Ketentuan</a>
-                        <a href="#" class="text-black hover:text-blue-500 transition-colors">Peta Situs</a>
                     </div>
                 </div>
 
@@ -793,6 +792,30 @@
                             class="text-blue-500 hover:text-blue-400 transition-colors font-semibold">CarlesWebDev</a>
                     </p>
                 </div>
+                <div class="text-center mt-6 flex justify-center space-x-4">
+
+                    <a href="https://github.com/CarlesWebDev" target="_blank"
+                        class="h-10 w-10 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-400 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                            class="h-6 w-6 text-gray-800 hover:text-white transition">
+                            <path
+                                d="M12 0a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.24c-3.34.73-4.04-1.61-4.04-1.61a3.19 3.19 0 0 0-1.34-1.76c-1.09-.74.09-.73.09-.73a2.54 2.54 0 0 1 1.85 1.25 2.57 2.57 0 0 0 3.49 1 2.6 2.6 0 0 1 .76-1.63c-2.66-.3-5.46-1.32-5.46-5.93a4.63 4.63 0 0 1 1.23-3.22 4.3 4.3 0 0 1 .12-3.18s1-.32 3.3 1.23a11.37 11.37 0 0 1 6 0C17.18 4.67 18.17 5 18.17 5a4.3 4.3 0 0 1 .12 3.18 4.63 4.63 0 0 1 1.23 3.22c0 4.62-2.8 5.62-5.47 5.93a2.91 2.91 0 0 1 .83 2.26v3.34c0 .32.21.7.83.58A12 12 0 0 0 12 0Z" />
+                        </svg>
+                    </a>
+
+
+
+                    <a href="https://www.instagram.com/carlsmrvn/" target="_blank"
+                        class="h-10 w-10 bg-gray-200 rounded-full flex items-center justify-center hover:bg-pink-600 hover:text-white transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+                        </svg>
+                    </a>
+                </div>
+
             </div>
         </footer>
 
