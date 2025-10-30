@@ -86,22 +86,24 @@
 
                 <!-- Right Side - Form Column -->
                 <div class="p-8 md:col-span-3">
-                    <div class="flex items-center mb-6">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                            class="size-8 text-blue-500">
+                    <div class="flex items-center mb-6 justify-center md:justify-start">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-10 h-10 sm:w-8 sm:h-8 md:w-8 md:h-8 text-blue-500 flex-shrink-0">
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
                         </svg>
-                        <span class="ml-2 text-xl  text-blue-500 font-bold ">EduSavings</span>
+                        <span class="ml-2 text-lg sm:text-xl md:text-2xl text-blue-500 font-bold">EduSavings</span>
                     </div>
+
 
                     <h2 class="text-2xl font-bold mb-6 text-gray-900">Registrasi Guru</h2>
 
-                    @if(session('success'))
+                    @if (session('success'))
                         <div
                             class="bg-green-50 border-l-4 border-green-500 text-green-700 p-4 rounded-md mb-6 flex items-start">
                             <div class="mr-3 mt-0.5">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
+                                    fill="currentColor">
                                     <path fill-rule="evenodd"
                                         d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
                                         clip-rule="evenodd" />
@@ -113,7 +115,7 @@
                         </div>
                     @endif
 
-                    @if ($errors->any())
+                    {{-- @if ($errors->any())
                         <div class="bg-red-50 border-l-4 border-red-500 text-red-700 p-4 rounded-md mb-6">
                             <div class="flex items-center mb-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20"
@@ -125,12 +127,12 @@
                                 <span class="font-medium">Mohon periksa formulir kembali</span>
                             </div>
                             <ul class="list-disc pl-5 text-sm space-y-1">
-                                @foreach($errors->all() as $error)
+                                @foreach ($errors->all() as $error)
                                     <li>{{ $error }}</li>
                                 @endforeach
                             </ul>
                         </div>
-                    @endif
+                    @endif --}}
 
                     <form action="{{ route('register.guru') }}" method="POST" enctype="multipart/form-data"
                         class="space-y-5">
@@ -154,20 +156,22 @@
                                 </div>
 
                                 <!-- Input -->
-                                <input type="text" name="nip" id="nip" value="{{ old('nip') }}" required minlength="18"
-                                    class="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900"
+                                <input type="text" name="nip" id="nip" value="{{ old('nip') }}"
+                                    minlength="18"
+                                    class="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg shadow-sm
+                                    focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900
+                                     {{ $errors->has('nip') ? 'border-red-500 focus:ring-red-500 focus:border-red-500' : 'border-gray-300 focus:ring-blue-500 focus:border-blue-500' }}"
                                     placeholder="Masukkan 18 digit NIP" />
                             </div>
-
-                            <!-- Hint -->
-                            <div class="text-xs text-gray-500 mt-1">
-                                Format: 18 digit angka NIP
-                            </div>
+                            @error('nip')
+                                <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
+                            @enderror
                         </div>
 
 
                         <div class="mb-4">
-                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap</label>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nama
+                                Lengkap</label>
                             <div class="relative">
                                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none"
@@ -176,11 +180,16 @@
                                             d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                                     </svg>
                                 </div>
-                                <input type="text" name="name" id="name" value="{{ old('name') }}" required
-                                    class="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900"
+                                <input type="text" name="name" id="name" value="{{ old('name') }}"
+                                    class="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900
+                                    {{ $errors->has('name') ? 'border-red-500 focus:ring-red-500 focus:border-red-500' : 'border-gray-300 focus:ring-blue-500 focus:border-blue-500' }}"
                                     placeholder="Masukkan nama lengkap">
                             </div>
+                            @error('name')
+                                <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
+                            @enderror
                         </div>
+
 
                         <div class="mb-4">
                             <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
@@ -192,36 +201,42 @@
                                             d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
                                     </svg>
                                 </div>
-                                <input type="email" name="email" id="email" value="{{ old('email') }}" required
-                                    class="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900"
+                                <input type="email" name="email" id="email" value="{{ old('email') }}"
+                                    class="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900
+                                    {{ $errors->has('email') ? 'border-red-500 focus:ring-red-500 focus:border-red-500' : 'border-gray-300 focus:ring-blue-500 focus:border-blue-500' }}""
                                     placeholder="email@example.com">
                             </div>
+                            @error('email')
+                                <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
+                            @enderror
                         </div>
 
                         <div class="mb-4">
                             <!-- Input Wrapper -->
                             <div>
-                                <label for="password" class="block text-sm font-medium text-gray-700 mb-2">Kata Sandi</label>
+                                <label for="password" class="block text-sm font-medium text-gray-700 mb-2">Kata
+                                    Sandi</label>
                                 <div class="relative">
                                     <!-- Icon kunci -->
                                     <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24"
-                                            stroke="currentColor">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                                         </svg>
                                     </div>
 
                                     <!-- Input password -->
-                                    <input type="password" name="password" id="password" required minlength="8"
-                                        class="block w-full pl-10 pr-10 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900"
+                                    <input type="password" name="password" id="password" value="{{ old('password') }}"
+                                        class="block w-full pl-10 pr-10 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900
+                                        {{ $errors->has('password') ? 'border-red-500 focus:ring-red-500 focus:border-red-500' : 'border-gray-300 focus:ring-blue-500 focus:border-blue-500' }}"
                                         placeholder="Minimal 8 karakter" />
 
                                     <!-- Tombol tampilkan/sembunyikan password -->
                                     <button type="button" onclick="togglePasswordVisibility()"
                                         class="absolute inset-y-0 right-0 pr-4 flex items-center text-gray-600 hover:text-gray-700">
-                                        <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                                            stroke="currentColor">
+                                        <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -235,37 +250,45 @@
                             <div class="text-xs text-gray-500 mt-1">
                                 Minimal 8 karakter dengan kombinasi huruf dan angka
                             </div>
+                            @error('password')
+                                <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
+                            @enderror
                         </div>
 
-                        <div class="mb-6">
-                            <!-- Label -->
+                        {{-- <div class="mb-6">
                             <label for="verification_file" class="block text-sm font-medium text-gray-700 mb-2">
                                 File Verifikasi Status Guru
                             </label>
 
-                            <!-- Dropzone-style uploader -->
                             <div
                                 class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-lg">
                                 <div class="space-y-1 text-center">
-                                    <!-- Icon -->
                                     <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none"
                                         viewBox="0 0 48 48" aria-hidden="true">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" />
                                     </svg>
 
-                                    <!-- Upload instruksi -->
                                     <div class="flex text-sm text-gray-600">
                                         <label for="verification_file"
                                             class="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none">
                                             <span>Upload file</span>
                                             <input id="verification_file" name="verification_file" type="file"
-                                                class="sr-only" accept=".pdf,.jpg,.jpeg,.png" required>
+                                                class="sr-only" accept=".pdf,.jpg,.jpeg,.png"
+                                                onchange="previewFileName(event)">
                                         </label>
                                         <p class="pl-1">atau drag dan drop</p>
                                     </div>
 
-                                    <!-- File format note -->
+                                    <!-- Nama file muncul di sini -->
+                                    <p id="fileName" class="text-xs text-gray-700 mt-2"></p>
+
+                                    <!-- Preview gambar -->
+                                    <div id="imagePreview" class="mt-3 hidden">
+                                        <img id="previewImg" class="mx-auto h-32 rounded-lg shadow-md border"
+                                            alt="Preview">
+                                    </div>
+
                                     <p class="text-xs text-gray-500">
                                         PDF, JPG, atau PNG (maks. 2MB)
                                     </p>
@@ -275,14 +298,73 @@
                             <p class="text-xs text-gray-500 mt-2">
                                 *Upload SK, Surat Tugas, atau dokumen lain yang membuktikan status Anda sebagai guru
                             </p>
+                            @error('verification_file')
+                                <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
+                            @enderror
+                        </div> --}}
+
+                        <div class="mb-6">
+                            <label for="verification_file" class="block text-sm font-medium text-gray-700 mb-2">
+                                File Verifikasi Status Guru
+                            </label>
+
+                            <div @class([
+                                'mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-dashed rounded-lg transition-colors',
+                                'border-gray-300' => !$errors->has('verification_file'),
+                                'border-red-500 bg-red-50' => $errors->has('verification_file'),
+                            ])>
+                                <div class="space-y-1 text-center">
+                                    <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none"
+                                        viewBox="0 0 48 48" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" />
+                                    </svg>
+
+                                    <div class="flex text-sm text-gray-600">
+                                        <label for="verification_file"
+                                            class="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none">
+                                            <span>Upload file</span>
+                                            <input id="verification_file" name="verification_file" type="file"
+                                                class="sr-only" accept=".pdf,.jpg,.jpeg,.png"
+                                                onchange="previewFileName(event)">
+                                        </label>
+                                        <p class="pl-1">atau drag dan drop</p>
+                                    </div>
+
+
+                                    {{-- nama File  --}}
+                                    <p id="fileName" class="text-xs text-gray-700 mt-2"></p>
+
+                                    <!-- Preview gambar -->
+                                    <div id="imagePreview" class="mt-3 hidden">
+                                        <img id="previewImg" class="mx-auto h-32 rounded-lg shadow-md border"
+                                            alt="Preview">
+                                    </div>
+
+                                    <p class="text-xs text-gray-500">
+                                        PDF, JPG, atau PNG (maks. 2MB)
+                                    </p>
+                                </div>
+                            </div>
+
+                            <p class="text-xs text-gray-500 mt-2">
+                                *Upload SK, Surat Tugas, atau dokumen lain yang membuktikan status Anda sebagai guru
+                            </p>
+
+
+                            @error('verification_file')
+                                <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
+                            @enderror
                         </div>
+
+
 
 
                         <div class="pt-3">
                             <button type="submit"
                                 class="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-base font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
-                                    stroke="currentColor">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
                                 </svg>
@@ -318,6 +400,17 @@
 @endsection
 
 <script>
+    function previewFileName(event) {
+        const file = event.target.files[0];
+        const fileNameElement = document.getElementById('fileName');
+        if (file) {
+            fileNameElement.textContent = `File terpilih: ${file.name}`;
+        } else {
+            fileNameElement.textContent = '';
+        }
+    }
+
+
     function togglePasswordVisibility() {
         const passwordField = document.getElementById('password');
         const eyeIcon = document.getElementById('eyeIcon');

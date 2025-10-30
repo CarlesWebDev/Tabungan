@@ -22,6 +22,14 @@ Route::get('/login', function () {
     return redirect(to: '/Login/Admin');
 })->name('login');
 
+Route::get('/login', function () {
+    return redirect(to: 'LoginSiswa');
+})->name('login');
+
+Route::get('/login', function () {
+    return redirect(to: 'LoginGuru');
+})->name('login');
+
 
 // =============================
 // Register
@@ -162,107 +170,3 @@ Route::middleware('auth:siswa')->prefix('Student')->name('Student.')->group(func
     // Route untuk notifikasi
     Route::get('/notifikasi', [SiswaController::class, 'notifikasi'])->name('notifikasi');
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-// use Illuminate\Support\Facades\Route;
-// use App\Http\Controllers\AdminController;
-// use App\Http\Controllers\GuruController;
-// use App\Http\Controllers\SiswaController;
-
-// Route::get('/', function () {
-//     return view('LandingPage');
-// });
-
-// Route buat ke halaman LandingPage
-// Route::get('/LandingPage', function () {
-// return view('landingpage');
-// })->name('landingpage');
-
-
-//Tambah Guru
-// Tambah Guru
-// Route::get('/admin/tambahguru', [AdminController::class, 'createguru'])->name('admin.tambahguru');
-// Route::post('/admin/storeguru', [AdminController::class, 'storeguru'])->name('admin.storeguru');
-
-// Tambah Siswa
-// Route::get('/admin/tambahsiswa', [AdminController::class, 'createsiswa'])->name('admin.tambahsiswa');
-// Route::post('/admin/storesiswa', [AdminController::class, 'storesiswa'])->name('admin.storesiswa');
-// Route::get('/admin/guru/{id}/hapus', [AdminController::class, 'hapusGuru'])->name('admin.hapusguru');
-
-
-// Admin Dashboard Middleware
-// Route::get('/admindashboard', function () {
-//     return view('admin.dashboard');
-// })->name('admin.dashboard')->middleware('auth:admin');
-
-// Route::get('/admindashboard', [AdminController::class, 'adminDashboard'])->name('admin.dashboard')->middleware('auth:admin');
-
-
-// Guru Dashboard Middleware
-// Route::get('/TeacherDashboard', function () {
-//     return view('Teacher.dashboard');
-// })->name('Teacher.dashboard')->middleware('auth:guru');
-
-// Siswa Dashboard Middleware
-// Route::get('/StudentDashboard', function () {
-//     return view('Student.dashboard');
-// })->name('Student.dashboard')->middleware('auth:siswa');
-
-// login admin
-// Route::get('/LoginAdmin', [AdminController::class, 'showLoginForm'])->name('login');
-// Route::post('/LoginAdmin', [AdminController::class, 'login'])->name('login.admin');
-// Route::post('/LogoutAdmin', [AdminController::class, 'logout'])->name('admin.logout');
-
-// login guru
-// Route::get('/LoginGuru', [GuruController::class, 'showLoginFormGuru'])->name('login.guru');
-// Route::post('/LoginGuru', [GuruController::class, 'loginGuru'])->name('login.guru');
-// Route::post('/LogoutGuru', [GuruController::class, 'logout'])->name('guru.logout');
-
-// Login siswa
-// Route::get('/LoginSiswa', [SiswaController::class, 'showLoginFormSiswa'])->name('login.siswa');
-// Route::post('/LoginSiswa', [SiswaController::class, 'loginSiswa'])->name('login.siswa');
-// Route::post('/LogoutSiswa', [SiswaController::class, 'logout'])->name('siswa.logout');
-
-
-
-
-// Admin Edit Guru
-// Route::get('/admin/guru/{id}/edit', [AdminController::class, 'editguru'])->name('admin.editguru');
-// Route::put('/admin/guru/{id}/update', [AdminController::class, 'updateguru'])->name('admin.updateguru');
-
-// Admin Edit Siswa
-// Route::get('/admin/siswa/{id}/edit', [AdminController::class, 'editsiswa'])->name('admin.editsiswa');
-// Route::put('/admin/siswa/{id}/update', [AdminController::class, 'updatesiswa'])->name('admin.updatesiswa');
-
-// Admin Hapus Siswa
-// Route::delete('/admin/siswa/{id}/hapus', [AdminController::class, 'hapusSiswa'])->name('admin.hapussiswa');
-
-
-
-// Route::get('/guruLogin', function () {
-//     return view('auth.gurulogin');
-// })->name('guru');
-
-
-// Login Admin - Cegah guru login ke sini
-// Route::middleware(['guest', 'preventIfGuru'])->group(function () {
-//     Route::get('/LoginAdmin', [AdminController::class, 'showLoginForm'])->name('login');
-//     Route::post('/LoginAdmin', [AdminController::class, 'login'])->name('login.admin');
-// });
-
-// // Login Guru - Cegah admin login ke sini
-// Route::middleware(['guest', 'preventIfAdmin'])->group(function () {
-//     Route::get('/LoginGuru', [GuruController::class, 'showLoginFormGuru'])->name('login.guru');
-//     Route::post('/LoginGuru', [GuruController::class, 'loginGuru'])->name('login.guru');
-// });

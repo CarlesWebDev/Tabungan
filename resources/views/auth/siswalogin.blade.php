@@ -34,7 +34,7 @@
                     </div>
 
                     <!-- Error -->
-                    @if ($errors->any())
+                    {{-- @if ($errors->any())
                         <div class="mb-6 bg-red-50 border-l-4 border-red-500 p-4 rounded">
                             <div class="flex items-center">
                                 <svg class="h-5 w-5 text-red-500" fill="currentColor" viewBox="0 0 20 20">
@@ -45,7 +45,7 @@
                                 <p class="ml-2 text-sm text-red-700">{{ $errors->first() }}</p>
                             </div>
                         </div>
-                    @endif
+                    @endif --}}
 
                     <!-- Form -->
                     <form method="POST" action="{{ route('login.siswa') }}" class="space-y-6">
@@ -63,10 +63,14 @@
                                             clip-rule="evenodd" />
                                     </svg>
                                 </div>
-                                <input id="nis" name="nis" type="text" required
-                                    class="block w-full pl-10 pr-3 py-3 text-sm border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                <input id="nis" name="nis" type="text"
+                                    class="block w-full pl-10 pr-3 py-3 text-sm border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500
+                                    {{ $errors->has('nis') ? 'border-red-500 focus:ring-red-500 focus:border-red-500' : 'border-gray-300 focus:ring-blue-500 focus:border-blue-500' }}""
                                     placeholder="Masukkan NIS Anda" />
                             </div>
+                            @error('nis')
+                                    <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
+                                @enderror
                         </div>
 
                         <!-- Password -->
@@ -80,8 +84,9 @@
                                             clip-rule="evenodd" />
                                     </svg>
                                 </div>
-                                <input id="password" name="password" type="password" required
-                                    class="block w-full pl-10 pr-10 py-3 text-sm border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                <input id="password" name="password" type="password"
+                                    class="block w-full pl-10 pr-10 py-3 text-sm border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500
+                                    {{ $errors->has('password') ? 'border-red-500 focus:ring-red-500 focus:border-red-500' : 'border-gray-300 focus:ring-blue-500 focus:border-blue-500' }}""
                                     placeholder="Masukkan kata sandi Anda" />
                                 <button type="button" onclick="togglePasswordVisibility()"
                                     class="absolute inset-y-0 right-0 pr-4 flex items-center text-gray-600 hover:text-gray-700">
@@ -94,17 +99,12 @@
                                     </svg>
                                 </button>
                             </div>
+                            @error('password')
+                                    <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
+                                @enderror
                         </div>
 
-                        <!-- Remember + Forgot -->
-                        <div class="flex items-center justify-between">
-                            <label class="flex items-center text-sm text-gray-700">
-                                <input id="remember-me" name="remember-me" type="checkbox"
-                                    class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
-                                <span class="ml-2">Ingat saya</span>
-                            </label>
-                            <a href="#" class="text-sm font-medium text-blue-600 hover:text-blue-500">Lupa kata sandi?</a>
-                        </div>
+                        
 
                         <!-- Submit -->
                         <button type="submit"
@@ -123,7 +123,7 @@
                         </div>
                         <div>
                             <p class="mb-2">Tidak Punya Akun?</p>
-                            <a href="https://wa.me/6283807362506"
+                            <a href="https://wa.me/628380644"
                                 class="font-medium text-blue-600 hover:text-blue-500">Hubungi Admin Disini</a>
                         </div>
                     </div>

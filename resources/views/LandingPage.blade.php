@@ -16,15 +16,19 @@
         <header class="fixed w-full z-50 transition-all duration-300 bg-gray-100 py-4 shadow-md">
             <div class="container mx-auto px-4 md:px-6">
                 <div class="flex justify-between items-center">
-                    <div class="flex items-center">
+                    <a href="/" class="flex items-center space-x-2 cursor-pointer group">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="size-10 text-blue-500">
+                            stroke="currentColor"
+                            class="w-10 h-10 text-blue-500 transition-transform duration-200 group-hover:scale-110">
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
                         </svg>
 
-                        <span class="ml-2 text-xl font-sans font-bold text-blue-500">EduSavings</span>
-                    </div>
+                        <span class="text-xl font-sans font-bold text-blue-500 group-hover:text-blue-600">
+                            EduSavings
+                        </span>
+                    </a>
+
 
                     <nav class="hidden md:flex space-x-8">
                         <a href="#beranda"
@@ -124,7 +128,7 @@
                             menabung sejak dini.</p>
                         <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
                             <button onclick="toggleModal(true)"
-                                class="px-6 py-3 bg-blue-600 md:hidden text-white rounded-lg justify-center hover:bg-blue-700 transition-colors shadow-md flex items-center ">Mulai
+                                class="px-6 py-3 bg-blue-600 md:hidden text-white rounded-lg justify-center active:bg-green-800 hover:bg-blue-700 transition-colors shadow-md flex items-center ">Mulai
                                 Sekarang
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -640,16 +644,13 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
                     <div>
                         <div class="flex items-center mb-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="lucide lucide-piggy-bank h-8 w-8 text-blue-400">
-                                <path
-                                    d="M19 5c-1.5 0-2.8 1.4-3 2-3.5-1.5-11-.3-11 5 0 1.8 0 3 2 4.5V20h4v-2h3v2h4v-4c1-.5 1.7-1 2-2h2v-4h-2c0-1-.5-1.5-1-2h0V5z">
-                                </path>
-                                <path d="M2 9v1c0 1.1.9 2 2 2h1"></path>
-                                <path d="M16 11h0"></path>
-                            </svg>
-                            <span class="ml-2 text-xl font-bold">EduSavings</span>
+                           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor"
+                            class="w-10 h-10 text-blue-500 transition-transform duration-200 group-hover:scale-110">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
+                        </svg>
+                            <span class="ml-2 text-xl text-blue-500 font-bold">EduSavings</span>
                         </div>
                         <p class="text-black mb-6">
                             Platform tabungan digital untuk siswa yang aman, transparan, dan membangun kebiasaan finansial
@@ -739,15 +740,14 @@
                         <h3 class="text-lg font-semibold mb-4">Kontak Kami</h3>
                         <ul class="space-y-3 text-black">
                             <li class="flex items-start">
-                                <svg class="lucide lucide-map-pin h-10 w-10 text-blue-400 mr-3 mt-0.5"
+                                <svg class="lucide lucide-map-pin h-8 w-8 text-blue-400 mr-3 mt-0.5"
                                     xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round">
                                     <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
                                     <circle cx="12" cy="10" r="3"></circle>
                                 </svg>
-                                <span>Jl. Veteran No.1A, RT.005/RW.002, Babakan, Kec. Tangerang, Kota Tangerang, Banten
-                                    15118</span>
+                                <span>Jalan Raya Serpong Kilometer 7,</span>
                             </li>
                             <li class="flex items-center">
                                 <svg class="lucide lucide-phone h-5 w-5 text-blue-400 mr-3"
