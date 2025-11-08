@@ -8,7 +8,7 @@
                 <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
                     <div>
                         <h2 class="text-2xl md:text-3xl font-bold text-gray-800">Edit Data Kelas</h2>
-                        <p class="text-gray-600 mt-1">Perbarui informasi kelas {{ $kelas->nama_kelas }}</p>
+                        <p class="text-gray-600 mt-1">Perbarui informasi kelas {{ $kelas->tingkat }} {{ $kelas->nama_kelas }} </p>
                     </div>
                     <div class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium w-fit">
                         ID: {{ $kelas->id }}

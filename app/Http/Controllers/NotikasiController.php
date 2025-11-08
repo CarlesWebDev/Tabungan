@@ -2,28 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Siswa;
-use Illuminate\Support\Facades\Auth;
-use App\Models\notikasi;
 use App\Models\Kelas;
+use App\Models\notikasi;
+use App\Models\Siswa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class NotikasiController extends Controller
 {
-
-
-    // public function notifikasi()
-    // {
-    //     // Ambil siswa yang sedang login
-    //     $unread = Notikasi::where('siswa_id', auth('siswa')->id())
-    //         ->where('status', 'unread')
-    //         ->count();
-
-    //     $siswas = Siswa::with('kelas')->get();
-    //     $notifikasis = notikasi::with(['guru', 'siswa', 'kelas'])->get();
-    //     return view('Teacher.notifikasi', compact('notifikasis', 'siswas', 'unread'));
-    // }
-
     public function notifikasi()
     {
         $unread = Notikasi::where('siswa_id', auth('siswa')->id())
@@ -41,14 +27,10 @@ class NotikasiController extends Controller
         return view('Teacher.notifikasi', compact('notifikasis', 'siswas', 'unread'));
     }
 
-
-
-
     // Buat kirim  otifikasi ke siswa biar ad tanda notip di sidebarnya
     public function markAsRead($id)
     {
         $notikasi = notikasi::find($id);
-
 
         if ($notikasi) {
             $notikasi->read_at = now();
@@ -61,9 +43,6 @@ class NotikasiController extends Controller
         return redirect()->route('Student.notifikasi')->with('error', 'Notifikasi tidak ditemukan.');
     }
 
-
-
-
     /**
      * Display a listing of the resource.
      */
@@ -71,17 +50,6 @@ class NotikasiController extends Controller
     {
         //
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    // public function create()
-    // {
-    //     //
-    //     // $siswas = Siswa::all();
-    //     $siswas = Siswa::whereIn('kelas_id', $kelasIds)->with('kelas')->get();
-    //     return view('Teacher.tambahnotifikasi', compact('siswas'));
-    // }
 
     public function create()
     {
@@ -96,33 +64,6 @@ class NotikasiController extends Controller
         return view('Teacher.tambahnotifikasi', compact('siswas'));
     }
 
-
-    /**
-     * Store a newly created resource in storage.
-     */
-
-    // //Ini satu pilih
-    // public function store(Request $request)
-    // {
-    //     $request->validate([
-    //         'siswa_id' => 'required|exists:siswas,id',
-    //         'notikasi' => 'required|string|max:255',
-    //     ]);
-
-    //     $guru = Auth::guard('guru')->user();
-
-    //     Notikasi::create([
-    //         'siswa_id' => $request->siswa_id,
-    //         'notikasi' => $request->notikasi,
-    //         'guru_id' => $guru->id,
-    //         'kelas_id' => Siswa::find($request->siswa_id)?->kelas_id,
-    //         'status' => 'unread',
-    //     ]);
-
-    //     return redirect()->route('Teacher.createNotifikasi')->with('success', 'Notifikasi berhasil dikirim!');
-    // }
-
-    // Ini banyak pilih multi select
     public function store(Request $request)
     {
         $request->validate([
@@ -148,7 +89,6 @@ class NotikasiController extends Controller
 
         return redirect()->route('Teacher.createNotifikasi')->with('success', 'Notifikasi berhasil dikirim!');
     }
-
 
     /**
      * Display the specified resource.
@@ -181,11 +121,12 @@ class NotikasiController extends Controller
     {
         $notikasi = Notikasi::find($request->id);
 
-        if (!$notikasi) {
+        if (! $notikasi) {
             return back()->with('error', 'Notifikasi tidak ditemukan.');
         }
 
         $notikasi->delete();
+
         return redirect()->route('Teacher.createNotifikasi')->with('success', 'Notifikasi berhasil dihapus!');
     }
 }

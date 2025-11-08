@@ -53,7 +53,7 @@
                                 class="pl-10 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 py-2">
                                 @forelse($siswas as $siswa)
                                     <option value="{{ $siswa->id }}" class="py-1">
-                                        {{ $siswa->name }} ({{ $siswa->kelas->tingkat ?? '-' }}{{ $siswa->kelas->nama_kelas ?? '-' }} - NIS: {{ $siswa->nis }})
+                                        {{ $siswa->name }} 
                                     </option>
                                 @empty
                                     <option value="" disabled>Data siswa tidak tersedia</option>
